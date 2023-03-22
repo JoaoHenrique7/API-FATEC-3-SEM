@@ -19,6 +19,7 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.29.3",
     "sequelize-typescript": "^2.1.5",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "uuidv4": "^6.2.13"
   }
 }
