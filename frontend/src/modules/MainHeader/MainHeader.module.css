@@ -1,0 +1,12 @@
+.mainHeader{
+    grid-area: 'mainheader';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logoVisiona{
+    width: 26px;
+    height: auto;
+}
