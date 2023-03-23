@@ -9,13 +9,13 @@ export default class CreateUserUC {
     ) {}
 
     async execute(props: ICreateUserDTO) {
-        const userExists = await this.userRepository.findByEmail(props.Email);
+
+        const userExists = await this.userRepository.findByEmail(props.email);
 
         if (userExists) {
             throw new Error('User already exists.');
-        }   
+        }
 
-        if(!props.Id) props.Id = uuid();
         const user = new User({ ...props });
         await this.userRepository.save(user);
     }

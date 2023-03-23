@@ -6,13 +6,13 @@ export default class User extends Model {
     id!: number;
 
     @Column({ type: DataType.STRING(16), allowNull: true })
-    username?: string;
+    userName?: string;
 
     @Column({ type: DataType.STRING(50), allowNull: false })
     fullName!: string;
 
     @Column({ type: DataType.STRING(18), allowNull: false })
-    cpfCNPJ!: string;
+    cpfCnpj!: string;
 
     @Column({ type: DataType.STRING(150), allowNull: false })
     email!: string;
