@@ -1,4 +1,4 @@
-<p align="center"> <img src="" alt="Equipe bytech"/></p>
+<p align="center"> <img src="/readme/Logo.png" alt="Equipe bytech"/></p>
 <br>
 <p align="center">
   <samp>
@@ -43,7 +43,7 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 
 <h1 align="center"><samp>TECNOLOGIAS</samp></h1>
 
-![Equipe bytech]()
+![Equipe bytech](/readme/Technologies.png)
 
 <table align="center">
   <tr>
@@ -86,16 +86,20 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 <br>
 <h1 align="center"><samp>CRONOGRAMA DAS SPRINTS</samp></h1>
 
-![Equipe bytech]()
+![Equipe bytech](/readme/Cronograma.png)
 
 <br>
 <h1 align="center"><samp>PRODUCT BACKLOG</samp></h1>
 
-![Equipe bytech]()
+<p align="center">
+    <img src="/readme/Backlog.png" width="50%" />
+</p>
 
 <h1 align="center"><samp>SPRINT BACKLOG</samp></h1>
 
-![Equipe bytech]()
+<p align="center">
+    <img src="/readme/Backlog Sprints.png" width="80%" />
+ </p>
 
 <br>
 <h1 align="center"><samp>BURNDOWN DAS SPRINTS</samp></h1>
