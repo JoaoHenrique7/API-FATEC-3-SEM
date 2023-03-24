@@ -143,14 +143,14 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
   <h3 align="center">Banco de Dados</h3>
   <h4 align="center">Modelo conceitual<br></h4>
   <p align="center">
-    <img src="" width="65%" />
+    <img src="/readme/modeloConceitual_BD.png" width="65%" />
   </p>
   <p align="justify">A princípio foram identificadas as seguintes entidades: <i>User</i> e <i>Profile</i>. A entidade <i>User</i> contêm informações sobre os usuários do sistema com os atributos <i>ID</i> chave primária da tabela; <i>fullName</i>; <i>userName</i>; <i>cpfCNPJ</i> chave única; <i>email</i>; <i>password</i>; <i>active</i>; <i>createDate</i>; <i>lastUpdate</i>. A entidade <i>Profile</i> abriga informações relativas aos perfis dos usuários, diferenciando os tipos de usuários (p.ex. Administrador e Usuários) através do atributo <i>type</i> para atribuir permissões relativas a cada classificação de perfil.Essa entidade é composta pelos atributos <i>ID</i> que é a chave primária; <i>userID</i> chave estrangeira da tabela <i>Users</i>; e <i>type</i>.</p>
   
   <br>
   <h4 align="center">Modelo lógico<br></h4>
   <p align="center">
-    <img src="" width="65%" />
+    <img src="/readme/modeloLogico_BD.png" width="65%" />
   </p>
   <p align="justify">O modelo de dados lógico é caracterizado pelas entidades: <i>User</i> e <i>Profile</i>. A entidade <i>User</i> contêm os seguintes atributos: <i>ID</i> (chave primária) do tipo inteiro, <i>fullName</i> do tipo baseado em caracteres, <i>userName</i> do tipo baseado em caracteres, <i>cpfCNPJ</i> do tipo baseado em caracteres, <i>email</i> do tipo baseado em caracteres, <i>password</i> do tipo baseado em caracteres, <i>active</i> do tipo booleano, <i>createdDate</i> do tipo dateTime e <i>lastUpdate</i> do tipo dateTime. A entidade <i>Profile</i> contêm os seguintes atributos: <i>ID</i> (chave primária) do tipo inteiro, <i>userID</i> (chave extrangeira) do tipo baseado em caracteres e <i>type</i> do tipo TinyInt. </p>
     <p align="justify">As relações entre as entidades <i>User</i> e <i>Profile</i> são todas do tipo <b>1:1</b>.</p>
