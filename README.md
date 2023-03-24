@@ -27,7 +27,7 @@
 O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de usuários (p.ex. criação, visualização, edição e remoção), assim como um serviço de autenticação/autorização.
 
 ### 📖 Requisitos funcionais
-+ - [x] Acessar o sistema por meio de login e senha
++ - [x] Acessar o sistema por meio de login
 + - [x] Cadastro de novos usuários
 + - [x] Editar usuários já cadastrados
 + - [x] Perfis administradores devem visualizar os usuários cadastrados em forma de lista.
