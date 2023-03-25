@@ -3,28 +3,30 @@ import IUserRepository from "../IUserRepository";
 
 export default class UserRepository implements IUserRepository {
     // create
-    save(user: User) : Promise<User> {
-        return User.create({ Id: user.id, Name: user.username, Email: user.email, Password: user.password });
+    save(user: User): Promise<User> {
+
+        return User.create({ userName: user.userName, fullName: user.fullName, cpfCnpj: user.cpfCnpj, email: user.email, password: user.password, active: user.active });
+    
     }
 
     // read by email
-    findByEmail(email: string) : Promise<User | null> {
-        return User.findOne({ where: { Email: email } })
+    findByEmail(email: string): Promise<User | null> {
+        return User.findOne({ where: { email: email } });
     }
 
     // read all
-    findAll() : Promise<User[]> {
+    findAll(): Promise<User[]> {
         return User.findAll();
     }
 
     // delete
-    removeByEmail(email: string) : Promise<User | null> {
-        return User.findOne({ where: { Email: email } })
+    removeByEmail(email: string): Promise<User | null> {
+        return User.findOne({ where: { email: email } });
     }
 
     // update
-    update(user: User) : Promise<User> {
-        return User.create({ Id: user.id, Name: user.username, Email: user.email, Password: user.password });
+    update(user: User): Promise<User> {
+        return User.create({ id: user.id, name: user.userName, email: user.email, password: user.password });
     }
-    
+
 }

@@ -4,12 +4,14 @@ import CreateUserUC from "./CreateUserUC";
 export class CreateUserController {
     constructor(
         private createUserUC: CreateUserUC
-    ) {}
+    ) { }
 
-    async create(req: Request, res: Response) : Promise<Response> {
-        const { Id, Name, Email, Password } = req.body;
+    async create(req: Request, res: Response): Promise<Response> {
+
+        const { userName, fullName, cpfCnpj, email, password, active } = req.body;
+
         try {
-            await this.createUserUC.execute({ Id, Name, Email, Password });
+            await this.createUserUC.execute({ userName, fullName, cpfCnpj, email, password, active });
 
             return res.status(200).json({
                 Ok: true,

@@ -3,7 +3,8 @@ import User from "../model/User";
 import Profile from "../model/Profile";
 
 import * as dotenv from "dotenv";
-dotenv.config({ path: 'backend/.env' });
+
+dotenv.config();
 
 const connection = new Sequelize(
     
