@@ -188,7 +188,7 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
   </tr>
     <tr>
     <td>João Henrique</td>
-    <td>Product Owner</td>
+    <td>Desenvolvedor</td>
     <td><a href="https://github.com/JoaoHenrique7">Github</a></td>
     <td><a href="https://www.linkedin.com/in/jo%C3%A3o-henrique-trist%C3%A3o-b63385207/">Linked-In</a></td>
   </tr>
@@ -200,7 +200,7 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
   </tr>
     <tr>
     <td>Camila Redondo</td>
-    <td>Desenvolvedor</td>
+    <td>Scrum Master</td>
     <td><a href="https://github.com/CamilaRedondo">Github</a></td>
     <td><a href="https://www.linkedin.com/in/camila-silveira-redondo-7941631ab/">Linked-In</a></td>
   </tr>
@@ -212,7 +212,7 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
   </tr>
     <tr>
     <td>Henrique Neto</td>
-    <td>Scrum Master</td>
+    <td>Desenvolvedor</td>
     <td><a href="https://github.com/henriqFerreira">Github</a></td>
     <td><a href="https://www.linkedin.com/in/henriquepfneto/">Linked-In</a></td>
   </tr>
@@ -224,7 +224,7 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
   </tr>
   <tr>
     <td>Simone Kanzawa</td>
-    <td>Desenvolvedor</td>
+    <td>Product Owner</td>
     <td><a href="https://github.com/Simonehk">Github</a></td>
     <td><a href=""></a></td>
   </tr>
