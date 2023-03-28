@@ -6,5 +6,5 @@ const server = app.listen(PORT, () => console.log(`template_api.backend inicou e
 
 process.on("SIGINT", () => {
     server.close();
-    console.log("template_api.backend finalizado.");
+    console.log("Back-end finalizado.");
 });
