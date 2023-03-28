@@ -1,17 +1,25 @@
 export default class User {
 
     private id: number = -1;
+    private userName: string = '';
     private fullName: string = '';
-    private cpfCNPJ: string = '';
+    private cpfCnpj: string = '';
     private email: string = '';
+    private password: string = '';
     private active: boolean = false;
 
-    constructor (fullName: string, cpfCNPJ: string, email: string, active: boolean, id?: number) {
+    constructor (userName: string, fullName: string, cpfCnpj: string, email: string, password: string, active: boolean, id?: number) {
         id? this.id = id : this.id = -1;
+        this.userName = userName;
         this.fullName = fullName;
-        this.cpfCNPJ = cpfCNPJ;
+        this.cpfCnpj = cpfCnpj;
         this.email = email;
+        this.password = password;
         this.active = active;
+    }
+
+    public getUserName(): string {
+        return this.userName;
     }
 
     public getId(): number {
@@ -22,12 +30,16 @@ export default class User {
         return this.fullName;
     }
 
-    public getCpfCNPJ(): string {
-        return this.cpfCNPJ;
+    public getCpfCnpj(): string {
+        return this.cpfCnpj;
     }
 
     public getEmail(): string {
         return this.email;
+    }
+
+    public getPassword(): string {
+        return this.password;
     }
 
     public isActive(): boolean {
