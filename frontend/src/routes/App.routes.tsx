@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from "../pages/dashboard/Dashboard";
+import Logon from "../pages/Logon/LogonPage"
 
 class AppRoutes extends React.Component {
   render() {
@@ -8,7 +9,8 @@ class AppRoutes extends React.Component {
       <BrowserRouter>
         <div>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/" element={<Logon />} />
           </Routes>
         </div>
       </BrowserRouter>
