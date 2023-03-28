@@ -9,15 +9,17 @@ export const app = express();
 
 dotenv.config();
 
+app.use(cors({
+    origin: '*'
+}));
+
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use('/user', UserRoutes);
 
-app.use(cors())
-
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
     res.status(500).json({ message: err.message });
-})
+});
 
 console.log("Tentando sincronizar com banco de dados... ");
 connection.sync({ alter: true }).then(() => {
