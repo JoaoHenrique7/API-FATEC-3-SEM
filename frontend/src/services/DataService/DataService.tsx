@@ -32,24 +32,22 @@ export default class DataService {
         return false;
     }
 
-    public static async createUser(user: User): Promise<boolean> {
-
-        fetch('URL TO-DO', {
-            method: "POST",
+    public static createUser(user: User): boolean {
+        fetch('http://localhost:3000/user/createUser', {
+            method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
-            redirect: "follow",
             body: JSON.stringify(user),
-        }).then((response: Response) => {
+        }).then((response) => {
             if (response.ok) {
                 return true;
             } else {
                 return false;
             }
-        }).catch((error: Error) => {
+        }).catch((error) => {
             console.error(error);
-        });
+        })
 
         return false;
     }
