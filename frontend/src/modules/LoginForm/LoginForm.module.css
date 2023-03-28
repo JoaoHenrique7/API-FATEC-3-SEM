@@ -1,0 +1,22 @@
+.loginform {
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  margin-left: 180px;
+  padding: 5px;
+}
+
+.loginTitles {
+  margin-bottom: 5px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.loginSubTitles {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #8B8B8B;
+  font-size: 14px
+  ;
+}
+  
