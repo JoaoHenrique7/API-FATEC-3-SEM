@@ -7,27 +7,32 @@ export default class UserRepository implements IUserRepository {
         return User.create({ userName: user.userName, fullName: user.fullName, cpfCnpj: user.cpfCnpj, email: user.email, password: user.password, active: user.active });
     }
 
-    // read by email
+    // find by Id
+    findById(id: number): Promise<User | null> {
+        return User.findOne({ where: { id: id } });
+    }
+
+    // find by Email
     findByEmail(email: string): Promise<User | null> {
         return User.findOne({ where: { email: email } });
     }
 
-     // read by Cpf and Cnpj
+     // find by Cpf and Cnpj
      findByCpfCnpj(cpfCnpj: string): Promise<User | null> {
         return User.findOne({ where: { cpfCnpj: cpfCnpj } });
     }
 
-     // read by userName
+     // find by userName
      findByUserName(userName: string): Promise<User | null> {
         return User.findOne({ where: { userName: userName } });
     }
 
-    // read by fullName
+    // find by fullName
     findByFullName(fullName: string): Promise<User | null> {
         return User.findOne({ where: { fullName: fullName } });
     }
 
-    // read all
+    // find all
     findAll(): Promise<User[]> {
         return User.findAll();
     }

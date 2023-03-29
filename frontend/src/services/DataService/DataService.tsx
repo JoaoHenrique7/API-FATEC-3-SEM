@@ -33,7 +33,7 @@ export default class DataService {
     }
 
     public static getAllUsers() {
-        fetch('http://localhost:3000/user/createUser', {
+        fetch('http://localhost:3000/user/getAll', {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -71,6 +71,27 @@ export default class DataService {
         });
 
         return false;
+    }
+
+    public static getById(id: number) {
+
+        const requestBody = { id: id };
+
+        fetch('http://localhost:3000/user/findById', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('There was a problem with the request, check the params and try again');
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
     }
 
     public static getUserByEmail(email: string) {
