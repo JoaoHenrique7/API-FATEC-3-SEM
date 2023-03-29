@@ -3,6 +3,7 @@ import connection from './db/dbconfig';
 import dotenv from 'dotenv';
 import { json, urlencoded } from 'body-parser';
 import UserRoutes from './routes/UserRoutes';
+import AuthRoutes from './routes/AuthRoutes';
 import cors from 'cors';
 
 export const app = express();
@@ -16,6 +17,7 @@ app.use(cors({
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use('/user', UserRoutes);
+app.use('/auth', AuthRoutes);
 
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
     res.status(500).json({ message: err.message });
