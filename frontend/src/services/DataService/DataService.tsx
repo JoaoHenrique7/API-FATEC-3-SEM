@@ -5,14 +5,14 @@ import UpdateUserParams from "../../model/interfaces/UpdateUserParams";
 
 export default class DataService {
 
-    public static async authenticateUser(username: string, password: string): Promise<boolean> {
+    public static authenticateUser(email: string, password: string): boolean {
 
         const credentials: AuthenticationCredentials = {
-            username: username,
+            email: email,
             password: password,
         };
 
-        fetch('URL TO-DO', {
+        fetch('http://localhost:3000/auth/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
