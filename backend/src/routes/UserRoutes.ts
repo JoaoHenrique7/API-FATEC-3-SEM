@@ -3,6 +3,7 @@ import { createUser } from '../useCases/user/CreateUser/CreateUser';
 import { getAllUsers } from "../useCases/user/GetAllUser/GetAllUsers";
 import { deleteUser } from '../useCases/user/DeleteUser/DeleteUser';
 import { findUserByCpfCnpj } from "../useCases/user/FindUserByCpfCnpj/FindUserByCpfCnpj";
+import { findById } from "../useCases/user/FindById/FindById";
 import { findUserByEmail } from "../useCases/user/FindUserByEmail/FindUserByEmail";
 import { findUserByUserName } from "../useCases/user/FindUserByUserName/FindUserByUserName";
 import { findUserByFullName } from "../useCases/user/FindUserByFullName/FindUserByFullName";
@@ -20,6 +21,10 @@ router.post('/createUser', (request: Request, response: Response) => {
 
 router.delete('/deleteUser', (request: Request, response: Response) => {
     return deleteUser.delete(request, response);
+});
+
+router.get('/findById', (request: Request, response: Response) => {
+    return findById.findById(request, response);
 });
 
 router.get('/findUserByEmail', (request: Request, response: Response) => {
