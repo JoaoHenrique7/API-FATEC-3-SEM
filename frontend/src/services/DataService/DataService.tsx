@@ -5,14 +5,14 @@ import UpdateUserParams from "../../model/interfaces/UpdateUserParams";
 
 export default class DataService {
 
-    public static async authenticateUser(username: string, password: string): Promise<boolean> {
+    public static authenticateUser(email: string, password: string): boolean {
 
         const credentials: AuthenticationCredentials = {
-            username: username,
+            email: email,
             password: password,
         };
 
-        fetch('URL TO-DO', {
+        fetch('http://localhost:3000/auth/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -32,29 +32,153 @@ export default class DataService {
         return false;
     }
 
-    public static async createUser(user: User): Promise<boolean> {
-
-        fetch('URL TO-DO', {
-            method: "POST",
+    public static getAllUsers() {
+        fetch('http://localhost:3000/user/getAll', {
+            method: 'GET',
             headers: {
                 "Content-Type": "application/json",
             },
-            redirect: "follow",
+        }).then((response) => {
+            if (response.ok) {
+                const jsonResponse = response.json();
+
+                return jsonResponse;
+            } else {
+                return [];
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+
+        return [];
+    }
+
+    public static createUser(user: User): boolean {
+        fetch('http://localhost:3000/user/createUser', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify(user),
-        }).then((response: Response) => {
+        }).then((response) => {
             if (response.ok) {
                 return true;
             } else {
                 return false;
             }
-        }).catch((error: Error) => {
+        }).catch((error) => {
             console.error(error);
         });
 
         return false;
     }
 
-    public static async getUser(userId: number): Promise<User | undefined> {
+    public static getById(id: number) {
+
+        const requestBody = { id: id };
+
+        fetch('http://localhost:3000/user/findById', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('There was a problem with the request, check the params and try again');
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+
+    public static getUserByEmail(email: string) {
+
+        const requestBody = { email: email };
+
+        fetch('http://localhost:3000/user/findUserByEmail', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('There was a problem with the request, check the params and try again');
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+
+    public static getUserByCpfCnpj(cpfCnpj: string) {
+
+        const requestBody = { cpfCnpj: cpfCnpj };
+
+        fetch('http://localhost:3000/user/findUserByCpfCnpj', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('There was a problem with the request, check the params and try again');
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+
+    public static getUserByUserName(userName: string) {
+
+        const requestBody = { userName: userName };
+
+        fetch('http://localhost:3000/user/findUserByUserName', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('There was a problem with the request, check the params and try again');
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+
+    public static getUserByFullName(fullName: string) {
+
+        const requestBody = { fullName: fullName };
+
+        fetch('http://localhost:3000/user/findUserByFullName', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('There was a problem with the request, check the params and try again');
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+
+    public static async getUserById(userId: number): Promise<User | undefined> {
 
         fetch('URL TO-DO', {
             method: "GET",
@@ -102,13 +226,17 @@ export default class DataService {
 
     public static async deleteUser(userId: number): Promise<boolean> {
 
-        fetch('URL TO-DO', {
+        const requestBody = {
+            userId: userId,
+        };
+
+        fetch('http://localhost:3000/user/deleteUser', {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
             },
             redirect: "follow",
-            body: JSON.stringify(userId),
+            body: JSON.stringify(requestBody),
         }).then((response: Response) => {
             if (response.ok) {
                 return true;

@@ -1,10 +1,10 @@
 import { Request, Response, Router } from "express";
-import { createUser } from '../useCases/user/CreateUser/CreateUser';
-import { getAllUsers } from "../useCases/user/GetAllUser/GetAllUsers";
-
+import { login } from '../useCases/auth/Login/Login';
 
 const router = Router();
 
-
+router.post('/login', (request: Request, response: Response) => {
+    return login.login(request, response);
+});
 
 export default router;

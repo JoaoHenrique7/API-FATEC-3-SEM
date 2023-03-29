@@ -1,4 +1,4 @@
 export default interface AuthenticationCredentials {
-    username: string,
+    email: string,
     password: string,
 }
