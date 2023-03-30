@@ -1,0 +1,23 @@
+table {
+    border-collapse: collapse;
+    padding: 5px;
+    margin-left: 10%;
+    border-radius: 20%;
+    /* scale: 150%; */
+}
+
+table thead {
+    background-color: #060047;
+    padding: 5px;
+    color: #313030;
+    border: 1px solid #060047;
+    color: #FFFFFF;
+}
+
+table td {
+    border: 1px solid #b3adad;
+    text-align: center;
+    padding: 5px;
+    border-radius: 20px;
+    color: #313030;
+}

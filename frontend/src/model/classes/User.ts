@@ -1,12 +1,12 @@
 export default class User {
 
-    private id: number = -1;
-    private userName: string = '';
-    private fullName: string = '';
-    private cpfCnpj: string = '';
-    private email: string = '';
-    private password: string = '';
-    private active: boolean = false;
+    public id: number;
+    public userName: string;
+    public fullName: string;
+    public cpfCnpj: string;
+    public email: string;
+    public password: string;
+    public active: boolean;
 
     constructor (userName: string, fullName: string, cpfCnpj: string, email: string, password: string, active: boolean, id?: number) {
         id? this.id = id : this.id = -1;
