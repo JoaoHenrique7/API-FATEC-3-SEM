@@ -2,6 +2,11 @@ import User from "../../model/classes/User";
 import AuthenticationCredentials from "../../model/interfaces/AuthenticationCredentials";
 import UpdateUserParams from "../../model/interfaces/UpdateUserParams";
 
+export default interface resProps {
+    Ok: boolean;
+    Message: string;
+    Data: User[];
+}
 
 export default class DataService {
 
@@ -32,25 +37,23 @@ export default class DataService {
         return false;
     }
 
-    public static getAllUsers() {
-        fetch('http://localhost:3000/user/getAll', {
+    public static async getAllUsers() : Promise<resProps> {
+        return await fetch('http://localhost:3000/user/getAll', {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then((response) => {
-            if (response.ok) {
-                const jsonResponse = response.json();
-
-                return jsonResponse;
-            } else {
-                return [];
-            }
+        })
+        .then((response: Response) => response.json())
+        .then((response: resProps) => {
+            return response;
         }).catch((error) => {
-            console.error(error);
+            var response = new resProps();
+            response.Ok = false;
+            response.Message = `${error}`;
+            response.Data = [];
+            return response;
         });
-
-        return [];
     }
 
     public static createUser(user: User): boolean {
