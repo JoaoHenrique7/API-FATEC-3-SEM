@@ -1,9 +1,20 @@
 # Backend
 
+
+## Requisições para Teste
 {
-    "username": "joao.tristao",
+    "userName": "camila.redondo",
+    "fullName": "Camila Redondo",
+    "cpfCnpj": "12345678912",
+    "email": "camila.redondo@teste.com",
+    "password": "123456",
+    "active": "true"
+}
+
+{
+    "userName": "joao.tristao",
     "fullName": "Joao Henrique Tristao",
-    "cpfCNPJ": "12345678912",
+    "cpfCnpj": "12345678912",
     "email": "joao.tristao@teste.com",
     "password": "123456",
     "active": "true"
