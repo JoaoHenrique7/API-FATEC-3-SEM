@@ -18,11 +18,11 @@ class LogonPage extends Component<{}, LogonPageState> {
     };
   }
 
-  handleLogin = async (username: string, password: string) => {
+  handleLogin = async (email: string, password: string) => {
     const salt = bcrypt.genSaltSync(10);
-    const hashUsername = bcrypt.hashSync(username, salt)
-    const hashPassword = bcrypt.hashSync(password, salt);
-    let matchUser = DataService.authenticateUser(hashUsername, hashPassword)
+    // const hashUsername = bcrypt.hashSync(email, salt)
+    // const hashPassword = bcrypt.hashSync(password, salt);
+    let matchUser = DataService.authenticateUser(email, password)
     if (await matchUser === true) {
       this.setState({ loggedIn: true });
       window.open('/dashboard', '_self')

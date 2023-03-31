@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Content.module.css";
 import Table from "../Table/Table";
-import data from "../Table/data.json";
 
 
 class Content extends React.Component {
