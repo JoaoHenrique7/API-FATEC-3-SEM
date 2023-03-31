@@ -5,6 +5,11 @@ import Profile from "../../components/Profile/Profile";
 import LinkGroup from "../../components/LinkGroup/LinkGroup";
 
 class Sidebar extends React.Component {
+
+  redirect = () => {
+    window.open("/", "_self");
+  };
+
   render() {
     return (
       <div className={styles.sidebar}>
@@ -13,10 +18,10 @@ class Sidebar extends React.Component {
           <LinkGroup />
         </div>
         <div className={styles.bottomArea}>
-          <div className={styles.logoutBtn}>
+          <button className={styles.logoutBtn} onClick={this.redirect} >
             <img className={styles.logoutIcon} src={logoutImage} alt="logout" />
             <div>Logout</div>
-          </div>
+          </button>
         </div>
       </div>
     );

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import * as bcrypt from 'bcryptjs';
+// import * as bcrypt from 'bcryptjs';
 import DataService from '../../services/DataService/DataService';
 import Styles from './LogonPage.module.css';
-import illustration from '../../assets/Illustration.svg';
 import Logo from '../../components/Logo/Logo'
 import Form from '../../modules/LoginForm/LoginForm'
 
@@ -19,8 +18,8 @@ class LogonPage extends Component<{}, LogonPageState> {
   }
 
   handleLogin = async (email: string, password: string) => {
-    const salt = bcrypt.genSaltSync(10);
-    // const hashUsername = bcrypt.hashSync(email, salt)
+    // const salt = bcrypt.genSaltSync(10);
+    // const hashEmail = bcrypt.hashSync(email, salt)
     // const hashPassword = bcrypt.hashSync(password, salt);
     let matchUser = DataService.authenticateUser(email, password)
     if (await matchUser === true) {
@@ -44,7 +43,6 @@ class LogonPage extends Component<{}, LogonPageState> {
           <Form onSubmit={this.handleLogin} />
         </div>
         <div className={Styles.rightColumn}>
-          <img src={illustration} alt="IMG" className={Styles.logonPicture}></img>
         </div>
       </div>
     );
