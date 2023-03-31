@@ -1,3 +1,4 @@
+import { response } from "express";
 import User from "../../model/classes/User";
 import AuthenticationCredentials from "../../model/interfaces/AuthenticationCredentials";
 import UpdateUserParams from "../../model/interfaces/UpdateUserParams";
@@ -10,31 +11,33 @@ export default interface resProps {
 
 export default class DataService {
 
-    public static authenticateUser(email: string, password: string): boolean {
+    public static async authenticateUser(email: string, password: string): Promise<boolean> {
 
         const credentials: AuthenticationCredentials = {
             email: email,
             password: password,
         };
 
-        fetch('http://localhost:3000/auth/login', {
+        return await fetch('http://localhost:3000/auth/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             redirect: "follow",
             body: JSON.stringify(credentials),
-        }).then((response: Response) => {
-            if (response.ok) {
+        })
+        .then((response: Response) => response.json())
+        .then((response: resProps) => {
+            console.log(response);
+            if (response.Ok) {
                 return true;
             } else {
                 return false;
             }
         }).catch((error: Error) => {
             console.error(error);
+            return false;
         });
-
-        return false;
     }
 
     public static async getAllUsers() : Promise<resProps> {
