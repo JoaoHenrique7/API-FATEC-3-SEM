@@ -116,14 +116,15 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
   <summary>Detalhes</summary>
   <h3 align="center">Demonstração de usabilidade</h3>
    <br>
-  <h4 align="center">Tela de login<br></h4>
+  <h4 align="center">Tela de login<br><a href="https://www.youtube.com/watch?v=wU2duyaZ-yg">Youtube (Qualidade melhor)</a></h4>
+  
   <p align="center">
     <img src="/readme/login_dashboard.gif" width="65%" />
   </p>
   <p align="justify">Demonstração da tela de login e autenticação. Esta interface contempla o processo de login e o padrão de autenticação.</p>
   
  <br>
-  <h4 align="center">Tela dashboard<br></h4>
+  <h4 align="center">Tela dashboard<br><a href="https://www.youtube.com/watch?v=wU2duyaZ-yg">Youtube (Qualidade melhor)</a></h4>
   <p align="center">
     <img src="/readme/login_dashboard.gif" width="65%" />
   </p>
@@ -146,7 +147,7 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
     <p align="justify">As relações entre as entidades <i>User</i> e <i>Profile</i> são todas do tipo <b>1:1</b>.</p>
     
  <br>
-  <h4 align="center">Inserção de dados no Banco<br></h4>
+  <h4 align="center">Inserção de dados no Banco<br><a href="https://youtu.be/dWbNsB_yexs">Youtube (Qualidade melhor)</a></h4>
   <p align="center">
     <img src="/readme/povoando_BD.gif" width="65%" />
   </p>
