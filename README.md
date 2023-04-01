@@ -98,7 +98,7 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 <h1 align="center"><samp>SPRINT BACKLOG</samp></h1>
 
 <p align="center">
-    <img src="/readme/Backlog_sprints.jpg" width="80%" />
+    <img src="/readme/Backlog Sprints.png" width="80%" />
  </p>
 
 <br>
