@@ -152,6 +152,13 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
     <img src="/readme/povoando_BD.gif" width="65%" />
   </p>
   <p align="justify">Demonstração do funcionamento do banco de dados através da inserção de usuários.</p>
+  
+   <br>
+  <h4 align="center">BPMN<br></h4>
+  <p align="center">
+      <img src="/readme/BPMN.png" width="65%" />
+  </p>
+  <p align="justify">Apresentação dos processos desenvolvidos na primeira Sprint.</p>
 
 </details>
 
