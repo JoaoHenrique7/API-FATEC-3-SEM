@@ -19,7 +19,7 @@
 
 <h1 align="center"><samp>O PROJETO</samp></h1>
 
-![Equipe bytech]()
+![Equipe bytech](/readme/Objective.png)
 
 <br>
 <h1 align="center"><samp>PROPOSTA</samp></h1>
@@ -28,17 +28,17 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 
 ### 📖 Requisitos funcionais
 + - [x] Acessar o sistema por meio de login
-+ - [] Cadastro de novos usuários
-+ - [] Editar usuários já cadastrados
++ - [ ] Cadastro de novos usuários
++ - [ ] Editar usuários já cadastrados
 + - [x] Perfis administradores devem visualizar os usuários cadastrados em forma de lista.
-+ - [] Desativar um usuário através da exclusão lógica.
-+ - [] Funcionalidade "esqueci minha senha".
++ - [ ] Desativar um usuário através da exclusão lógica.
++ - [ ] Funcionalidade "esqueci minha senha".
 
 ### 🔖 Requisitos não funcionais
 + - [x] Documentação apresentada no Github
-+ - [] Manual do usuário
-+ - [] Utilização do GCP
-+ - [] Utilização de ferramentas para CI/CD
++ - [ ] Manual do usuário
++ - [ ] Utilização do GCP
++ - [ ] Utilização de ferramentas para CI/CD
 <br>
 
 <h1 align="center"><samp>TECNOLOGIAS</samp></h1>
@@ -98,7 +98,7 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 <h1 align="center"><samp>SPRINT BACKLOG</samp></h1>
 
 <p align="center">
-    <img src="/readme/Backlog Sprints.png" width="80%" />
+    <img src="/readme/Backlog_sprints.jpg" width="80%" />
  </p>
 
 <br>
