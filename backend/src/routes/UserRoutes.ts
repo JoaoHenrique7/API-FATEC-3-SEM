@@ -2,7 +2,7 @@ import { Request, Response, Router } from "express";
 import { createUser } from '../useCases/user/CreateUser/CreateUser';
 import { getAllUsers } from "../useCases/user/GetAllUser/GetAllUsers";
 import { deleteUser } from '../useCases/user/DeleteUser/DeleteUser';
-import { findUserByCpfCnpj } from "../useCases/user/FindUserByCpfCnpj/FindUserByCpfCnpj";
+import { findUserByCpf } from "../useCases/user/FindUserByCpfCnpj/FindUserByCpf";
 import { findById } from "../useCases/user/FindById/FindById";
 import { findUserByEmail } from "../useCases/user/FindUserByEmail/FindUserByEmail";
 import { findUserByUserName } from "../useCases/user/FindUserByUserName/FindUserByUserName";
@@ -31,8 +31,8 @@ router.get('/findUserByEmail', (request: Request, response: Response) => {
     return findUserByEmail.findUserByEmail(request, response);
 });
 
-router.get('/findUserByCpfCnpj', (request: Request, response: Response) => {
-    return findUserByCpfCnpj.findUserByCpfCnpj(request, response);
+router.get('/findUserByCpf', (request: Request, response: Response) => {
+    return findUserByCpf.findUserByCpf(request, response);
 });
 
 router.get('/findUserByUserName', (request: Request, response: Response) => {
