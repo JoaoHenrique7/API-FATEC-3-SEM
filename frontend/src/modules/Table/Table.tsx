@@ -1,61 +1,82 @@
 import React from "react";
-import styles from "./Table.module.css";
-import DataService from "../../services/DataService/DataService";
-import User from "../../model/classes/User";
+import styles from "./Table.module.css";    
+import UserResponse from "../../model/interfaces/UserResponse";
+import UserService from "../../services/UserService/UserService";
 
-interface resProps {
-    Ok: boolean;
-    Message: string;
-    Data: User[];
+interface TableProps {
+
 }
 
-class Table extends React.Component<{}, resProps> {
-    state: resProps = {
-        Ok: false,
-        Message: "",
-        Data: []
+interface TableState extends UserResponse {
+
+}
+
+class Table extends React.Component<TableProps, TableState> {
+    
+    constructor(props: TableProps) {
+        super(props)
+
+        this.state = {
+            ok: false,
+            message: '',
+            data: []
+        }
     }
 
     componentDidMount(): void {
-        var data = DataService.getAllUsers();
-        data.then((response: resProps) => {
+        this.getAllUsers();
+    }
+
+    private getAllUsers(): void {
+        const data: Promise<UserResponse> = UserService.getAllUsers();
+        data.then((response: UserResponse) => {
             this.setState(() => ({
-                Ok: response.Ok,
-                Message: response.Message,
-                Data: response.Data
+                ok: response.ok,
+                message: response.message,
+                data: response.data
             }));
         });
     }
 
+    private buildComponent() {
+        if (this.state.data.length === 0) {
+            return <p>Carregando...</p>
+        } else {
+            return(
+                <table className={ styles.table }>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>CPF/CNPJ</th>
+                            <th>Ativo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            this.state.data.map((user) => {
+                                return (
+                                    <tr>
+                                        <td>{ user.userName }</td>
+                                        <td>{ user.fullName }</td>
+                                        <td>{ user.email }</td>
+                                        <td>{ user.cpfCnpj }</td>
+                                        <td>{ user.active? 'Sim' : 'Não' }</td>
+                                    </tr>
+                                );
+                            })
+                        }
+                    </tbody>
+                </table>
+            )
+        }
+    }
+
     render() {
-        return(
-            <table className={ styles.table }>
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>CPF/CNPJ</th>
-                        <th>Ativo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        this.state.Data.map((user) => {
-                            return (
-                                <tr>
-                                    <td>{ user.userName }</td>
-                                    <td>{ user.fullName }</td>
-                                    <td>{ user.email }</td>
-                                    <td>{ user.cpfCnpj }</td>
-                                    <td>{ String(user.active) }</td>
-                                </tr>
-                            );
-                        })
-                    }
-                </tbody>
-            </table>
-        )
+        const component = this.buildComponent();
+
+        return component;
     }
 }
 
