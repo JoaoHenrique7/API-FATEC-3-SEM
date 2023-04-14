@@ -2,7 +2,7 @@ import { Request, Response, Router } from "express";
 import { createUser } from '../useCases/user/CreateUser/CreateUser';
 import { getAllUsers } from "../useCases/user/GetAllUser/GetAllUsers";
 import { deleteUser } from '../useCases/user/DeleteUser/DeleteUser';
-import { findUserByCpf } from "../useCases/user/FindUserByCpfCnpj/FindUserByCpf";
+import { findUserByCpf } from "../useCases/user/FindUserByCpf/FindUserByCpf";
 import { findById } from "../useCases/user/FindById/FindById";
 import { findUserByEmail } from "../useCases/user/FindUserByEmail/FindUserByEmail";
 import { findUserByUserName } from "../useCases/user/FindUserByUserName/FindUserByUserName";

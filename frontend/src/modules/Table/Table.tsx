@@ -1,28 +1,39 @@
 import React from "react";
-import styles from "./Table.module.css";
-import DataService from "../../services/DataService/DataService";
-import User from "../../model/classes/User";
+import styles from "./Table.module.css";    
+import UserResponse from "../../model/interfaces/UserResponse";
+import UserService from "../../services/UserService/UserService";
 
-interface resProps {
-    Ok: boolean;
-    Message: string;
-    Data: User[];
+interface TableProps {
+
 }
 
-class Table extends React.Component<{}, resProps> {
-    state: resProps = {
-        Ok: false,
-        Message: "",
-        Data: []
+interface TableState extends UserResponse {
+
+}
+
+class Table extends React.Component<TableProps, TableState> {
+    
+    constructor(props: TableProps) {
+        super(props)
+
+        this.state = {
+            ok: false,
+            message: '',
+            data: []
+        }
     }
 
     componentDidMount(): void {
-        var data = DataService.getAllUsers();
-        data.then((response: resProps) => {
+        this.getAllUsers();
+    }
+
+    private getAllUsers(): void {
+        const data: Promise<UserResponse> = UserService.getAllUsers();
+        data.then((response: UserResponse) => {
             this.setState(() => ({
-                Ok: response.Ok,
-                Message: response.Message,
-                Data: response.Data
+                ok: response.ok,
+                message: response.message,
+                data: response.data
             }));
         });
     }
@@ -41,7 +52,7 @@ class Table extends React.Component<{}, resProps> {
                 </thead>
                 <tbody>
                     {
-                        this.state.Data.map((user) => {
+                        this.state.data.map((user) => {
                             return (
                                 <tr>
                                     <td>{ user.userName }</td>
