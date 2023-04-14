@@ -1,19 +1,19 @@
 import { Request, Response } from "express";
-import FindUserByCpfCnpjUC from "./FindUserByCpfCnpjUC";
+import FindUserByCpfUC from "./FindUserByCpfUC";
 
-export class FindUserByCpfCnpjController {
+export class FindUserByCpfController {
     constructor(
-        private findUserByCpfCnpjUC: FindUserByCpfCnpjUC
+        private findUserByCpfUC: FindUserByCpfUC
     ) {}
 
-    async findUserByCpfCnpj(req: Request, res: Response) : Promise<Response> {
-        const { cpfCnpj } = req.body;
+    async findUserByCpf(req: Request, res: Response) : Promise<Response> {
+        const { cpf } = req.body;
 
         try {
             return res.status(200).json({
                 Ok: true,
                 Message: "User Found.",
-                Data: await this.findUserByCpfCnpjUC.execute({ cpfCnpj })
+                Data: await this.findUserByCpfUC.execute({ cpf })
             });
         } catch (err: any) {
             return res.status(400).json({

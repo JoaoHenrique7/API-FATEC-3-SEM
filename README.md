@@ -123,6 +123,14 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
   </p>
   <p align="justify">Demonstração da tela de login e autenticação. Esta interface contempla o processo de login e o padrão de autenticação.</p>
   
+  <br>
+  <h4 align="center">Erro de Autentificação na Tela de Login<br><a href="https://youtu.be/K0ulUeooENc">Youtube (Qualidade melhor)</a></h4>
+  <p align="center">
+    <img src="/readme/erro_login.gif" width="65%" />
+  </p>
+  <p align="justify">Demonstração na Tela de Login caso o usuario erre seu E-mail ou Senha.</p>
+
+ 
  <br>
   <h4 align="center">Tela dashboard<br><a href="https://www.youtube.com/watch?v=wU2duyaZ-yg">Youtube (Qualidade melhor)</a></h4>
   <p align="center">

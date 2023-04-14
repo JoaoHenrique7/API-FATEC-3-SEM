@@ -38,45 +38,35 @@ class Table extends React.Component<TableProps, TableState> {
         });
     }
 
-    private buildComponent() {
-        if (this.state.data.length === 0) {
-            return <p>Carregando...</p>
-        } else {
-            return(
-                <table className={ styles.table }>
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>CPF/CNPJ</th>
-                            <th>Ativo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.state.data.map((user) => {
-                                return (
-                                    <tr>
-                                        <td>{ user.userName }</td>
-                                        <td>{ user.fullName }</td>
-                                        <td>{ user.email }</td>
-                                        <td>{ user.cpfCnpj }</td>
-                                        <td>{ user.active? 'Sim' : 'Não' }</td>
-                                    </tr>
-                                );
-                            })
-                        }
-                    </tbody>
-                </table>
-            )
-        }
-    }
-
     render() {
-        const component = this.buildComponent();
-
-        return component;
+        return(
+            <table className={ styles.table }>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>CPF</th>
+                        <th>Ativo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        this.state.data.map((user) => {
+                            return (
+                                <tr>
+                                    <td>{ user.userName }</td>
+                                    <td>{ user.fullName }</td>
+                                    <td>{ user.email }</td>
+                                    <td>{ user.cpf }</td>
+                                    <td>{ String(user.active) }</td>
+                                </tr>
+                            );
+                        })
+                    }
+                </tbody>
+            </table>
+        )
     }
 }
 
