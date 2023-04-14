@@ -35,7 +35,7 @@ class Table extends React.Component<{}, resProps> {
                         <th>Username</th>
                         <th>Nome</th>
                         <th>Email</th>
-                        <th>CPF/CNPJ</th>
+                        <th>CPF</th>
                         <th>Ativo</th>
                     </tr>
                 </thead>
@@ -47,7 +47,7 @@ class Table extends React.Component<{}, resProps> {
                                     <td>{ user.userName }</td>
                                     <td>{ user.fullName }</td>
                                     <td>{ user.email }</td>
-                                    <td>{ user.cpfCnpj }</td>
+                                    <td>{ user.cpf }</td>
                                     <td>{ String(user.active) }</td>
                                 </tr>
                             );

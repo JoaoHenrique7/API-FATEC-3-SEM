@@ -12,7 +12,7 @@ export default class User extends Model {
     fullName!: string;
 
     @Column({ type: DataType.STRING(18), allowNull: false })
-    cpfCnpj!: string;
+    cpf!: string;
 
     @Column({ type: DataType.STRING(150), allowNull: false })
     email!: string;
