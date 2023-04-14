@@ -8,10 +8,10 @@ export class CreateUserController {
 
     async create(req: Request, res: Response): Promise<Response> {
 
-        const { userName, fullName, cpfCnpj, email, password, active } = req.body;
+        const { userName, fullName, cpf, email, password, active } = req.body;
 
         try {
-            await this.createUserUC.execute({ userName, fullName, cpfCnpj, email, password, active });
+            await this.createUserUC.execute({ userName, fullName, cpf, email, password, active });
 
             return res.status(200).json({
                 Ok: true,

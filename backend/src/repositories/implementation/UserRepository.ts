@@ -4,7 +4,7 @@ import IUserRepository from "../IUserRepository";
 export default class UserRepository implements IUserRepository {
     // create
     save(user: User): Promise<User> {
-        return User.create({ userName: user.userName, fullName: user.fullName, cpfCnpj: user.cpf, email: user.email, password: user.password, active: user.active });
+        return User.create({ userName: user.userName, fullName: user.fullName, cpf: user.cpf, email: user.email, password: user.password, active: user.active });
     }
 
     // find by Id

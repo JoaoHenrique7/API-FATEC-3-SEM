@@ -107,12 +107,12 @@ export default class UserService {
         }
     }
 
-    public static async getUserByCpfCnpj(cpfCnpj: string): Promise<UserResponse> {
+    public static async getUserByCpf(cpf: string): Promise<UserResponse> {
 
-        const requestBody = { cpfCnpj: cpfCnpj };
+        const requestBody = { cpf: cpf };
 
         try {
-            const response = await DataServiceAPI.get('http://localhost:3000/user/findUserByCpfCnpj', requestBody);
+            const response = await DataServiceAPI.get('http://localhost:3000/user/findUserByCpf', requestBody);
 
             const responseJson = await response.json();
 
