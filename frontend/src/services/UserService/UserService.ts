@@ -1,6 +1,6 @@
 import UserResponse from "../../model/interfaces/UserResponse";
 import User from "../../model/classes/User";
-import AuthenticationCredentials from "../../model/interfaces/AuthenticationCredentials";
+import AuthenticationCredentials from "../../model/interfaces/IAuthenticationCredentials";
 import DataServiceAPI from "../DataServiceAPI";
 
 export default class UserService {

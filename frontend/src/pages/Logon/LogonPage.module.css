@@ -1,28 +1,5 @@
 .content {
     height: 100vh;
     display: flex;
-    justify-content: space-between;
-}
-
-.leftColumn {
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    background-color: white;
-
-}
-
-.rightColumn {
-    width: 50%;
-    height: 100%;
-    background-color: white;
-    background-image: url("../../assets/Illustration.svg");
-    background-size: contain;
-    background-position: right;
-    background-repeat: no-repeat;
-}
-
-.logonPicture {
-    width: 100%;
+    justify-content: center;
 }

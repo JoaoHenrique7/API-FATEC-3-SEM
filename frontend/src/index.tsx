@@ -5,6 +5,7 @@ import App from './Layout/App/App';
 import Auth from './Layout/Auth/Auth';
 import LogonPage from './pages/Logon/LogonPage';
 import "./styles/global.css";
+import NotFound from './pages/NotFound/NotFound';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,6 +20,7 @@ root.render(
             <Route path='/auth/' element={ <Auth /> }>
                 <Route path="login" element={ <LogonPage /> } />
             </Route>
+            <Route path="*" element={ <NotFound /> } />
         </Routes>
     </BrowserRouter>
 );
