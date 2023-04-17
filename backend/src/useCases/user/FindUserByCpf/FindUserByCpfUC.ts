@@ -1,14 +1,14 @@
 import User from "../../../model/User";
 import IUserRepository from "../../../repositories/IUserRepository";
-import IFindUserByCpfCnpjDTO from './IFindUserByCpfCnpjDTO';
+import IFindUserByCpfDTO from './IFindUserByCpfDTO';
 
-export default class FindUserByCpfCnpjUC {
+export default class FindUserByCpfUC {
     constructor(
        private userRepository: IUserRepository 
     ) {}
     
-    async execute(props: IFindUserByCpfCnpjDTO): Promise<User>  {
-        const user = await this.userRepository.findByCpfCnpj(props.cpfCnpj);
+    async execute(props: IFindUserByCpfDTO): Promise<User>  {
+        const user = await this.userRepository.findByCpf(props.cpf);
 
         if (!user) throw new Error("User not found.");
 

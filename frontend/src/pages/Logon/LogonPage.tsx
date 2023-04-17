@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import * as bcrypt from 'bcryptjs';
-import DataService from '../../services/DataService/DataService';
+import UserService from '../../services/UserService/UserService';
 import Styles from './LogonPage.module.css';
-import Logo from '../../components/Logo/Logo'
-import Form from '../../modules/LoginForm/LoginForm'
+import Logo from '../../components/Logo/Logo';
+import Form from '../../modules/LoginForm/LoginForm';
 
 interface LogonPageState {
   loggedIn: boolean;
@@ -21,10 +21,10 @@ class LogonPage extends Component<{}, LogonPageState> {
     // const salt = bcrypt.genSaltSync(10);
     // const hashEmail = bcrypt.hashSync(email, salt)
     // const hashPassword = bcrypt.hashSync(password, salt);
-    let matchUser = DataService.authenticateUser(email, password)
+    let matchUser = UserService.authenticateUser(email, password);
     if (await matchUser === true) {
       this.setState({ loggedIn: true });
-      window.open('/dashboard', '_self')
+      window.open('/dashboard', '_self');
     } else {
       alert('Invalid credentials');
     }
@@ -32,7 +32,7 @@ class LogonPage extends Component<{}, LogonPageState> {
 
   handleLogout = () => {
     this.setState({ loggedIn: false });
-    window.open('/', '_self')
+    window.open('/', '_self');
   };
 
   render() {

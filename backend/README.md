@@ -5,7 +5,7 @@
 {
     "userName": "camila.redondo",
     "fullName": "Camila Redondo",
-    "cpfCnpj": "12345678912",
+    "cpf": "12345678912",
     "email": "camila.redondo@teste.com",
     "password": "123456",
     "active": "true"
@@ -14,7 +14,7 @@
 {
     "userName": "joao.tristao",
     "fullName": "Joao Henrique Tristao",
-    "cpfCnpj": "12345678912",
+    "cpf": "12345678912",
     "email": "joao.tristao@teste.com",
     "password": "123456",
     "active": "true"

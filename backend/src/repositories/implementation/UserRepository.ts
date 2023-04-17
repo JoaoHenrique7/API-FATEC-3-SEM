@@ -4,7 +4,7 @@ import IUserRepository from "../IUserRepository";
 export default class UserRepository implements IUserRepository {
     // create
     save(user: User): Promise<User> {
-        return User.create({ userName: user.userName, fullName: user.fullName, cpfCnpj: user.cpfCnpj, email: user.email, password: user.password, active: user.active });
+        return User.create({ userName: user.userName, fullName: user.fullName, cpf: user.cpf, email: user.email, password: user.password, active: user.active });
     }
 
     // find by Id
@@ -18,8 +18,8 @@ export default class UserRepository implements IUserRepository {
     }
 
      // find by Cpf and Cnpj
-     findByCpfCnpj(cpfCnpj: string): Promise<User | null> {
-        return User.findOne({ where: { cpfCnpj: cpfCnpj } });
+     findByCpf(cpf: string): Promise<User | null> {
+        return User.findOne({ where: { cpf: cpf } });
     }
 
      // find by userName
