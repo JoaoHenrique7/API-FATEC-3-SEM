@@ -3,9 +3,9 @@ import styles from "./Sidebar.module.css";
 import logoutImage from "../../assets/logout.svg";
 import Profile from "../../components/Profile/Profile";
 import LinkGroup from "../../components/LinkGroup/LinkGroup";
+import Button from "../../components/Button/Button";
 
 class Sidebar extends React.Component {
-
   redirect = () => {
     window.open("/", "_self");
   };
@@ -18,10 +18,7 @@ class Sidebar extends React.Component {
           <LinkGroup />
         </div>
         <div className={styles.bottomArea}>
-          <button className={styles.logoutBtn} onClick={this.redirect} >
-            <img className={styles.logoutIcon} src={logoutImage} alt="logout" />
-            <div>Logout</div>
-          </button>
+          <Button label="Logout" imageSrc={logoutImage} onClick={this.redirect} />
         </div>
       </div>
     );

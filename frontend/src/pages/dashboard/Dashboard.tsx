@@ -7,10 +7,11 @@ import Navbar from "../../modules/Navbar/Navbar";
 
 class Dashboard extends React.Component {
   render() {
+    const breadcrumbList = [{ name: "Home" }, { name: "Dashboard" }];
     return (
       <div className={styles.homeContent}>
         <MainHeader />
-        <Navbar />
+        <Navbar pathList={breadcrumbList}/>
         <Sidebar />
         <Content />
       </div>
