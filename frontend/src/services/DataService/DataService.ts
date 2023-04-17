@@ -1,19 +1,13 @@
-import { response } from "express";
 import User from "../../model/classes/User";
-import AuthenticationCredentials from "../../model/interfaces/AuthenticationCredentials";
-import UpdateUserParams from "../../model/interfaces/UpdateUserParams";
-
-export default interface resProps {
-    Ok: boolean;
-    Message: string;
-    Data: User[];
-}
+import IAuthenticationCredentials from "../../model/interfaces/IAuthenticationCredentials";
+import IUpdateUserParams from "../../model/interfaces/IUpdateUserParams";
+import IResponseProps from "../../model/interfaces/IResponseProps";
 
 export default class DataService {
 
     public static async authenticateUser(email: string, password: string): Promise<boolean> {
 
-        const credentials: AuthenticationCredentials = {
+        const credentials: IAuthenticationCredentials = {
             email: email,
             password: password,
         };
@@ -27,7 +21,7 @@ export default class DataService {
             body: JSON.stringify(credentials),
         })
         .then((response: Response) => response.json())
-        .then((response: resProps) => {
+        .then((response: IResponseProps) => {
             console.log(response);
             if (response.Ok) {
                 return true;
@@ -40,7 +34,7 @@ export default class DataService {
         });
     }
 
-    public static async getAllUsers() : Promise<resProps> {
+    public static async getAllUsers() : Promise<IResponseProps> {
         return await fetch('http://localhost:3000/user/getAll', {
             method: 'GET',
             headers: {
@@ -48,13 +42,14 @@ export default class DataService {
             },
         })
         .then((response: Response) => response.json())
-        .then((response: resProps) => {
+        .then((response: IResponseProps) => {
             return response;
         }).catch((error) => {
-            var response = new resProps();
-            response.Ok = false;
-            response.Message = `${error}`;
-            response.Data = [];
+            const response: IResponseProps = {
+                Ok: false,
+                Message: `${error}`,
+                Data: [],
+            };
             return response;
         });
     }
@@ -205,7 +200,7 @@ export default class DataService {
 
     public static async updateUser(userId: number, newUser: User): Promise<boolean> {
 
-        const parameters: UpdateUserParams = {
+        const parameters: IUpdateUserParams = {
             userId: userId,
             newUser: newUser,
         };

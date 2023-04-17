@@ -2,15 +2,10 @@ import React from "react";
 import styles from "./Table.module.css";
 import DataService from "../../services/DataService/DataService";
 import User from "../../model/classes/User";
+import IResponseProps from "../../model/interfaces/IResponseProps";
 
-interface resProps {
-    Ok: boolean;
-    Message: string;
-    Data: User[];
-}
-
-class Table extends React.Component<{}, resProps> {
-    state: resProps = {
+class Table extends React.Component<{}, IResponseProps> {
+    state: IResponseProps = {
         Ok: false,
         Message: "",
         Data: []
@@ -18,7 +13,7 @@ class Table extends React.Component<{}, resProps> {
 
     componentDidMount(): void {
         var data = DataService.getAllUsers();
-        data.then((response: resProps) => {
+        data.then((response: IResponseProps) => {
             this.setState(() => ({
                 Ok: response.Ok,
                 Message: response.Message,

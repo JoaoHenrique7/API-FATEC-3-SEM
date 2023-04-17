@@ -57,7 +57,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
         />
         <br></br>
         <LogoutButton
-          mytype='submit'
+          type='submit'
           placeholder='Entrar'
         />
       </form>
