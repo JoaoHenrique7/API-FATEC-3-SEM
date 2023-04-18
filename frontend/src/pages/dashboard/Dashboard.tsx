@@ -5,10 +5,11 @@ import Table from "../../modules/Table/Table";
 
 class Dashboard extends React.Component {
     render() {
+      const breadcrumbList = [{name: "Dashboard"}, {name: "Gerência de usuários"}];
         return (
             <div className={styles.content}>
                 <div className={styles.titleContainer}>
-                    <Navbar />
+                    <Navbar pathList={breadcrumbList}/>
                     <h1>Dashboard</h1>
                 </div>
                 <div className={styles.container}>

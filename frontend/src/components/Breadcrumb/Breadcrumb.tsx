@@ -1,15 +1,22 @@
 import React from "react";
 import styles from "./Breadcrumb.module.css";
 import arrowRight from "../../assets/arrowRight.svg";
+interface PathItem {
+  name: string;
+}
+interface BreadCrumbProps {
+  pathList: PathItem[];
+}
 
-class Breadcrumb extends React.Component {
+class Breadcrumb extends React.Component<BreadCrumbProps> {
   render() {
-    const breadcrumbList = [{ name: "Home" }, { name: "Dashboard" }];
+    const { pathList } = this.props;
+
     return (
       <ul className={styles.breadcrumb}>
-        {breadcrumbList.map(({ name }, index) => (
+        {pathList.map(({ name }, index) => (
           <li className={styles.breadcrumbItem}>
-            {index + 1 === breadcrumbList.length ? (
+            {index + 1 === pathList.length ? (
               <div className={styles.noBold}>{name}</div>
             ) : (
               <>
