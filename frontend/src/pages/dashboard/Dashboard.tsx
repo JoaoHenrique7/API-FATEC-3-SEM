@@ -1,22 +1,23 @@
 import React from "react";
 import styles from "./Dashboard.module.css";
-import MainHeader from "../../modules/MainHeader/MainHeader";
-import Sidebar from "../../modules/Sidebar/Sidebar";
-import Content from "../../modules/Content/Content";
 import Navbar from "../../modules/Navbar/Navbar";
+import Table from "../../modules/Table/Table";
 
 class Dashboard extends React.Component {
-  render() {
-    const breadcrumbList = [{ name: "Home" }, { name: "Dashboard" }];
-    return (
-      <div className={styles.homeContent}>
-        <MainHeader />
-        <Navbar pathList={breadcrumbList}/>
-        <Sidebar />
-        <Content />
-      </div>
-    );
-  }
+    render() {
+      const breadcrumbList = [{name: "Dashboard"}, {name: "Gerência de usuários"}];
+        return (
+            <div className={styles.content}>
+                <div className={styles.titleContainer}>
+                    <Navbar pathList={breadcrumbList}/>
+                    <h1>Dashboard</h1>
+                </div>
+                <div className={styles.container}>
+                    <Table />
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Dashboard;

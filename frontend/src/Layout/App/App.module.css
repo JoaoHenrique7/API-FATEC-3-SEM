@@ -1,0 +1,15 @@
+.layout {
+    display: grid;
+    grid-template-columns: min-content auto;
+    background-image: url("../../assets/blob.svg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    background-color: rgba(var(--base-clr-lt), 1);
+}
+
+.layout > div:nth-child(2) {
+    padding-top: 20px;
+    padding-inline: 40px;
+    overflow: auto;
+}

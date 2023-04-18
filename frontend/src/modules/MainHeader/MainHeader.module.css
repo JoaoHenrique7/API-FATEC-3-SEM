@@ -2,8 +2,9 @@
     grid-area: 'mainheader';
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 10px;
+    padding: 20px;
 }
 
 .logoVisiona{
