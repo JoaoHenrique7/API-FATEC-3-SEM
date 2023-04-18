@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Profile.module.css";
-import avatar from "../../assets/doodleAvatar.svg";
+import avatar from "../../../../../assets/doodleAvatar.svg";
 
 class Profile extends React.Component {
   render() {

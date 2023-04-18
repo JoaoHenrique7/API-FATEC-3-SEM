@@ -1,0 +1,52 @@
+:root {
+    /* Font family */
+    --default-font: 'Roboto', sans-serif;
+
+    /* Font weights */
+    --fw-light: 100;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+    /* Text font sizes */
+    --fs-txt-xsmall: ; 
+    --fs-txt-small: ;
+    --fs-txt-regular: ;
+    --fs-txt-large: ;
+
+    /* Header font sizes */
+    --fs-hd-large: ;
+
+    /* Border radius */
+    --br-default: 4px;
+    --br-medium: 16px;
+    --br-full: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --base-ntrl-min: 255, 255, 255;
+        --base-ntrl-max: 0, 0, 0;
+
+        --base-clr: 255, 255, 255;
+        --base-clr-lt: 237, 241, 246;
+        --base-clr-ltr: 217, 217, 217;
+
+        --primary-clr: 6, 0, 71;
+        --secondary-clr: 243, 110, 41;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --base-ntrl-min: 255, 255, 255;
+        --base-ntrl-max: 0, 0, 0;
+
+        --base-clr: 255, 255, 255;
+        --base-clr-lt: 237, 241, 246;
+        --base-clr-ltr: 217, 217, 217;
+
+        --primary-clr: 6, 0, 71;
+        --secondary-clr: 243, 110, 41;
+    }
+}

@@ -1,21 +1,22 @@
 import React from "react";
 import styles from "./Dashboard.module.css";
-import MainHeader from "../../modules/MainHeader/MainHeader";
-import Sidebar from "../../modules/Sidebar/Sidebar";
-import Content from "../../modules/Content/Content";
 import Navbar from "../../modules/Navbar/Navbar";
+import Table from "../../modules/Table/Table";
 
 class Dashboard extends React.Component {
-  render() {
-    return (
-      <div className={styles.homeContent}>
-        <MainHeader />
-        <Navbar />
-        <Sidebar />
-        <Content />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className={styles.content}>
+                <div className={styles.titleContainer}>
+                    <Navbar />
+                    <h1>Dashboard</h1>
+                </div>
+                <div className={styles.container}>
+                    <Table />
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Dashboard;
