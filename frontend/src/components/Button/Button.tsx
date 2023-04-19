@@ -1,22 +1,27 @@
-import React, { Component } from "react";
-import styles from "./Button.module.css";
+import React, { Component } from 'react';
+import Styles from './Button.module.css';
 
 interface ButtonProps {
   onClick?: () => void;
+  type: "button" | "submit" | "reset";
+  className: string;
+  placeholder?: string;
   imageSrc?: string;
-  label?: string;
-  type?: "button" | "submit" | "reset";
 }
 
 class Button extends Component<ButtonProps> {
   render() {
-    const { onClick, imageSrc, label, type="button" } = this.props;
+    const { onClick, type, className, placeholder, imageSrc } = this.props;
     return (
-      <button className={styles.button} onClick={onClick} type={type}>
-        {imageSrc && (
-          <img className={styles.icon} src={imageSrc} alt="label" />
+      <button className={`${Styles[className]}`} onClick={onClick} type={type} >
+        {imageSrc ? (
+          <div>
+            <img className={Styles.icon} src={imageSrc} alt="icon" />
+            <span>{ placeholder }</span>
+          </div>
+        ) : (
+          <div>{ placeholder }</div>
         )}
-        <div>{label}</div>
       </button>
     );
   }
