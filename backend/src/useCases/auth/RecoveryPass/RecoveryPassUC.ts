@@ -1,20 +1,17 @@
 import User from "../../../model/User";
 import IUserRepository from "../../../repositories/IUserRepository";
-import ILoginDTO from "./ILoginDTO";
-import * as bcrypt from "bcryptjs";
+import IRecoveryPassDTO from "./IRecoveryPassDTO";
 
-export default class LoginUC {
+
+export default class RecoveryPassUC {
     constructor(
         private userRepository:IUserRepository,
     ) {}
 
-    async execute(props: ILoginDTO) : Promise<User> {
+    async execute(props: IRecoveryPassDTO) : Promise<User> {
         const user = await this.userRepository.findByEmail(props.email);
 
         if (!user) throw new Error('Credenciais Inválidas')
-            
-
-        if (user.password != props.password) throw new Error("Credenciais Inválidas");
         
         return user;
     }

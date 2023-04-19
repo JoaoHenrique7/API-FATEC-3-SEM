@@ -57,7 +57,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
           mytype="password"
         />
         <RecoveryLink 
-          newPath='/'
+          newPath= 'recovery'
           text='Esqueci minha senha'
           className='recoveryLink'
         />
