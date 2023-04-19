@@ -1,36 +1,25 @@
 import { Component } from 'react';
-// import * as bcrypt from 'bcryptjs';
 import UserService from '../../services/UserService/UserService';
 import Form from '../../modules/LoginForm/LoginForm';
 
-interface LogonPageState {
-    loggedIn: boolean;
+interface LogOnPageProp {
+
 }
 
-class LogonPage extends Component<{}, LogonPageState> {
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            loggedIn: false,
-        };
-    }
+interface LogonPageState {
 
+}
+
+class LogonPage extends Component<LogOnPageProp, LogonPageState> {
     handleLogin = async (email: string, password: string) => {
-        // const salt = bcrypt.genSaltSync(10);
-        // const hashEmail = bcrypt.hashSync(email, salt)
-        // const hashPassword = bcrypt.hashSync(password, salt);
-        let matchUser = UserService.authenticateUser(email, password);
-        if (await matchUser === true) {
-            this.setState({ loggedIn: true });
-            window.open('/dashboard', '_self');
+        let matchUser = await UserService.authenticateUser(email, password);
+
+        if (matchUser.ok) {
+            window.localStorage.setItem("session_token", matchUser.token!);
+            window.open('/', '_self');
         } else {
             alert('Invalid credentials');
         }
-    };
-
-    handleLogout = () => {
-        this.setState({ loggedIn: false });
-        window.open('/', '_self');
     };
 
     render() {

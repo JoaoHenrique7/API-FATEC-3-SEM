@@ -9,6 +9,7 @@ import LogoutButton from '../../../../components/Button/Button'
 class Sidebar extends React.Component {
 
     redirect = () => {
+        window.localStorage.removeItem("session_token");
         window.open("/auth/login", "_self");
     };
 
