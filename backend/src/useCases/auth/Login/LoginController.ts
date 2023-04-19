@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import LoginUC from "./LoginUC";
+import TokenService from "../../../services/TokenService";
 
 export class LoginController{
     constructor(
@@ -11,11 +12,13 @@ export class LoginController{
 
         try {
             const user = await this.loginUC.execute({ email, password });
+            const token = new TokenService().GenerateToken(user);
 
             return res.status(200).json({
-                Ok: true,
-                Message: "Succesfully",
-                Data: user
+                ok: true,
+                message: "Succesfully",
+                data: [],
+                token: token
             });
         } catch (err: unknown) {
             let message: string;

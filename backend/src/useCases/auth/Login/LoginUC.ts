@@ -1,8 +1,7 @@
 import User from "../../../model/User";
-import ILoginRepository from "../../../repositories/ILoginRepository";
 import IUserRepository from "../../../repositories/IUserRepository";
 import ILoginDTO from "./ILoginDTO";
-
+import * as bcrypt from "bcryptjs";
 
 export default class LoginUC {
     constructor(
@@ -14,8 +13,8 @@ export default class LoginUC {
 
         if (!user) throw new Error('Incorrect credentials')
             
-
-        if (user.password != props.password) throw new Error("Incorrect credentials");
+        const isPasswordValid = bcrypt.compareSync(props.password, user.password);
+        if (!isPasswordValid) throw new Error("Incorrect credentials");
         
         return user;
     }

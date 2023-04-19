@@ -8,7 +8,8 @@ import MainHeader from "../../../../modules/MainHeader/MainHeader";
 class Sidebar extends React.Component {
 
     redirect = () => {
-        window.open("/", "_self");
+        window.localStorage.removeItem("session_token");
+        window.open("/auth/login", "_self");
     };
 
     render() {

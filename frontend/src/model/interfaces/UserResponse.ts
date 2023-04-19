@@ -4,4 +4,5 @@ export default interface UserResponse {
     ok: boolean;
     message: string;
     data: Array<User>;
+    token?: string;
 }
