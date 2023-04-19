@@ -1,0 +1,10 @@
+.recoveryLink {
+    font-size: 13px;
+    text-decoration-line: none;
+    margin-left: 13em;
+    color: black;
+}
+
+.recoveryLink:hover {
+    text-decoration: underline;
+}

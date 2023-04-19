@@ -1,7 +1,8 @@
 import React, { Component, FormEvent, ChangeEvent } from 'react';
 import Styles from  './LoginForm.module.css';
 import InputText from '../../components/InputText/InputText';
-import LogoutButton from '../../components/LoginButton/LoginButton';
+import LoginButton from '../../components/Button/Button';
+import RecoveryLink from '../../components/BasicLink/BasicLink'
 
 interface LoginFormState {
   username: string;
@@ -55,10 +56,15 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
           placeholder="Insira sua senha"
           mytype="password"
         />
-        <br></br>
-        <LogoutButton
+        <RecoveryLink 
+          newPath='/'
+          text='Esqueci minha senha'
+          className='recoveryLink'
+        />
+        <LoginButton
           type='submit'
           placeholder='Entrar'
+          className='loginButton'
         />
       </form>
     );

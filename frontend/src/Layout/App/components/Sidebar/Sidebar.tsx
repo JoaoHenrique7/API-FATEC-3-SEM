@@ -4,6 +4,7 @@ import logoutImage from "../../../../assets/logout.svg";
 import Profile from "./Profile/Profile";
 import LinkGroup from "../../../../components/LinkGroup/LinkGroup";
 import MainHeader from "../../../../modules/MainHeader/MainHeader";
+import LogoutButton from '../../../../components/Button/Button'
 
 class Sidebar extends React.Component {
 
@@ -22,10 +23,13 @@ class Sidebar extends React.Component {
                         <LinkGroup />
                     </div>
                     <div className={ styles.bottomArea }>
-                        <button className={ styles.logoutBtn } onClick={this.redirect} >
-                            <img className={ styles.logoutIcon } src={ logoutImage } alt="logout" />
-                            <div>Logout</div>
-                        </button>
+                        <LogoutButton 
+                            type="button"
+                            className="logoutButton"
+                            placeholder="Logout"
+                            imageSrc={logoutImage}
+                            onClick={this.redirect}
+                        />
                     </div>
                 </div>
             </div>
