@@ -2,6 +2,7 @@ import UserResponse from "../../model/interfaces/UserResponse";
 import User from "../../model/classes/User";
 import AuthenticationCredentials from "../../model/interfaces/IAuthenticationCredentials";
 import DataServiceAPI from "../DataServiceAPI";
+import IRecoveryPass from "../../model/interfaces/IRecoveryPass";
 
 export default class UserService {
 
@@ -14,6 +15,27 @@ export default class UserService {
 
         try {
             const response = await DataServiceAPI.post('http://localhost:3000/auth/login', credentials);
+
+            if (response.ok) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
+
+    public static async recoveryPass(email: string): Promise<boolean> {
+
+        const credentials: IRecoveryPass = {
+            email: email,
+        };
+
+        try {
+            const response = await DataServiceAPI.post('http://localhost:3000/auth/recovery', credentials);
 
             if (response.ok) {
                 return true;
