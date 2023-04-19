@@ -7,9 +7,20 @@ export class GetAllUsersController {
     ) {}
 
     async getAllUsers(req: Request, res: Response) : Promise<Response> {
+
+        const token = req.header('Authorization')?.replace('Bearer ', '');
+
+        if (!token) {
+            return res.status(401).json({
+                Ok: false,
+                Message: "Não autorizado.",
+                Data: []
+            });
+        }
+
         return res.status(200).json({
             Ok: true,
-            Message: "All users..",
+            Message: `${token}`,
             Data: await this.getAllUsersUC.execute()
         });
     }

@@ -1,12 +1,18 @@
 import React from "react";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import styles from "./Navbar.module.css";
-
-class Navbar extends React.Component {
+interface PathItem {
+  name: string
+}
+interface NavbarProps {
+  pathList:PathItem[]
+}
+class Navbar extends React.Component<NavbarProps> {
   render() {
+    const {pathList} = this.props
     return (
       <div className={styles.nav}>
-        <Breadcrumb />
+        <Breadcrumb pathList={pathList}/>
       </div>
     );
   }

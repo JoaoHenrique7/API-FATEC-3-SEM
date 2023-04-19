@@ -1,8 +1,7 @@
 import User from "../../../model/User";
-import ILoginRepository from "../../../repositories/ILoginRepository";
 import IUserRepository from "../../../repositories/IUserRepository";
 import ILoginDTO from "./ILoginDTO";
-
+import * as bcrypt from "bcryptjs";
 
 export default class LoginUC {
     constructor(

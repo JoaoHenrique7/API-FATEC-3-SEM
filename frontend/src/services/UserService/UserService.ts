@@ -6,7 +6,7 @@ import IRecoveryPass from "../../model/interfaces/IRecoveryPass";
 
 export default class UserService {
 
-    public static async authenticateUser(email: string, password: string): Promise<boolean> {
+    public static async authenticateUser(email: string, password: string): Promise<UserResponse> {
 
         const credentials: AuthenticationCredentials = {
             email: email,
@@ -15,16 +15,16 @@ export default class UserService {
 
         try {
             const response = await DataServiceAPI.post('http://localhost:3000/auth/login', credentials);
-
-            if (response.ok) {
-                return true;
-            } else {
-                return false;
-            }
+            const json: UserResponse = await response.json();
+            return json;
 
         } catch (error) {
-            console.error(error);
-            return false;
+            const response: UserResponse = {
+                data: [],
+                message: `${error}`,
+                ok: false   
+            }
+            return response;
         }
     }
 
