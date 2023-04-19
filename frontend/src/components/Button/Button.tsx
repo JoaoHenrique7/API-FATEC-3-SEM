@@ -17,7 +17,7 @@ class Button extends Component<ButtonProps> {
         {imageSrc ? (
           <div>
             <img className={Styles.icon} src={imageSrc} alt="icon" />
-            <span>{ placeholder }</span>
+            <span className={Styles.placeholder}>{ placeholder }</span>
           </div>
         ) : (
           <div>{ placeholder }</div>

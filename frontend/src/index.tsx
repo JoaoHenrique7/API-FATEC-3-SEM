@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './pages/dashboard/Dashboard';
+import Dashboard from '../../frontend/src/pages/Dashboard/Dashboard';
 import App from './Layout/App/App';
 import Auth from './Layout/Auth/Auth';
 import LogonPage from './pages/Logon/LogonPage';
