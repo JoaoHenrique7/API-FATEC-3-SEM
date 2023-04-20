@@ -17,6 +17,6 @@ export default class CreateUserUC {
         }
 
         const user = new User({ ...props });
-        await this.userRepository.save(user);
+        await this.userRepository.saveUser(user);
     }
 }

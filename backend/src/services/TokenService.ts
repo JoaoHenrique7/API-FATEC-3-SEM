@@ -1,4 +1,4 @@
-import { JwtPayload, Secret, SignOptions, sign, verify } from "jsonwebtoken";
+import { Secret, SignOptions, sign } from "jsonwebtoken";
 import User from "../model/User";
 
 export default class TokenService {
@@ -11,7 +11,8 @@ export default class TokenService {
             fullname: user.fullName,
             email: user.email,
             cpf: user.cpf,
-            active: user.active
+            active: user.active,
+            profile: user.profile
         }
         
         var token = sign(tokenData, this.SECRET_KEY, config);
