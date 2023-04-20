@@ -2,7 +2,7 @@ import React, { Component, FormEvent, ChangeEvent } from 'react';
 import Styles from  '../LoginForm/LoginForm.module.css';
 import InputText from '../../components/InputText/InputText';
 import RecoveryLink from '../../components/BasicLink/BasicLink';
-import LogoutButton from '../../components/LoginButton/LoginButton';
+import Button from '../../components/Button/Button';
 
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
@@ -75,8 +75,9 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
           text='Entrar'
           className='recoveryLink'
         />
-        <LogoutButton
+        <Button
           type='button'
+          className='loginButton'
           placeholder='Enviar'
           onClick={this.sendEmail}
         />
