@@ -1,10 +1,42 @@
+import Profile from "../../model/Profile";
 import User from "../../model/User";
 import IUserRepository from "../IUserRepository";
 
 export default class UserRepository implements IUserRepository {
-    // create
-    save(user: User): Promise<User> {
-        return User.create({ userName: user.userName, fullName: user.fullName, cpf: user.cpf, email: user.email, password: user.password, active: user.active });
+    // create user
+    saveUser(user: User): Promise<User> {
+        return User.create({
+            userName: user.userName,
+            fullName: user.fullName,
+            cpf: user.cpf,
+            email: user.email,
+            password: user.password,
+            active: user.active,
+            profile: {
+                name: 'Usuário',
+                type: 0
+            }
+        }, { include: {
+            model: Profile
+        } });
+    }
+
+    // create admin
+    saveAdmin(user: User): Promise<User> {
+        return User.create({
+            userName: user.userName,
+            fullName: user.fullName,
+            cpf: user.cpf,
+            email: user.email,
+            password: user.password,
+            active: user.active,
+            profile: {
+                name: 'Administrador',
+                type: 1
+            }
+        }, { include: {
+            model: Profile
+        } });
     }
 
     // find by Id
@@ -14,7 +46,7 @@ export default class UserRepository implements IUserRepository {
 
     // find by Email
     findByEmail(email: string): Promise<User | null> {
-        return User.findOne({ where: { email: email } });
+        return User.findOne({ where: { email: email }, include: { model: Profile } });
     }
 
      // find by Cpf and Cnpj
@@ -34,7 +66,7 @@ export default class UserRepository implements IUserRepository {
 
     // find all
     findAll(): Promise<User[]> {
-        return User.findAll();
+        return User.findAll({ include: { model: Profile } });
     }
 
     // delete

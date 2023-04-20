@@ -5,6 +5,7 @@ import { json, urlencoded } from 'body-parser';
 import UserRoutes from './routes/UserRoutes';
 import AuthRoutes from './routes/AuthRoutes';
 import cors from 'cors';
+import CheckToken from './routes/utils/CheckToken';
 
 export const app = express();
 
@@ -16,8 +17,8 @@ app.use(cors({
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
-app.use('/user', UserRoutes);
-app.use('/auth', AuthRoutes);
+app.use('/user', CheckToken, UserRoutes);
+app.use('/auth', CheckToken, AuthRoutes);
 
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
     res.status(500).json({ message: err.message });

@@ -7,12 +7,16 @@ import { findById } from "../useCases/user/FindById/FindById";
 import { findUserByEmail } from "../useCases/user/FindUserByEmail/FindUserByEmail";
 import { findUserByUserName } from "../useCases/user/FindUserByUserName/FindUserByUserName";
 import { findUserByFullName } from "../useCases/user/FindUserByFullName/FindUserByFullName";
-
+import { createAdmin } from "../useCases/user/CreateAdmin/CreateAdmin";
 
 const router = Router();
 
 router.get('/getAll', (request: Request, response: Response) => {
     return getAllUsers.getAllUsers(request, response);
+});
+
+router.post('/createAdmin', (request: Request, response: Response) => {
+    return createAdmin.create(request, response);
 });
 
 router.post('/createUser', (request: Request, response: Response) => {

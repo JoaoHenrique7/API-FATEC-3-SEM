@@ -1,7 +1,8 @@
 import User from "../model/User";
 
 export default interface IUserRepository {
-    save(user: User) : Promise<User>
+    saveUser(user: User) : Promise<User>
+    saveAdmin(user: User) : Promise<User>
     findById(id: number) : Promise<User | null>
     findByEmail(email: string) : Promise<User | null>
     findByCpf(cpf: string) : Promise<User | null>

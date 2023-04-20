@@ -11,10 +11,15 @@ export default class TokenService {
             fullname: user.fullName,
             email: user.email,
             cpf: user.cpf,
-            active: user.active
+            active: user.active,
+            profile: user.profile
         }
         
         var token = sign(tokenData, this.SECRET_KEY, config);
         return token;
+    }
+
+    DecodeToken (token: string) : string | JwtPayload {
+        return verify(token, this.SECRET_KEY)
     }
 }

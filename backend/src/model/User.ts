@@ -1,4 +1,5 @@
-import { Model, Table, Column, DataType } from "sequelize-typescript";
+import { Model, Table, Column, DataType, HasOne } from "sequelize-typescript";
+import Profile from "./Profile";
 
 @Table({ tableName: "User", timestamps: true })
 export default class User extends Model {
@@ -22,4 +23,7 @@ export default class User extends Model {
 
     @Column({ type: DataType.BOOLEAN, allowNull: false })
     active!: boolean;
+
+    @HasOne(() => Profile, { constraints: false, onDelete: 'cascade' })
+    profile!: Profile;
 }

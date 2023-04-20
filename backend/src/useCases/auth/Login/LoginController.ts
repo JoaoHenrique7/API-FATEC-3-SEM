@@ -17,7 +17,7 @@ export class LoginController{
             return res.status(200).json({
                 ok: true,
                 message: "Succesfully",
-                data: [],
+                data: user,
                 token: token
             });
         } catch (err: unknown) {
