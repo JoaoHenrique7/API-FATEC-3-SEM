@@ -15,6 +15,7 @@ class LogonPage extends Component<LogOnPageProp, LogonPageState> {
         let matchUser = await UserService.authenticateUser(email, password);
 
         if (matchUser.ok) {
+            window.localStorage.setItem("session_data", JSON.stringify(matchUser.data))
             window.localStorage.setItem("session_token", matchUser.token!);
             window.open('/', '_self');
         } else {
