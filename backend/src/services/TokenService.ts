@@ -1,4 +1,4 @@
-import { Secret, SignOptions, sign } from "jsonwebtoken";
+import { JwtPayload, Secret, SignOptions, sign, verify } from "jsonwebtoken";
 import User from "../model/User";
 
 export default class TokenService {
@@ -17,5 +17,9 @@ export default class TokenService {
         
         var token = sign(tokenData, this.SECRET_KEY, config);
         return token;
+    }
+
+    DecodeToken (token: string) : string | JwtPayload {
+        return verify(token, this.SECRET_KEY)
     }
 }

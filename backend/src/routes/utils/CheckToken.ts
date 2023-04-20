@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import TokenService from "../../services/TokenService";
 
 export default function CheckToken (request: Request, response: Response, next: NextFunction) {
     // ATENÇÃO!!!!!
@@ -13,15 +14,21 @@ export default function CheckToken (request: Request, response: Response, next: 
 
     if (publicPaths.includes(request.path)) return next();
 
-    var token = request.header('Authorization')?.replace('Bearer ', '');
+    try {
+        const token = request.header('Authorization')?.replace('Bearer ', '');
+    
+        if (!token || token === null || token === "null") throw new Error();
+        
+        const decoded = new TokenService().DecodeToken(token);
 
-    if (!token) {
+        if (!decoded) throw new Error();
+
+        next();
+    } catch (error) {
         return response.status(401).send({
             Ok: false,
             Message: "Unauthorized",
             Data: [] 
         });
     }
-
-    next();
 }

@@ -46,7 +46,7 @@ export default class UserRepository implements IUserRepository {
 
     // find by Email
     findByEmail(email: string): Promise<User | null> {
-        return User.findOne({ where: { email: email } });
+        return User.findOne({ where: { email: email }, include: { model: Profile } });
     }
 
      // find by Cpf and Cnpj
