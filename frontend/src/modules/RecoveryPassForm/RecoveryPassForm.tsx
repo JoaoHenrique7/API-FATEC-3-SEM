@@ -1,5 +1,5 @@
 import React, { Component, FormEvent, ChangeEvent } from 'react';
-import Styles from '../LoginForm/LoginForm.module.css';
+import Styles from './RecoveryPassForm.module.css';
 import InputText from '../../components/InputText/InputText';
 import RecoveryLink from '../../components/BasicLink/BasicLink';
 import Button from '../../components/Button/Button';
@@ -70,12 +70,13 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
   sendEmail = async () => {
     try {
       const { checkCode } = this.state;
+      const { email } = this.state
       const serviceId = 'service_kqomqwj';
       const templateId = 'template_qarf2lg';
       const userId = 'l5AVz2asaABljn9nL';
       const templateParams = {
         message: `${checkCode}`,
-        to_email: 'gugamelima@gmail.com',
+        to_email: `${email}`,
       };
 
       const result: EmailJSResponseStatus = await emailjs.send(
@@ -129,8 +130,7 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
       case 1:
         return (
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
-            <h2>Confira seu email, e insira o código!</h2>
-            <br />
+            <h2 className={Styles.h2Titles}>Confira seu email, e insira o código!</h2>
             <InputText
               value={firstCode}
               onChange={this.handlefirstCodeChange}
@@ -145,22 +145,23 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
             />
             <RecoveryLink
               newPath='login'
-              text='Entrar'
-              className='recoveryLink'
+              text='Retornar ao login'
+              className='returnLoginLink'
             />
           </form>
         );
       case 2:
         return (
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
-            <h2>Coloque sua nova senha!</h2>
-            <br />
+            <h2 className={Styles.h2Titles}>Coloque sua nova senha!</h2>
+            <p className={Styles.recoveryTitles}>Nova senha</p>
             <InputText
               value={firstCode}
               onChange={this.handlefirstCodeChange}
-              placeholder="Senha nova"
+              placeholder="Nova Senha"
               mytype="text"
             />
+            <p className={Styles.recoveryTitles}>Confirme sua senha</p>
             <InputText
               value={secondCode}
               onChange={this.handlesecondCodeChange}
@@ -171,12 +172,12 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
               type='button'
               className='loginButton'
               placeholder='Enviar'
-              onClick={() => alert('Senha alterada Com sucesso!')}
+              onClick={this.changePassword} 
             />
             <RecoveryLink
               newPath='login'
-              text='Entrar'
-              className='recoveryLink'
+              text='Retornar ao login'
+              className='returnLoginLink'
             />
           </form>
         );
@@ -200,8 +201,8 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
             />
             <RecoveryLink
               newPath='login'
-              text='Entrar'
-              className='recoveryLink'
+              text='Retornar ao login'
+              className='returnLoginLink'
             />
           </form>
         );

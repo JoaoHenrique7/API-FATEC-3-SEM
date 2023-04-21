@@ -8,3 +8,15 @@
 .recoveryLink:hover {
     text-decoration: underline;
 }
+
+.returnLoginLink {
+    font-size: 13px;
+    text-decoration-line: none;
+    margin-top: 2rem;
+    margin-left: 15em;
+    color: black;
+}
+
+.returnLoginLink:hover {
+    text-decoration: underline;
+}

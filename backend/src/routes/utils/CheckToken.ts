@@ -11,7 +11,8 @@ export default function CheckToken (request: Request, response: Response, next: 
     const publicPaths = [
         '/login',
         '/createAdmin',
-        '/updatePassword'
+        '/updatePassword',
+        '/recovery'
     ];
 
     if (publicPaths.includes(request.path)) return next();
