@@ -1,0 +1,28 @@
+.content {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.titleContainer {
+    color: white;
+}
+  
+.container {
+    border-radius: 10px;
+    margin: 3rem;
+    padding: 8rem;
+    width: 80rem;
+    height: 40rem;
+    background-color: white;
+}
+
+.text {
+    margin-left: 20em;
+    margin-bottom: 2em;
+    text-align: justify;
+    font-size: 18px;
+    color: black;
+}

@@ -23,12 +23,7 @@ class RecoveryPassPage extends Component<{}, RecoveryPassPageState> {
             alert('Invalid email');
         }
     };
-
-    // handleLogout = () => {
-    //     this.setState({ loggedIn: false });
-    //     window.open('/', '_self');
-    // };
-
+    
     render() {
         return (
             <div>

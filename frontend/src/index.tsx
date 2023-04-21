@@ -7,7 +7,7 @@ import LogonPage from './pages/Logon/LogonPage';
 import "./styles/global.css";
 import NotFound from './pages/NotFound/NotFound';
 import RecoveryPassPage from './pages/recoveryPass/RecoveryPassPage';
-// import InitialUser from './pages/initialuser/InitialUser'
+import InitialUser from './pages/initialuser/InitialUser'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -18,7 +18,7 @@ root.render(
         <Routes>
             <Route path='/' element={ <App /> }>
                 <Route index path="/" element={ <Dashboard /> } />
-                {/* <Route path="/initialuser" element={ <InitialUser /> } /> */}
+                <Route path="/initialuser" element={ <InitialUser /> } />
             </Route>
             <Route path='/auth/' element={ <Auth /> }>
                 <Route path="login" element={ <LogonPage /> } />
