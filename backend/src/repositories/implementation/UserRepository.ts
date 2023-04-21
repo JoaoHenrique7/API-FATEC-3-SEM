@@ -78,4 +78,12 @@ export default class UserRepository implements IUserRepository {
             throw new Error(`User with email ${email} not found.`);
         }
     }
+
+    // password update
+    async updatePasswordByEmail(email: string, newPassword: string): Promise<number> {
+        const result = await User.update({ password: newPassword }, { where: { email } });
+        return result[0];
+      }
+      
+    
 }

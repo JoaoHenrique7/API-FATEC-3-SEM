@@ -1,96 +1,215 @@
 import React, { Component, FormEvent, ChangeEvent } from 'react';
-import Styles from  '../LoginForm/LoginForm.module.css';
+import Styles from './RecoveryPassForm.module.css';
 import InputText from '../../components/InputText/InputText';
 import RecoveryLink from '../../components/BasicLink/BasicLink';
 import Button from '../../components/Button/Button';
-
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import UserService from '../../services/UserService/UserService';
 
 interface RecoveryPassFormState {
-  username: string;
+  firstCode: string;
+  emailSent: boolean;
+  checkCode: number;
+  formType: number;
+  secondCode: string;
+  email: string
 }
 
 interface RecoveryPassFormProps {
-  onSubmit: (username: string ) => void;
+  onSubmit: (email: string) => void;
 }
 
 class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassFormState> {
   constructor(props: RecoveryPassFormProps) {
     super(props);
     this.state = {
-      username: '',
+      firstCode: '',
+      emailSent: false,
+      checkCode: Math.floor(100000 + Math.random() * 900000),
+      formType: 0,
+      secondCode: '',
+      email: ''
     };
   }
 
-  handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ username: event.target.value });
+  handlefirstCodeChange = (event: ChangeEvent<HTMLInputElement>) => {
+    this.setState({ firstCode: event.target.value });
   };
+  
+  handlesecondCodeChange = (event: ChangeEvent<HTMLInputElement>) => {
+    this.setState({ secondCode: event.target.value });
+  };
+
+  handleEmailChange = (event:ChangeEvent<HTMLInputElement>) => {
+    this.setState({ email: event.target.value })
+  }
 
   handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { username } = this.state;
-    this.props.onSubmit(username);
+    const { email } = this.state;
+    this.props.onSubmit(email);
+  };
+
+  showForm(formType: number) {
+    this.setState({ formType });
+    this.setState({ firstCode: '' })
+  }
+
+  verifyEmail = async () => {
+    const { email } = this.state;
+    let matchUser = await UserService.recoveryPass(email);
+
+    if (matchUser) {
+      this.showForm(1);
+      this.sendEmail();
+    } else {
+      alert('Invalid credentials');
+    }
   };
 
   sendEmail = async () => {
-    try { 
-        const serviceId = 'service_kqomqwj'; // substitua pelo ID do serviço Email.js que você está usando 
-        const templateId = 'template_qarf2lg'; // substitua pelo ID do modelo Email.js que você está usando 
-        const userId = 'l5AVz2asaABljn9nL'; // substitua pelo ID do usuário Email.js que você está usando 
-        // const password = 'ONwnppS9K45w32HLtKPsk'; // substitua pela senha de aplicativo que você gerou 
-        const templateParams = {
-          from: 'bytech2022@outlook.com',
-          message: this.handleUsernameChange,
-          to_email: this.handleUsernameChange,
-          
-        };
+    try {
+      const { checkCode } = this.state;
+      const { email } = this.state
+      const serviceId = 'service_kqomqwj';
+      const templateId = 'template_qarf2lg';
+      const userId = 'l5AVz2asaABljn9nL';
+      const templateParams = {
+        message: `${checkCode}`,
+        to_email: `${email}`,
+      };
 
-        const result: EmailJSResponseStatus = await emailjs.send(
-            serviceId,
-            templateId,
-            templateParams,
-            userId
-        );
-        console.log(result); 
+      const result: EmailJSResponseStatus = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        userId
+      );
+      console.log(result);
+      this.setState({ emailSent: true });
     } catch (error) {
-         console.log(error); 
-    } 
-}; 
+      console.log(error);
+    }
+  };
+
+  confireCode = async () => {
+    const { firstCode } = this.state;
+    const { checkCode } = this.state;
+
+    if (firstCode === String(checkCode)) {
+      this.showForm(2);
+    } else {
+      alert("Codigo Errado")
+    }
+  }
+
+  changePassword =async () => {
+    const { email } = this.state
+    const { firstCode } = this.state
+    const { secondCode } = this.state
+
+    if (firstCode !== secondCode) {
+      alert('As senhas são diferentes.')
+    } else {
+      let changeResult = await UserService.updatePassword(email, secondCode);
+      if (changeResult) {
+        alert('Senha alterada Com sucesso!')
+        window.open('/auth/login', '_self')
+      } else {
+        alert('Falha na alteração de senha')
+        window.location.reload();
+      }
+
+
+    }
+  }
 
   render() {
-    const { username } = this.state;
-    return (
-      <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
-        <h2>Seja bem-vindo!</h2>
-        <p className={Styles.recoverySubTitles}>Por favor, insira suas credenciais</p>
-        <p className={Styles.recoveryTitles}>Email</p>
-        <InputText
-          value={username}
-          onChange={this.handleUsernameChange}
-          placeholder="Insira seu email"
-          mytype="text"
-        />
-        <RecoveryLink 
-          newPath= 'login'
-          text='Entrar'
-          className='recoveryLink'
-        />
-        <Button
-          type='button'
-          className='loginButton'
-          placeholder='Enviar'
-          onClick={this.sendEmail}
-        />
-      </form>
-    );
+    const { firstCode, secondCode, email, formType } = this.state;
+    switch (formType) {
+      case 1:
+        return (
+          <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
+            <h2 className={Styles.h2Titles}>Confira seu email, e insira o código!</h2>
+            <InputText
+              value={firstCode}
+              onChange={this.handlefirstCodeChange}
+              placeholder="Insira seu código"
+              mytype="text"
+            />
+            <Button
+              type='button'
+              className='loginButton'
+              placeholder='Enviar'
+              onClick={this.confireCode}
+            />
+            <RecoveryLink
+              newPath='login'
+              text='Retornar ao login'
+              className='returnLoginLink'
+            />
+          </form>
+        );
+      case 2:
+        return (
+          <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
+            <h2 className={Styles.h2Titles}>Coloque sua nova senha!</h2>
+            <p className={Styles.recoveryTitles}>Nova senha</p>
+            <InputText
+              value={firstCode}
+              onChange={this.handlefirstCodeChange}
+              placeholder="Nova Senha"
+              mytype="text"
+            />
+            <p className={Styles.recoveryTitles}>Confirme sua senha</p>
+            <InputText
+              value={secondCode}
+              onChange={this.handlesecondCodeChange}
+              placeholder="Confirme sua senha"
+              mytype="text"
+            />
+            <Button
+              type='button'
+              className='loginButton'
+              placeholder='Enviar'
+              onClick={this.changePassword} 
+            />
+            <RecoveryLink
+              newPath='login'
+              text='Retornar ao login'
+              className='returnLoginLink'
+            />
+          </form>
+        );
+      default:
+        return (
+          <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
+            <h2>Seja bem-vindo!</h2>
+            <p className={Styles.recoverySubTitles}>Por favor, insira suas credenciais</p>
+            <p className={Styles.recoveryTitles}>Email</p>
+            <InputText
+              value={email}
+              onChange={this.handleEmailChange}
+              placeholder="Insira seu email"
+              mytype="text"
+            />
+            <Button
+              type='button'
+              className='loginButton'
+              placeholder='Enviar'
+              onClick={this.verifyEmail}
+            />
+            <RecoveryLink
+              newPath='login'
+              text='Retornar ao login'
+              className='returnLoginLink'
+            />
+          </form>
+        );
+
+
+    }
   }
 }
 
 export default RecoveryPassForm;
-
-
-
-
-
-
-
