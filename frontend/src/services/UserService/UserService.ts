@@ -214,4 +214,25 @@ export default class UserService {
             return false;
         }
     }
+
+    public static async updatePassword(email: string, newPassword: string): Promise<boolean> {
+
+        const requestBody = {
+            email: email,
+            newPassword: newPassword
+        };
+
+        try {
+            const response = await DataServiceAPI.post('http://localhost:3000/auth/updatePassword', requestBody);
+
+            if (response.ok) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
 }
