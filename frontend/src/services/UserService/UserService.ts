@@ -15,9 +15,10 @@ export default class UserService {
 
         try {
             const response = await DataServiceAPI.post('http://localhost:3000/auth/login', credentials);
-            const json: UserResponse = await response.json();
-            return json;
 
+            const json: UserResponse = await response.json();
+            
+            return json;
         } catch (error) {
             const response: UserResponse = {
                 data: [],

@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Dashboard from '../../frontend/src/pages/dashboard/Dashboard';
+import CreateUserForm from './pages/userManagement/createUserForm/CreateUserForm';
+import ListUserForm from './pages/userManagement/listUserForm/ListUserForm';
 import App from './Layout/App/App';
 import Auth from './Layout/Auth/Auth';
 import LogonPage from './pages/Logon/LogonPage';
@@ -19,6 +21,12 @@ root.render(
             <Route path='/' element={ <App /> }>
                 <Route index path="/" element={ <Dashboard /> } />
                 <Route path="/initialuser" element={ <InitialUser /> } />
+            </Route>
+            <Route path='/createUser' element={ <App /> }>
+                <Route index path="/createUser" element={ <CreateUserForm /> } />
+            </Route>
+            <Route path='/listUser' element={ <App /> }>
+                <Route index path="/listUser" element={ <ListUserForm /> } />
             </Route>
             <Route path='/auth/' element={ <Auth /> }>
                 <Route path="login" element={ <LogonPage /> } />

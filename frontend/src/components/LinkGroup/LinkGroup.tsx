@@ -36,7 +36,7 @@ class LinkGroup extends React.Component<IProps, IState> {
           label: "Cadastro",
           links: [
             {
-              name: "Cadastro de usuários",
+              name: "Gerenciamento de Usuários",
               icon: userAdd,
             },
           ],
@@ -44,6 +44,12 @@ class LinkGroup extends React.Component<IProps, IState> {
       ],
     };
   }
+
+  public redirectPage() {
+    // eslint-disable-next-line no-restricted-globals
+    location.href = "/listUser";
+  }
+
   render() {
     const session = Session()
     switch (session.profile.type) {
@@ -56,7 +62,7 @@ class LinkGroup extends React.Component<IProps, IState> {
                 {linkGroup.links.map((link) => (
                   <div className={styles.linkBtn}>
                     <img className={styles.linkIcon} src={link.icon} alt="" />
-                    <div>{link.name}</div>
+                    <div onClick={() => this.redirectPage()} >{link.name}</div>
                     <img className={styles.linkArrow} src={arrow} alt="arrow" />
                   </div>
                 ))}
