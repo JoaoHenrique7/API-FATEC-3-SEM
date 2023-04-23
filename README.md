@@ -28,11 +28,11 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 
 ### 📖 Requisitos funcionais
 + - [x] Acessar o sistema por meio de login
-+ - [ ] Cadastro de novos usuários
++ - [x] Cadastro de novos usuários
 + - [ ] Editar usuários já cadastrados
 + - [x] Perfis administradores devem visualizar os usuários cadastrados em forma de lista.
 + - [ ] Desativar um usuário através da exclusão lógica.
-+ - [ ] Funcionalidade "esqueci minha senha".
++ - [x] Funcionalidade "esqueci minha senha".
 
 ### 🔖 Requisitos não funcionais
 + - [x] Documentação apresentada no Github
@@ -110,6 +110,12 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 ![Equipe bytech](/readme/Burndown.png)
 
 <br>
+<h1 align="center"><samp>SEGUNDA SPRINT</samp></h1>
+
+![Equipe bytech](/readme/Burndown2Semestre.png)
+
+
+<br>
 <h1 align="center"><samp>DETALHES DAS SPRINTS</samp></h1>
 <h2>Sprint 1</h2>
 <details>
@@ -170,6 +176,40 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 
 </details>
 
+
+<h2>Sprint 2</h2>
+<details>
+  <summary>Detalhes</summary>
+  <h3 align="center">Demonstração de usabilidade</h3>
+   <br>
+  <h4 align="center">Acesso Usuario padrão<br><a href="https://youtu.be/MWFBgxebJ4U">Youtube (Qualidade melhor)</a></h4>
+  <p align="center">
+    <img src="/readme/acesso_usuario.gif" width="65%" />
+  </p>
+  <p align="justify">Demonstração da tela para usuarios sem direitos administradores.</p>
+
+  <br>
+  <h4 align="center">Acesso Adminstrador<br><a href="https://youtu.be/Vd2K_6N4hME">Youtube (Qualidade melhor)</a></h4>
+  <p align="center">
+    <img src="/readme/listagem_cadastro_admin.gif" width="65%" />
+  </p>
+  <p align="justify">Demonstração de uso da aplicação a partir de administrador. Tal Usuário como demonstrado no video poderá inserir, editar e excluir outros usuários.</p>
+
+  <br>
+  <h4 align="center">Redefinição de senha<br><a href="https://youtu.be/33AC2SQN-Q0">Youtube (Qualidade melhor)</a></h4>
+  <p align="center">
+    <img src="/readme/redefinir_senha.gif" width="65%" />
+  </p>
+  <p align="justify">Demonstração da possibilidade de redefinição de senha a partir do e-mail, caso o usuário tenha esquecido.</p>
+
+   <br>
+  <h4 align="center">BPMN<br></h4>
+  <p align="center">
+      <img src="/readme/BPMN2Semestre.png" width="65%" />
+  </p>
+  <p align="justify">Apresentação dos processos desenvolvidos na segunda Sprint.</p>
+
+</details>
 <br>
 <h1 align="center"><samp>EQUIPE</samp></h1>
 
