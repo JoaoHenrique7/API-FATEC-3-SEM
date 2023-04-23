@@ -4,38 +4,42 @@ import Navbar from "../../../modules/Navbar/Navbar";
 import UserForm from "../../../modules/UserForm/UserForm";
 import User from '../../../model/classes/User';
 import UserService from '../../../services/UserService/UserService';
+import { Navigate } from "react-router-dom";
+import { Session } from "../../../model/utils/Session";
 
-interface CreateUserPageProp {}
+interface CreateUserPageProp { }
 
-interface CreateUserPageState {}
+interface CreateUserPageState { }
 
 class CreateUserForm extends Component<CreateUserPageProp, CreateUserPageState> {
-      handleCreateUser = async (nomeCompleto: string,
-        cpf : string,
-        nomeDoUsuario : string,
-        tipoDoUsuario : string,
-        email : string,
-        senha : string,
-        confirmarSenha : string) => {
+    handleCreateUser = async (nomeCompleto: string,
+        cpf: string,
+        nomeDoUsuario: string,
+        tipoDoUsuario: string,
+        email: string,
+        senha: string,
+        confirmarSenha: string) => {
 
-        let usuario : User = new User(nomeDoUsuario, nomeCompleto,cpf,email,senha,true);
+        let usuario: User = new User(nomeDoUsuario, nomeCompleto, cpf, email, senha, true);
 
         let validacao = await UserService.createUser(usuario);
 
-        if(validacao) {
+        if (validacao) {
             alert("Usuário Adicionado com Sucesso!")
         } else {
             alert("Erro ao adicionar o usuário.")
         }
 
-        };
+    };
 
-        render() {
-            const breadcrumbList = [{name: "Home"},{name: "Gerenciamento de usuário"}, {name: "Adicionar Usuários"}];
+    render() {
+        const breadcrumbList = [{ name: "Home" }, { name: "Gerenciamento de usuário" }, { name: "Adicionar Usuários" }];
+        const session = Session();
+        if (session.profile.type === 1) {
             return (
                 <div className={styles.content}>
                     <div className={styles.titleContainer}>
-                        <Navbar pathList={breadcrumbList}/>
+                        <Navbar pathList={breadcrumbList} />
                         <h1>Criação de Usuários</h1>
                     </div>
                     <div className={styles.container}>
@@ -43,7 +47,10 @@ class CreateUserForm extends Component<CreateUserPageProp, CreateUserPageState> 
                     </div>
                 </div>
             );
+        } else {
+            return <Navigate to="/initialuser" />;
         }
+    }
 }
 
 export default CreateUserForm;
