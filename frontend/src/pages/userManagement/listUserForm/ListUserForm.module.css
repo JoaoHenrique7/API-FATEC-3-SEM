@@ -1,0 +1,30 @@
+.content {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.titleContainer {
+    color: white;
+}
+  
+.container {
+    width: 100%;
+    height: fit-content;
+}
+
+.button {
+  background-color: #F36E29; /* Green */
+  border: none;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}

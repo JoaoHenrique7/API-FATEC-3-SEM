@@ -3,13 +3,13 @@ import styles from "./Table.module.css";
 import UserResponse from "../../model/interfaces/UserResponse";
 import UserService from "../../services/UserService/UserService";
 
-interface TableProps {
+import pencil from '../../assets/pencil.svg'
+import trash from '../../assets/trash.svg'
+import User from "../../model/classes/User";
 
-}
+interface TableProps {}
 
-interface TableState extends UserResponse {
-
-}
+interface TableState extends UserResponse {}
 
 class Table extends React.Component<TableProps, TableState> {
     
@@ -38,16 +38,29 @@ class Table extends React.Component<TableProps, TableState> {
         });
     }
 
+    async onRemoveUser(selectedUser : User) {
+        let response = await UserService.deleteUser(selectedUser.id);
+        console.log(response)
+        alert("Deletar usuário")
+    }
+
+    onEditUser(selectedUser : User) {
+        console.log(selectedUser)
+        alert("Editar usuário")
+    }
+
     render() {
         return(
             <table className={ styles.table }>
                 <thead>
                     <tr>
-                        <th>Username</th>
+                        {/* <th>Username</th> */}
                         <th>Nome</th>
                         <th>Email</th>
                         <th>CPF</th>
-                        <th>Ativo</th>
+                        <th>Status</th>
+                        {/* <th>Tipo de usuário</th> */}
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,11 +68,16 @@ class Table extends React.Component<TableProps, TableState> {
                         this.state.data.map((user) => {
                             return (
                                 <tr>
-                                    <td>{ user.userName }</td>
+                                    {/* <td>{ user.userName }</td> */}
                                     <td>{ user.fullName }</td>
                                     <td>{ user.email }</td>
                                     <td>{ user.cpf }</td>
-                                    <td>{ String(user.active) }</td>
+                                    <td>{ String(user.active) ? "Ativo" : "Inativo" }</td>
+                                    {/* <td>{ }</td> */}
+                                    <td>
+                                        <img onClick={() => this.onEditUser(user)} className={styles.pencil} src={pencil} alt='pencil'/>
+                                        <img onClick={() => this.onRemoveUser(user)} className={styles.trash} src={trash} alt='trash'/>
+                                    </td>
                                 </tr>
                             );
                         })
