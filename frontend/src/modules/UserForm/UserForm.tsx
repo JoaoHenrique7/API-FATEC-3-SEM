@@ -91,57 +91,57 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
       <form onSubmit={this.handleSubmit}>
         <div className={Styles.container}>
           <div className={Styles.nomeCompleto}>
-          <label>Nome completo</label>
           <InputText
             value={nomeCompleto}
             onChange={this.handleNomeCompletoChange}
             placeholder="Insira o nome completo"
             mytype="text"
+            label="Nome completo"
             />
           </div>
           <div className={Styles.cpf}>
-          <label >CPF</label>
           <InputText
             value={cpf}
             onChange={this.handleCpfChange}
             placeholder="Insira o CPF"
             mytype="text"
+            label="CPF"
             />
           </div>
           <div className={Styles.nomeDoUsuario}>
-          <label >Nome de usuário</label>
           <InputText
             value={nomeDoUsuario}
             onChange={this.handleNomeDoUsuarioChange}
             placeholder="Insira o nome de usuário"
             mytype="text"
+            label="Nome de usuário"
             />
           </div>
           <div className={Styles.email}>
-          <label >Email</label>
           <InputText
             value={email}
             onChange={this.handleEmailChange}
             placeholder="Insira o email"
             mytype="email"
+            label="Email"
             />
           </div>
           <div className={Styles.senha}>
-          <label >Senha</label>
           <InputText
             value={senha}
             onChange={this.handleSenhaChange}
             placeholder="Insira a senha"
             mytype="password"
+            label="Senha"
             />
           </div>
           <div className={Styles.confirmarSenha}>
-          <label >Confirmar a senha</label>
           <InputText
             value={confirmarSenha}
             onChange={this.handleConfirmarSenhaChange}
             placeholder="Confirme a senha"
             mytype="password"
+            label="Confirmar a senha"
             />
           </div>
           <div className={Styles.tipoDoUsuario}>

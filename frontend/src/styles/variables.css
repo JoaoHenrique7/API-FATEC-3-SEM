@@ -9,10 +9,11 @@
     --fw-bold: 700;
 
     /* Text font sizes */
-    --fs-txt-xsmall: ; 
-    --fs-txt-small: ;
-    --fs-txt-regular: ;
-    --fs-txt-large: ;
+    --fs-txt-xsmall: 0.8rem; 
+    --fs-txt-small: 0.9rem;
+    --fs-txt-regular: 1rem;
+    --fs-txt-medium: 1.15rem;
+    --fs-txt-large: 1.3rem;
 
     /* Header font sizes */
     --fs-hd-large: ;
@@ -21,6 +22,9 @@
     --br-default: 4px;
     --br-medium: 16px;
     --br-full: 100%;
+
+    /* Padding */
+    --p-input: 8px 12px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -29,8 +33,8 @@
         --base-ntrl-max: 0, 0, 0;
 
         --base-clr: 255, 255, 255;
-        --base-clr-lt: 237, 241, 246;
-        --base-clr-ltr: 217, 217, 217;
+        --base-clr-lt: 217, 217, 217;
+        --base-clr-ltr: 237, 241, 246;
 
         --primary-clr: 6, 0, 71;
         --secondary-clr: 243, 110, 41;

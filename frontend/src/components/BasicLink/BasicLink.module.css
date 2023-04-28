@@ -1,22 +1,5 @@
-.recoveryLink {
-    font-size: 13px;
-    text-decoration-line: none;
-    margin-left: 13em;
-    color: black;
-}
-
-.recoveryLink:hover {
-    text-decoration: underline;
-}
-
-.returnLoginLink {
-    font-size: 13px;
-    text-decoration-line: none;
-    margin-top: 2rem;
-    margin-left: 15em;
-    color: black;
-}
-
-.returnLoginLink:hover {
-    text-decoration: underline;
+.recoveryLink, .returnLoginLink {
+    font-size: var(--fs-txt-small);
+    margin-left: auto;
+    color: rgba(var(--base-ntrl-max), 1);
 }

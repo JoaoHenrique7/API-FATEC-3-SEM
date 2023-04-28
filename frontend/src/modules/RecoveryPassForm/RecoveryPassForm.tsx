@@ -130,12 +130,12 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
       case 1:
         return (
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
-            <h2 className={Styles.h2Titles}>Confira seu email, e insira o código!</h2>
             <InputText
               value={firstCode}
               onChange={this.handlefirstCodeChange}
               placeholder="Insira seu código"
               mytype="text"
+              label="Confira seu email, e insira o código!"
             />
             <Button
               type='button'
@@ -154,19 +154,19 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
         return (
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
             <h2 className={Styles.h2Titles}>Coloque sua nova senha!</h2>
-            <p className={Styles.recoveryTitles}>Nova senha</p>
             <InputText
               value={firstCode}
               onChange={this.handlefirstCodeChange}
               placeholder="Nova Senha"
               mytype="text"
+              label="Nova senha"
             />
-            <p className={Styles.recoveryTitles}>Confirme sua senha</p>
             <InputText
               value={secondCode}
               onChange={this.handlesecondCodeChange}
               placeholder="Confirme sua senha"
               mytype="text"
+              label="Confirme sua senha"
             />
             <Button
               type='button'
@@ -186,12 +186,12 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
             <h2>Seja bem-vindo!</h2>
             <p className={Styles.recoverySubTitles}>Por favor, insira suas credenciais</p>
-            <p className={Styles.recoveryTitles}>Email</p>
             <InputText
               value={email}
               onChange={this.handleEmailChange}
               placeholder="Insira seu email"
               mytype="text"
+              label="Email"
             />
             <Button
               type='button'

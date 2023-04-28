@@ -1,20 +1,14 @@
 .loginform {
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.loginTitles {
-  margin-bottom: 5px;
-  text-align: left;
-  font-size: 14px;
+.loginform h2 {
+    font-weight: var(--fw-medium);
 }
 
 .loginSubTitles {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #8B8B8B;
-  font-size: 14px
-  ;
+    color: rgba(var(--secondary-clr), 1);
+    font-size: var(--fs-txt-regular);
 }
-  

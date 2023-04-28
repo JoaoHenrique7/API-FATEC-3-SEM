@@ -42,19 +42,19 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
       <form className={Styles.loginform} onSubmit={this.handleSubmit}>
         <h2>Seja bem-vindo!</h2>
         <p className={Styles.loginSubTitles}>Por favor, insira suas credenciais</p>
-        <p className={Styles.loginTitles}>Email</p>
         <InputText
           value={username}
           onChange={this.handleUsernameChange}
           placeholder="Insira seu email"
           mytype="text"
+          label="Email"
         />
-        <p className={Styles.loginTitles}>Senha</p>
         <InputText
           value={password}
           onChange={this.handlePasswordChange}
           placeholder="Insira sua senha"
           mytype="password"
+          label="Senha"
         />
         <RecoveryLink 
           newPath= 'recovery'
