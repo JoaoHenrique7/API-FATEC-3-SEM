@@ -1,24 +1,14 @@
 .recoveryform {
     display: flex;
     flex-direction: column;
-    padding: 5px;
-  }
-  
-.recoveryTitles {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  text-align: left;
-  font-size: 16px;
+    gap: 15px;
+}
+
+.recoveryform h2 {
+    font-weight: var(--fw-medium);
 }
 
 .recoverySubTitles {
-  margin-top: 1rem;
-  color: #8B8B8B;
-  font-size: 14px
-  ;
-}
-
-.h2Titles {
-  margin-bottom: 2rem;
-}
-    
+    color: rgba(var(--secondary-clr), 1);
+    font-size: var(--fs-txt-regular);
+}    

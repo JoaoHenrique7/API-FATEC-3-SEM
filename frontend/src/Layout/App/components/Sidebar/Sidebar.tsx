@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
-import logoutImage from "../../../../assets/logout.svg";
-import Profile from "./Profile/Profile";
-import LinkGroup from "../../../../components/LinkGroup/LinkGroup";
 import MainHeader from "../../../../modules/MainHeader/MainHeader";
-import LogoutButton from '../../../../components/Button/Button'
+import Button from '../../../../components/Button/Button'
+import { Session } from "../../../../model/utils/Session";
+import SidebarItem from "../SidebarItem/SidebarItem";
+import Area from "../Area/Area";
 
 class Sidebar extends React.Component {
 
@@ -14,25 +14,30 @@ class Sidebar extends React.Component {
     };
 
     render() {
+        const session = Session();
+        console.log(typeof session.profile.type)
+
         return (
-            <div className={ styles.sidebarWrapper }>
+            <aside className={ styles.sidebarWrapper }>
                 <MainHeader />
-                <div className={ styles.sidebar }>
-                    <div className={ styles.upperArea }>
-                        <Profile />
-                        <LinkGroup />
+                <section className={ styles.sidebar }>
+                    <div className={ styles.profile }>
+                        <span className={ styles.image }></span>
+                        <div className={ styles.info }>
+                            <p className={ styles.fullname }> { session.fullName.split(' ')[0] } </p>
+                            <p className={ styles.profileName }> { session.profile.name } </p>
+                        </div>
                     </div>
-                    <div className={ styles.bottomArea }>
-                        <LogoutButton 
-                            type="button"
-                            className="logoutButton"
-                            placeholder="Logout"
-                            imageSrc={logoutImage}
-                            onClick={this.redirect}
-                        />
-                    </div>
-                </div>
-            </div>
+                    <Area allowedProfiles={ null } label="Navegação">
+                        <SidebarItem to={ '/' } label="Dashboard" icon="user" allowedProfiles={[ 1 ]} />
+                        <SidebarItem to={ '/initialUser' } label="Painel do usuário" icon="user" allowedProfiles={[ 0 ]} />
+                    </Area>
+                    <Area allowedProfiles={[ 1 ]} label="Gerenciamento">
+                        <SidebarItem to={ '/createUser' } label="Usuários" icon="user" allowedProfiles={[ 1 ]} />
+                    </Area>
+                    <Button  type="button" className="logout" placeholder="Logout" onClick={ this.redirect } icon="logout" />
+                </section>
+            </aside>
         );
     }
 }

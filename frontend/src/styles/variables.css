@@ -25,6 +25,7 @@
 
     /* Padding */
     --p-input: 8px 12px;
+    --p-button: 8px 10px;
 }
 
 @media (prefers-color-scheme: light) {
