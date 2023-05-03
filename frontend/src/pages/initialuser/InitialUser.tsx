@@ -1,17 +1,14 @@
 import React from "react";
 import styles from "./InitialUser.module.css";
-import Navbar from "../../modules/Navbar/Navbar";
 import { Session } from "../../model/utils/Session";
+import MainHeader from "../../components/MainHeader/MainHeader";
 
 class InitialUser extends React.Component {
     render() {
-      const breadcrumbList = [{name: "Painel do Usuário"}];
       const session = Session();  
       return (
             <div className={styles.content}>
-                <div className={styles.titleContainer}>
-                    <Navbar pathList={breadcrumbList}/>
-                </div>
+                <MainHeader title="Painel do Usuário" area="Navegação" pages={[ "Painel do Usuário" ]} />
                 <div className={styles.container}>
                     <p className={styles.text}>Nome de Usuário: { session.userName }</p>
                     <p className={styles.text}>Nome: { session.fullName }</p>

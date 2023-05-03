@@ -2,10 +2,9 @@ import React from "react";
 import styles from "./Table.module.css";    
 import UserResponse from "../../model/interfaces/UserResponse";
 import UserService from "../../services/UserService/UserService";
-
-import pencil from '../../assets/pencil.svg'
-import trash from '../../assets/trash.svg'
 import User from "../../model/classes/User";
+import { FaPen, FaTrash } from "react-icons/fa";
+import Tag from "../../components/Tag/Tag";
 
 interface TableProps {}
 
@@ -51,15 +50,13 @@ class Table extends React.Component<TableProps, TableState> {
 
     render() {
         return(
-            <table className={ styles.table }>
+            <table>
                 <thead>
                     <tr>
-                        {/* <th>Username</th> */}
                         <th>Nome</th>
                         <th>Email</th>
                         <th>CPF</th>
                         <th>Status</th>
-                        {/* <th>Tipo de usuário</th> */}
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -68,15 +65,13 @@ class Table extends React.Component<TableProps, TableState> {
                         this.state.data.map((user) => {
                             return (
                                 <tr>
-                                    {/* <td>{ user.userName }</td> */}
                                     <td>{ user.fullName }</td>
                                     <td>{ user.email }</td>
                                     <td>{ user.cpf }</td>
-                                    <td>{ String(user.active) ? "Ativo" : "Inativo" }</td>
-                                    {/* <td>{ }</td> */}
-                                    <td>
-                                        <img onClick={() => this.onEditUser(user)} className={styles.pencil} src={pencil} alt='pencil'/>
-                                        <img onClick={() => this.onRemoveUser(user)} className={styles.trash} src={trash} alt='trash'/>
+                                    <td>{ String(user.active) ? <Tag label="Ativo" type="success" /> : <Tag label="Inativo" type="error" /> }</td>
+                                    <td className={ styles.actions } >
+                                        <FaPen onClick={ () => this.onEditUser(user) } />
+                                        <FaTrash onClick={ () => this.onRemoveUser(user) } />
                                     </td>
                                 </tr>
                             );

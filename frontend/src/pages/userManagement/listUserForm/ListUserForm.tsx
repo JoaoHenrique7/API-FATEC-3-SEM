@@ -1,30 +1,27 @@
 import React from "react";
 import styles from "./ListUserForm.module.css";
-import Navbar from "../../../modules/Navbar/Navbar";
 import Table from "../../../modules/Table/Table";
 import { Navigate } from "react-router-dom";
 import { Session } from "../../../model/utils/Session";
+import MainHeader from "../../../components/MainHeader/MainHeader";
 
 class ListUserForm extends React.Component {
     redirectPage() {
-        // eslint-disable-next-line no-restricted-globals
-        location.href = "/createUser";
+        window.location.href = "/createUser";
     }
 
     render() {
-        const breadcrumbList = [{ name: "Home" }, { name: "Gerenciamento de Usuários" }];
         const session = Session();
         if (session.profile.type === 1) {
             return (
-                <div className={styles.content}>
-                    <div className={styles.titleContainer}>
-                        <Navbar pathList={breadcrumbList} />
-                        <h1>Listagem de Usuários</h1>
-                    </div>
-                    <div className={styles.container}>
-                        <button onClick={() => this.redirectPage()} className={styles.button} type="button">
-                            Adicionar Usuário
-                        </button>
+                <div className={ styles.content }>
+                    <MainHeader title="Listagem de Usuários" area="Navegação" pages={[ "Listagem de usuários" ]} />
+                    <div className={ styles.container }>
+                        <div className={ styles.options }>
+                            <button onClick={() => this.redirectPage()} className={ styles.button } type="button">
+                                Adicionar Usuário
+                            </button>
+                        </div>
                         <Table />
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 :root {
     /* Font family */
     --default-font: 'Roboto', sans-serif;
+    --alternative-font: 'Red Hat Display', sans-serif;
 
     /* Font weights */
     --fw-light: 100;
@@ -39,6 +40,10 @@
 
         --primary-clr: 6, 0, 71;
         --secondary-clr: 243, 110, 41;
+
+        --success-clr: 119, 221, 119;
+        --error-clr: 255, 105, 97;
+        --warning-clr: ;
     }
 }
 
@@ -53,5 +58,9 @@
 
         --primary-clr: 6, 0, 71;
         --secondary-clr: 243, 110, 41;
+
+        --success-clr: 119, 221, 119;
+        --error-clr: 255, 105, 97;
+        --warning-clr: ;
     }
 }

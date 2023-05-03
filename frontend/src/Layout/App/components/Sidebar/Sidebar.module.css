@@ -18,6 +18,11 @@
     border-top-right-radius: 16px;
 }
 
+.division {
+    margin-block: 15px;
+    color: rgba(var(--base-clr-ltr), .5);
+}
+
 .profile {
     display: flex;
     align-items: center;
@@ -43,4 +48,18 @@
 
 .profileName {
     font-size: var(--fs-txt-small);
+}
+
+.mainHeader{
+    grid-area: 'mainheader';
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 20px;
+}
+
+.logoVisiona{
+    width: 26px;
+    height: auto;
 }

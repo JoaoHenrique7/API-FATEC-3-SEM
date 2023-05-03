@@ -1,38 +1,30 @@
 import React from "react";
 import styles from "./Breadcrumb.module.css";
-import arrowRight from "../../assets/arrowRight.svg";
-interface PathItem {
-  name: string;
-}
+import { FaAngleRight } from "react-icons/fa";
+
 interface BreadCrumbProps {
-  pathList: PathItem[];
+    area: string;
+    pages: string[];
 }
 
 class Breadcrumb extends React.Component<BreadCrumbProps> {
-  render() {
-    const { pathList } = this.props;
+    render() {
+        const { area, pages } = this.props;
 
-    return (
-      <ul className={styles.breadcrumb}>
-        {pathList.map(({ name }, index) => (
-          <li className={styles.breadcrumbItem}>
-            {index + 1 === pathList.length ? (
-              <div className={styles.noBold}>{name}</div>
-            ) : (
-              <>
-                <div>{name}</div>
-                <img
-                  className={styles.breadcrumbArrow}
-                  src={arrowRight}
-                  alt="arrow"
-                />
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+        return (
+            <div className={ styles.breadcrumb }>
+                <span>{ area }</span>
+                {
+                    pages.map(page => (
+                        <>
+                            <FaAngleRight />
+                            { page }
+                        </>
+                    ))
+                }
+            </div>
+        );
+    }
 }
 
 export default Breadcrumb;
