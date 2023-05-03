@@ -1,3 +1,4 @@
+import { profile } from "console";
 import Profile from "../../model/Profile";
 import User from "../../model/User";
 import IUserRepository from "../IUserRepository";
@@ -84,6 +85,25 @@ export default class UserRepository implements IUserRepository {
         const result = await User.update({ password: newPassword }, { where: { email } });
         return result[0];
       }
+
+      // update user
+    async editUser( id: String): Promise<number> {
+        const user = new User();
+        const profile = new Profile();
+        const result = await User.update({ 
+            userName: user.userName,
+            fullName: user.fullName,
+            cpf: user.cpf,
+            email: user.email,
+            password: user.password,
+            active: user.active,
+            profile: {
+                name: profile.name,
+                type: profile.type,
+            } 
+        }, { where: { id } });
+        return result[0];
+    }
       
     
 }
