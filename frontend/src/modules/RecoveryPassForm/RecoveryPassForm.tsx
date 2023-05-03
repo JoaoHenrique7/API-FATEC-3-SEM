@@ -158,14 +158,14 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
               value={firstCode}
               onChange={this.handlefirstCodeChange}
               placeholder="Nova Senha"
-              mytype="text"
+              mytype="password"
               label="Nova senha"
             />
             <InputText
               value={secondCode}
               onChange={this.handlesecondCodeChange}
               placeholder="Confirme sua senha"
-              mytype="text"
+              mytype="password"
               label="Confirme sua senha"
             />
             <Button
@@ -185,7 +185,7 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
         return (
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
             <h2>Seja bem-vindo!</h2>
-            <p className={Styles.recoverySubTitles}>Por favor, insira suas credenciais</p>
+            <p className={Styles.recoverySubTitles}>Por favor, insira seu email.</p>
             <InputText
               value={email}
               onChange={this.handleEmailChange}
