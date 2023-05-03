@@ -27,7 +27,7 @@ export default class DataServiceAPI {
 
     public static async delete(url: string, params: Object) {
         const token: string | null = window.localStorage.getItem("session_token");
-        return await fetch('http://localhost:3000/user/deleteUser', {
+        return await fetch(url, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
