@@ -6,6 +6,7 @@ import UserService from "../../services/UserService/UserService";
 import pencil from '../../assets/pencil.svg'
 import trash from '../../assets/trash.svg'
 import User from "../../model/classes/User";
+import Swal from 'sweetalert2';
 
 interface TableProps {}
 
@@ -47,6 +48,11 @@ class Table extends React.Component<TableProps, TableState> {
     onEditUser(selectedUser : User) {
         console.log(selectedUser)
         alert("Editar usuário")
+        Swal.fire(
+            'The Internet?',
+            'That thing is still around?',
+            'question'
+          )
     }
 
     render() {
