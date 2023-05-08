@@ -24,7 +24,7 @@ root.render(
                 <Route path="/initialuser" element={ <InitialUser /> } />
             </Route>
             <Route path='/createUser' element={ <App /> }>
-                <Route index path="/createUser" element={ <EditUserForm /> } />
+                <Route index path="/createUser" element={ <CreateUserForm /> } />
             </Route>
             <Route path='/editUser' element={ <App /> }>
                 <Route index path="/editUser" element={ <EditUserForm /> } />
