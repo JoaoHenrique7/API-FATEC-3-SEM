@@ -15,3 +15,82 @@
     width: 100%;
     min-height: 100vh;
 }
+
+/* SaltyAlert CSS */
+.saltyalert-backdrop {
+    width: 100%; height: 100%;
+    background-color: rgba(var(--base-ntrl-max), .3);
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: showBackdrop .1s linear forwards;
+}
+
+.saltyalert.modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transform:
+        translate(-50%, -50%)
+        rotateY(90deg);
+    border-radius: var(--br-default);
+    background-color: rgba(var(--base-ntrl-min), 1);
+    animation: showSaltyAlertModal .2s linear forwards;
+}
+
+.saal-textContent {
+    text-align: center;
+}
+
+.saal-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0; right: 0;
+    width: 24px; height: 24px;
+    margin: 5px;
+    border-radius: var(--br-full);
+    transition: background-color .1s linear;
+    cursor: pointer;
+}
+
+.saal-actions {
+    display: flex;
+    align-self: center;
+    gap: 10px;
+}
+
+.saal-button {
+    padding: var(--p-button);
+    border-radius: var(--br-default);
+}
+
+.saal-button.success {
+    background-color: rgba(var(--success-clr), .9);
+    color: rgba(var(--base-ntrl-min), 1);
+    font-weight: var(--fw-bold);
+}
+
+.saal-button.cancel {
+    background-color: rgba(var(--error-clr), .9);
+    color: rgba(var(--base-ntrl-min), 1);
+    font-weight: var(--fw-bold);
+}
+
+.saal-close:hover {
+    background-color: rgba(var(--base-clr-ltr), 1);
+}
+
+@keyframes showBackdrop {
+    to { opacity: 1; }
+}
+
+@keyframes showSaltyAlertModal {
+    to { transform: translate(-50%, -50%) rotateY(0deg); }
+}

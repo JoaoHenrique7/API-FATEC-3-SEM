@@ -6,6 +6,7 @@ import UserService from '../../../services/UserService/UserService';
 import { Navigate } from "react-router-dom";
 import { Session } from "../../../model/utils/Session";
 import MainHeader from '../../../components/MainHeader/MainHeader';
+import SaltyAlert from '../../../model/utils/SaltyAlert';
 
 interface CreateUserPageProp { }
 
@@ -25,9 +26,21 @@ class CreateUserForm extends Component<CreateUserPageProp, CreateUserPageState> 
         let validacao = await UserService.createUser(usuario);
 
         if (validacao) {
-            alert("Usuário Adicionado com Sucesso!")
+            new SaltyAlert().modal({
+                icon: 'Success',
+                title: 'Sucesso',
+                text: 'Usuário adicionado com sucesso!',
+                closeOnClickOutside: true,
+                timerInMiliseconds: 10000
+            });
         } else {
-            alert("Erro ao adicionar o usuário.")
+            new SaltyAlert().modal({
+                icon: 'Error',
+                title: 'Erro',
+                text: 'Erro ao adicionar usuário!',
+                closeOnClickOutside: true,
+                timerInMiliseconds: 10000
+            });
         }
 
     };

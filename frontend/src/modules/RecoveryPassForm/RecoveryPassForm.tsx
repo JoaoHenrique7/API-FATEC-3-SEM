@@ -5,6 +5,7 @@ import RecoveryLink from '../../components/BasicLink/BasicLink';
 import Button from '../../components/Button/Button';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 import UserService from '../../services/UserService/UserService';
+import SaltyAlert from '../../model/utils/SaltyAlert';
 
 interface RecoveryPassFormState {
   firstCode: string;
@@ -63,7 +64,13 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
       this.showForm(1);
       this.sendEmail();
     } else {
-      alert('Invalid credentials');
+      new SaltyAlert().modal({
+        icon: 'Error',
+        title: 'Erro',
+        text: 'Credenciais incorretas!',
+        closeOnClickOutside: true,
+        timerInMiliseconds: 10000
+    });
     }
   };
 
@@ -99,7 +106,13 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
     if (firstCode === String(checkCode)) {
       this.showForm(2);
     } else {
-      alert("Codigo Errado")
+      new SaltyAlert().modal({
+        icon: 'Error',
+        title: 'Erro',
+        text: 'Código incorreto!',
+        closeOnClickOutside: true,
+        timerInMiliseconds: 10000
+    });
     }
   }
 
@@ -109,14 +122,32 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
     const { secondCode } = this.state
 
     if (firstCode !== secondCode) {
-      alert('As senhas são diferentes.')
+      new SaltyAlert().modal({
+        icon: 'Error',
+        title: 'Erro',
+        text: 'As senhas estão diferentes!',
+        closeOnClickOutside: true,
+        timerInMiliseconds: 10000
+      });
     } else {
       let changeResult = await UserService.updatePassword(email, secondCode);
       if (changeResult) {
-        alert('Senha alterada Com sucesso!')
+        new SaltyAlert().modal({
+          icon: 'Success',
+          title: 'Sucesso',
+          text: 'Senha alterada com sucesso!',
+          closeOnClickOutside: true,
+          timerInMiliseconds: 10000
+        });
         window.open('/auth/login', '_self')
       } else {
-        alert('Falha na alteração de senha')
+        new SaltyAlert().modal({
+          icon: 'Error',
+          title: 'Erro',
+          text: 'Falha na alteração de senha!',
+          closeOnClickOutside: true,
+          timerInMiliseconds: 10000
+        });
         window.location.reload();
       }
 

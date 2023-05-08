@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import UserService from '../../services/UserService/UserService';
 import Form from '../../modules/RecoveryPassForm/RecoveryPassForm';
+import SaltyAlert from '../../model/utils/SaltyAlert';
 
 interface RecoveryPassPageState {
     loggedIn: boolean;
@@ -20,7 +21,13 @@ class RecoveryPassPage extends Component<{}, RecoveryPassPageState> {
             this.setState({ loggedIn: true });
             window.open('/login');
         } else {
-            alert('Invalid email');
+            new SaltyAlert().modal({
+                icon: 'Error',
+                title: 'Erro',
+                text: 'Email inválido',
+                closeOnClickOutside: true,
+                timerInMiliseconds: 10000
+            })
         }
     };
     
