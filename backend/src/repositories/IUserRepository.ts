@@ -11,4 +11,5 @@ export default interface IUserRepository {
     findAll() : Promise<User[]>
     removeByEmail(email: string): Promise<User | null>
     updatePasswordByEmail(email: string, newPassword: string): Promise<number> 
+    editUser(id: String) : Promise<number>
 }
