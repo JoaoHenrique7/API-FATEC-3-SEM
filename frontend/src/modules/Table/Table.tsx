@@ -39,13 +39,16 @@ class Table extends React.Component<TableProps, TableState> {
 
     async onRemoveUser(selectedUser : User) {
         let response = await UserService.deleteUser(selectedUser.id);
-        console.log(response)
-        alert("Deletar usuário")
     }
 
     onEditUser(selectedUser : User) {
         console.log(selectedUser)
-        alert("Editar usuário")
+        this.redirectPage(selectedUser)
+    }
+
+    redirectPage(selectedUser: User) {
+        // eslint-disable-next-line no-restricted-globals
+        location.href = "/editUser";
     }
 
     render() {
