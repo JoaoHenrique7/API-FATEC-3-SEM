@@ -50,7 +50,7 @@ class CreateUserForm extends Component<CreateUserPageProp, CreateUserPageState> 
         if (session.profile.type === 1) {
             return (
                 <div className={styles.content}>
-                    <MainHeader title="Criação de Usuários" area="Navegação" pages={[ "Criação de usuários" ]} />
+                    <MainHeader title="Criação de Usuários" area="Navegação" pages={[ "Usuários" ]} />
                     <div className={styles.container}>
                         <UserForm onSubmit={this.handleCreateUser} />
                     </div>

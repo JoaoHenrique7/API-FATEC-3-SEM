@@ -15,7 +15,7 @@ class ListUserForm extends React.Component {
         if (session.profile.type === 1) {
             return (
                 <div className={ styles.content }>
-                    <MainHeader title="Listagem de Usuários" area="Navegação" pages={[ "Listagem de usuários" ]} />
+                    <MainHeader title="Listagem de Usuários" area="Navegação" pages={[ "Usuários" ]} />
                     <div className={ styles.container }>
                         <div className={ styles.options }>
                             <button onClick={() => this.redirectPage()} className={ styles.button } type="button">

@@ -5,6 +5,7 @@ import UserService from "../../services/UserService/UserService";
 import User from "../../model/classes/User";
 import { FaPen, FaTrash } from "react-icons/fa";
 import Tag from "../../components/Tag/Tag";
+import SaltyAlert from "../../model/utils/SaltyAlert";
 
 interface TableProps {}
 
@@ -39,6 +40,13 @@ class Table extends React.Component<TableProps, TableState> {
 
     async onRemoveUser(selectedUser : User) {
         let response = await UserService.deleteUser(selectedUser.id);
+        new SaltyAlert().modal({
+            icon: 'Error',
+            title: 'Erro',
+            text: 'Credenciais incorretas!',
+            closeOnClickOutside: true,
+            timerInMiliseconds: 10000
+        });
     }
 
     onEditUser(selectedUser : User) {

@@ -43,7 +43,8 @@
 
         --success-clr: 119, 221, 119;
         --error-clr: 255, 105, 97;
-        --warning-clr: ;
+        --warning-clr: 253, 253, 150;
+        --info-clr: 61, 66, 107;
     }
 }
 
@@ -61,6 +62,7 @@
 
         --success-clr: 119, 221, 119;
         --error-clr: 255, 105, 97;
-        --warning-clr: ;
+        --warning-clr: 253, 253, 150;
+        --info-clr: 61, 66, 107;
     }
 }

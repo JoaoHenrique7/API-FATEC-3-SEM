@@ -27,12 +27,10 @@ class LogonPage extends Component<LogOnPageProp, LogonPageState> {
                 window.open('/', '_self');
             }
         } else {
-            new SaltyAlert().modal({
+            new SaltyAlert().toast({
                 icon: 'Error',
-                title: 'Erro',
                 text: 'Credenciais incorretas!',
-                closeOnClickOutside: true,
-                timerInMiliseconds: 10000
+                timerInMiliseconds: 5000
             });
         }
     };
