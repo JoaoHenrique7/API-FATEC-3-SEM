@@ -1,3 +1,4 @@
+
 export default interface IEditUserDTO {
     id?: number;
     userName: string;
@@ -6,4 +7,5 @@ export default interface IEditUserDTO {
     email: string;
     password: string;
     active: boolean;
+
 }

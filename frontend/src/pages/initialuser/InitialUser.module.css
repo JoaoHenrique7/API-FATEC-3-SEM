@@ -13,7 +13,7 @@
 .container {
     border-radius: 10px;
     margin: 3rem;
-    padding: 8rem;
+    padding: 4rem;
     width: 80rem;
     height: 40rem;
     background-color: white;
@@ -25,4 +25,8 @@
     text-align: justify;
     font-size: 22px;
     color: black;
+}
+
+.container h1{
+    margin-bottom: 3rem;
 }

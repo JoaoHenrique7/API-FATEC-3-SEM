@@ -20,3 +20,13 @@
 .returnLoginLink:hover {
     text-decoration: underline;
 }
+
+.notFoundLink {
+    font-size: 13px;
+    text-decoration-line: none;
+    color: black;
+}
+
+.notFoundLink:hover {
+    text-decoration: underline;
+}

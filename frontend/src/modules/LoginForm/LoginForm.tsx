@@ -44,6 +44,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
         <p className={Styles.loginSubTitles}>Por favor, insira suas credenciais</p>
         <p className={Styles.loginTitles}>Email</p>
         <InputText
+          maxLength={25}
           value={username}
           onChange={this.handleUsernameChange}
           placeholder="Insira seu email"
@@ -51,6 +52,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
         />
         <p className={Styles.loginTitles}>Senha</p>
         <InputText
+          maxLength={25}
           value={password}
           onChange={this.handlePasswordChange}
           placeholder="Insira sua senha"

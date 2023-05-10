@@ -1,20 +1,25 @@
 .content {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .titleContainer {
-    color: white;
-}
-  
-.container {
-    width: 100%;
-    height: fit-content;
+  color: white;
 }
 
-.search {
+.container {
+  width: 100%;
+  height: fit-content;
+}
+
+canvas {
+  width: 782px !important;
+  height: 391px !important;
+}
+
+.search{
     
 }
