@@ -98,31 +98,44 @@ export default class UserService {
     }
   }
 
-  public static async getById(id: number): Promise<UserResponse> {
-    const requestBody = { id: id };
 
-    try {
-      const response = await DataServiceAPI.get(
-        "http://localhost:3000/user/findById",
-        requestBody
-      );
 
-      const responseJson = await response.json();
+    public static async editUser(user: User): Promise<boolean> {
+        try {
+            const response = await DataServiceAPI.post('http://localhost:3000/user/editUser', user);
 
-      const userResponse = {
-        data: responseJson.Data,
-        message: responseJson.message,
-        ok: responseJson.Ok,
-      };
+            if (response.ok) {
+                return true;
+            } else {
+                return false;
+            }
 
-      return userResponse;
-    } catch (error) {
-      const response: UserResponse = {
-        data: [],
-        message: `${error}`,
-        ok: false,
-      };
-      return response;
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
+
+    public static async getById(id: number): Promise<UserResponse> {
+
+        const requestBody = { id: id };
+
+        try {
+            const response = await DataServiceAPI.get('http://localhost:3000/user/findById', requestBody);
+
+            const responseJson = await response.json();
+
+            const userResponse = { data: responseJson.Data, message: responseJson.message, ok: responseJson.Ok };
+
+            return userResponse;
+        } catch (error) {
+            const response: UserResponse = {
+                data: [],
+                message: `${error}`,
+                ok: false
+            };
+            return response;
+        }
     }
   }
 
