@@ -19,4 +19,5 @@ export default class EditUserUC {
         const user = new User({ ...props });
         await this.userRepository.editUser(user.id.toString());
     }
+
 }
