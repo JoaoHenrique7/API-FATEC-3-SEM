@@ -116,6 +116,22 @@ export default class UserService {
         }
     }
 
+    public static async editUser(user: User): Promise<boolean> {
+        try {
+            const response = await DataServiceAPI.post('http://localhost:3000/user/editUser', user);
+
+            if (response.ok) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
+
     public static async getById(id: number): Promise<UserResponse> {
 
         const requestBody = { id: id };

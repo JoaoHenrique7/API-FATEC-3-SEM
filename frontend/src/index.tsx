@@ -29,6 +29,9 @@ root.render(
             <Route path='/editUser' element={ <App /> }>
                 <Route index path="/editUser" element={ <EditUserForm /> } />
             </Route>
+            <Route path='/editUser' element={ <App /> }>
+                <Route index path="/editUser" element={ <EditUserForm /> } />
+            </Route>
             <Route path='/listUser' element={ <App /> }>
                 <Route index path="/listUser" element={ <ListUserForm /> } />
             </Route>
