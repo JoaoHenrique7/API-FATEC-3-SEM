@@ -1,32 +1,70 @@
 .content {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .titleContainer {
-    color: white;
+  color: white;
 }
-  
+
 .container {
-    border-radius: 10px;
-    margin: 3rem;
-    padding: 4rem;
-    width: 80rem;
-    height: 40rem;
-    background-color: white;
+  border-radius: 10px;
+  margin: 3rem;
+  padding: 4rem;
+  width: 80rem;
+  height: 40rem;
+  background-color: white;
+  position: relative;
 }
 
-.text {
-    margin-left: 18em;
-    margin-bottom: 2em;
-    text-align: justify;
-    font-size: 22px;
-    color: black;
+.container h1 {
+  margin-bottom: 3rem;
 }
 
-.container h1{
-    margin-bottom: 3rem;
+.containerTitle {
+  color: #333;
+  margin-bottom: 30px;
+  font: 600 24px/30px sans-serif;
+
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 66%;
+  row-gap: 30px;
+}
+
+.inputLabel {
+  color: #888;
+  font: 600 18px/22px sans-serif;
+  margin-bottom: 10px;
+}
+
+.inputValue {
+  color: #333;
+  font: 400 22px/26px sans-serif;
+
+}
+
+.editBtn {
+  color: white;
+  background-color: #060047;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  width: 170px;
+  padding: 8px 8px;
+  font-size: 22px;
+  position: absolute;
+  bottom: 4rem;
+  right: 4rem;
+
 }
