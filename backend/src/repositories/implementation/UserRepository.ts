@@ -71,13 +71,9 @@ export default class UserRepository implements IUserRepository {
     }
 
     // delete
-    async removeByEmail(email: string): Promise<User | null> {
-        const deletedCount = await User.destroy({ where: { email: email } });
-        if (deletedCount > 0) {
-            return null;
-        } else {
-            throw new Error(`User with email ${email} not found.`);
-        }
+    async removeByEmail(email: string): Promise<number> {
+       const result = await User.update({active: false}, {where: { email: email } });
+       return result[0];
     }
 
     // password update
