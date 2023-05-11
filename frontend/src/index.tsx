@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './pages/Dashboard/Dashboard';
 import CreateUserForm from './pages/userManagement/createUserForm/CreateUserForm';
 import ListUserForm from './pages/userManagement/listUserForm/ListUserForm';
 import App from './Layout/App/App';
@@ -11,6 +10,7 @@ import NotFound from './pages/NotFound/NotFound';
 import RecoveryPassPage from './pages/recoveryPass/RecoveryPassPage';
 import InitialUser from './pages/initialuser/InitialUser'
 import EditUserForm from './pages/userManagement/editUserForm/EditUserForm';
+import Dashboard from './pages/dashboard/Dashboard';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
