@@ -268,6 +268,35 @@ export default class UserService {
     }
   }
 
+//For chart and dashboard
+  public static async getUserByCreatedForChart() {
+    const requestBody = { };
+
+    try {
+      const response = await DataServiceAPI.post(
+        "http://localhost:3000/user/findByCreatedAt",
+        requestBody
+      );
+
+      const responseJson = await response.json();
+
+      const userResponse = {
+        data: responseJson.Data,
+        message: responseJson.message,
+        ok: responseJson.Ok,
+      };
+
+      return userResponse;
+    } catch (error) {
+      const response: UserResponse = {
+        data: [],
+        message: `${error}`,
+        ok: false,
+      };
+      return response;
+    }
+  }
+
   public static async getUserByCreatedAt(createdAt: number) {
     const requestBody = { createdAt: createdAt };
 
