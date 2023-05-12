@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import Profile from "../../model/Profile";
 import User from "../../model/User";
 import IUserRepository from "../IUserRepository";
@@ -96,10 +97,12 @@ export default class UserRepository implements IUserRepository {
   }
 
   // find by created at
-  async findByCreatedAt(createdAt: string): Promise<User[]> {
-    const result = await User.findAll({
+ findByCreatedAt(startDate: Date, endDate: Date): Promise<number> {
+    const result = User.count({
       where: {
-        createdAt: createdAt,
+        createdAt: {
+          [Op.between]: [startDate, endDate],
+        },
       },
     });
     return result;

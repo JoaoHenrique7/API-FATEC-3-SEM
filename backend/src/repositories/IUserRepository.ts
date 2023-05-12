@@ -12,5 +12,5 @@ export default interface IUserRepository {
     removeByEmail(email: string): Promise<User | null>
     updatePasswordByEmail(email: string, newPassword: string): Promise<number>    
     countUsersByActive(active: boolean): Promise<number>
-    findByCreatedAt(createdAt: string) : Promise<User[]>
+    findByCreatedAt(startDate: Date, endDate: Date) : Promise<number>
 }

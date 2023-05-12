@@ -7,8 +7,8 @@ export default class FindByCreatedAtUC {
        private userRepository: IUserRepository 
     ) {}
     
-    async execute(props: IFindByCreatedAtDTO): Promise<User[]>  {
-        const user = await this.userRepository.findByCreatedAt(props.createdAt);
+    async execute(props: IFindByCreatedAtDTO): Promise<number>  {
+        const user = await this.userRepository.findByCreatedAt(props.createdAt, props.createdAt);
 
         if (!user) throw new Error("User not found.");
         
