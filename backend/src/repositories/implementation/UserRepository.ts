@@ -17,9 +17,11 @@ export default class UserRepository implements IUserRepository {
                 name: 'Usuário',
                 type: 0
             }
-        }, { include: {
-            model: Profile
-        } });
+        }, {
+            include: {
+                model: Profile
+            }
+        });
     }
 
     // create admin
@@ -35,9 +37,11 @@ export default class UserRepository implements IUserRepository {
                 name: 'Administrador',
                 type: 1
             }
-        }, { include: {
-            model: Profile
-        } });
+        }, {
+            include: {
+                model: Profile
+            }
+        });
     }
 
     // find by Id
@@ -50,13 +54,13 @@ export default class UserRepository implements IUserRepository {
         return User.findOne({ where: { email: email }, include: { model: Profile } });
     }
 
-     // find by Cpf and Cnpj
-     findByCpf(cpf: string): Promise<User | null> {
+    // find by Cpf and Cnpj
+    findByCpf(cpf: string): Promise<User | null> {
         return User.findOne({ where: { cpf: cpf } });
     }
 
-     // find by userName
-     findByUserName(userName: string): Promise<User | null> {
+    // find by userName
+    findByUserName(userName: string): Promise<User | null> {
         return User.findOne({ where: { userName: userName } });
     }
 
@@ -72,34 +76,22 @@ export default class UserRepository implements IUserRepository {
 
     // delete
     async removeByEmail(email: string): Promise<number> {
-       const result = await User.update({active: false}, {where: { email: email } });
-       return result[0];
+        const result = await User.update({ active: false }, { where: { email: email } });
+        return result[0];
     }
 
     // password update
     async updatePasswordByEmail(email: string, newPassword: string): Promise<number> {
         const result = await User.update({ password: newPassword }, { where: { email } });
         return result[0];
-      }
-
-      // update user
-    async editUser( id: String): Promise<number> {
-        const user = new User();
-        const profile = new Profile();
-        const result = await User.update({ 
-            userName: user.userName,
-            fullName: user.fullName,
-            cpf: user.cpf,
-            email: user.email,
-            password: user.password,
-            active: user.active,
-            profile: {
-                name: profile.name,
-                type: profile.type,
-            } 
-        }, { where: { id } });
-        return result[0];
     }
-      
-    
+
+    // update user
+    async editUser(id: number, userName: string, fullName: string, cpf: string, email: string, password: string, active: boolean): Promise<User | null> {
+        await User.update({ id: id, userName: userName, fullName: fullName, cpf: cpf, email: email, password: password, active: active }, { where: { id: id } });
+        const updatedUser = await User.findByPk(id);
+        return updatedUser;
+    }
+
+
 }

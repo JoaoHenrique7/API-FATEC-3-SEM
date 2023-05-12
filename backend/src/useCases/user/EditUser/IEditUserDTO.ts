@@ -1,11 +1,11 @@
 
+
 export default interface IEditUserDTO {
-    id?: number;
+    id:number;
     userName: string;
-    fullName: string;
+    fullName:string;
     cpf: string;
     email: string;
+    active:boolean;
     password: string;
-    active: boolean;
-
 }

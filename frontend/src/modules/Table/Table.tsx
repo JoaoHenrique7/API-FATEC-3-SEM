@@ -46,6 +46,8 @@ class Table extends React.Component<TableProps, TableState> {
 
   onEditUser(selectedUser: User) {
     console.log(selectedUser);
+    let usuario: User = new User(selectedUser.userName,selectedUser.fullName,selectedUser.cpf,selectedUser.email,selectedUser.password,selectedUser.active,selectedUser.id);
+    localStorage.setItem('myData', JSON.stringify({ data: 'Hello from the other page!' }));
     this.redirectPage(selectedUser);
   }
 
