@@ -13,9 +13,17 @@
 .container {
   width: 100%;
   height: fit-content;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
 }
 
 canvas {
-  width: 782px !important;
-  height: 391px !important;
+  width: 50% !important;
+  height: auto !important;
+}
+
+.search{
+    
 }

@@ -10,7 +10,7 @@ import UserResponse, {
   CountResponse,
 } from "../../model/interfaces/UserResponse";
 import UserService from "../../services/UserService/UserService";
-import { formatWithOptions } from "util";
+import { number } from "yargs";
 
 Chart.register(CategoryScale);
 Chart.defaults.font.size = 20;
@@ -21,8 +21,8 @@ class Dashboard extends React.Component<any, any> {
     this.state = {
       chartData: undefined,
       lineChartData: undefined,
-      option: undefined,
       options: undefined,
+      option: undefined,
     };
   }
 
@@ -49,7 +49,7 @@ class Dashboard extends React.Component<any, any> {
       plugins: {
         title: {
           display: true,
-          color: "white",
+          color: "#333",
           text: "Usuários Ativos x Inativos",
         },
         legend: {
@@ -64,7 +64,6 @@ class Dashboard extends React.Component<any, any> {
       scales: {
         x: {
           min: 0,
-          // max: 5,
           grid: {
             color: "white",
             drawOnChartArea: false,
@@ -76,7 +75,6 @@ class Dashboard extends React.Component<any, any> {
         },
         y: {
           min: 0,
-          //max: 5,
           grid: {
             color: "white",
             drawOnChartArea: false,
@@ -121,8 +119,8 @@ class Dashboard extends React.Component<any, any> {
       plugins: {
         title: {
           display: true,
-          color: "white",
-          text: "Usuários",
+          color: "#333",
+          text: "Usuários cadastrados x data",
         },
         legend: {
           display: false,
@@ -162,13 +160,12 @@ class Dashboard extends React.Component<any, any> {
     };
 
     const lineChartData = {
-      labels: ["Data de criação"],
+      labels: ["Data"],
       datasets: [
         {
           label: "Data",
           data: [quantidadeDeUsuarioCriado],
           fill: false,
-          borderColor: "red",
           tension: 0.1,
         },
       ],
