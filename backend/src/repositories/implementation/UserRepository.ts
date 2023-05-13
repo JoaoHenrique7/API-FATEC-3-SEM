@@ -34,11 +34,15 @@ export default class UserRepository implements IUserRepository {
         profile: {
                 name: 'Administrador',
                 type: 1
-      }
-        }, { include: {
-            model: Profile
-        } });
-  }
+            }
+        }, {
+            include: {
+                model: Profile
+            }
+        });
+    }
+
+
 
   // find by Id
   findById(id: number): Promise<User | null> {
@@ -72,16 +76,15 @@ export default class UserRepository implements IUserRepository {
 
   // delete
     async removeByEmail(email: string): Promise<number> {
-       const result = await User.update({active: false}, {where: { email: email } });
-       return result[0];
+        const result = await User.update({ active: false }, { where: { email: email } });
+        return result[0];
     }
   
-
   // password update
     async updatePasswordByEmail(email: string, newPassword: string): Promise<number> {
         const result = await User.update({ password: newPassword }, { where: { email } });
-    return result[0];
-  }
+        return result[0];
+    }
 
   // count by active
   async countUsersByActive(active: boolean): Promise<number> {
@@ -105,25 +108,12 @@ export default class UserRepository implements IUserRepository {
     return result;
   }
 
-  async editUser( id: String): Promise<number> {
-    const user = new User();
-    const profile = new Profile();
-    const result = await User.update({ 
-        userName: user.userName,
-        fullName: user.fullName,
-        cpf: user.cpf,
-        email: user.email,
-        password: user.password,
-        active: user.active,
-        profile: {
-            name: profile.name,
-            type: profile.type,
-        } 
-    }, { where: { id } });
-    return result[0];
-}
-
-
-
+    // update user
+    async editUser(id: number, userName: string, fullName: string, cpf: string, email: string, password: string, active: boolean): Promise<User | null> {
+        await User.update({ id: id, userName: userName, fullName: fullName, cpf: cpf, email: email, password: password, active: active }, { where: { id: id } });
+        const updatedUser = await User.findByPk(id);
+        return updatedUser;
+    }
 
 }
+

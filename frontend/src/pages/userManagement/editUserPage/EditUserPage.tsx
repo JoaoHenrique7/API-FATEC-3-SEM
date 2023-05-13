@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import styles from "./EditUserForm.module.css";
+import styles from "./EditUserPage.module.css";
 import Navbar from "../../../modules/Navbar/Navbar";
-import UserForm from "../../../modules/UserForm/UserForm";
+import UserForm from "../../../modules/EditUserForm/EditUserForm";
 import User from '../../../model/classes/User';
 import UserService from '../../../services/UserService/UserService';
 import { Navigate } from "react-router-dom";
@@ -11,18 +11,19 @@ interface EditUserPageProp { }
 
 interface EditUserPageState { }
 
-class EditUserForm extends Component<EditUserPageProp, EditUserPageState> {
+class EditUserPage extends Component<EditUserPageProp, EditUserPageState> {
     handleEditUser = async (
-        nomeCompleto: string,
-        cpf: string,
-        nomeDoUsuario: string,
-        tipoDoUsuario: string,
-        email: string,
-        senha: string,
-        confirmarSenha: string,
+        id: number,
+        nomeCompleto : string,
+        cpf : string,
+        nomeDoUsuario : string,
+        email : string,
+        senha : string,
+        confirmarSenha : string,
+        active : boolean
     ) => {
 
-        let usuario: User = new User(nomeDoUsuario, nomeCompleto, cpf, email, senha, true);
+        let usuario: User = new User(nomeDoUsuario,nomeCompleto,cpf,email,senha,active,id);
 
         let validacao = await UserService.editUser(usuario);
 
@@ -37,7 +38,6 @@ class EditUserForm extends Component<EditUserPageProp, EditUserPageState> {
     render() {
         const breadcrumbList = [{ name: "Home" }, { name: "Gerenciamento de usuário" }, { name: "Adicionar Usuários" }];
         const session = Session();
-        if (session.profile.type === 1) {
             return (
                 <div className={styles.content}>
                     <div className={styles.titleContainer}>
@@ -49,11 +49,7 @@ class EditUserForm extends Component<EditUserPageProp, EditUserPageState> {
                     </div>
                 </div>
             );
-        } else {
-            return <Navigate to="/initialuser" />;
-        }
     }
 }
 
-export default EditUserForm;
-
+export default EditUserPage;
