@@ -10,26 +10,27 @@ import UserResponse, {
   CountResponse,
 } from "../../model/interfaces/UserResponse";
 import UserService from "../../services/UserService/UserService";
-import { number } from "yargs";
 
 Chart.register(CategoryScale);
 Chart.defaults.font.size = 20;
 
-class Dashboard extends React.Component<any, any> {
+class Dashboard extends React.Component<any, any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       chartData: undefined,
-      lineChartData: undefined,
       options: undefined,
-      option: undefined,
+
     };
   }
 
   componentDidMount(): void {
     this.getUserByActive();
-    this.getUserByCreatedForChart();
+  
   }
+
+
+
 
   private async getUserByActive() {
     const activeResponse: CountResponse = await UserService.getUserByActive(
@@ -42,7 +43,6 @@ class Dashboard extends React.Component<any, any> {
     const quantidadeDeUsuarioAtivos = activeResponse.data;
     const quantidadeDeUsuarioInativos = inactiveResponse.data;
 
-    //console.log(quantidadeDeUsuarioAtivos);
 
     const options = {
       responsive: true,
@@ -106,77 +106,6 @@ class Dashboard extends React.Component<any, any> {
     }));
   }
 
-  private async getUserByCreatedForChart() {
-    const createdAtResponse: UserResponse =
-      await UserService.getUserByCreatedForChart();
-
-    const quantidadeDeUsuarioCriado = createdAtResponse.data;
-
-    console.log(quantidadeDeUsuarioCriado);
-
-    const option = {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          color: "#333",
-          text: "Usuários cadastrados x data",
-        },
-        legend: {
-          display: false,
-          labels: {
-            font: {
-              size: 15,
-            },
-          },
-        },
-      },
-      scales: {
-        x: {
-          min: 0,
-          // max: 5,
-          grid: {
-            color: "white",
-            drawOnChartArea: false,
-          },
-          ticks: {
-            color: "#2F4F4F",
-            lineWidth: 2,
-          },
-        },
-        y: {
-          min: 0,
-          //max: 5,
-          grid: {
-            color: "white",
-            drawOnChartArea: false,
-          },
-          ticks: {
-            color: "#2F4F4F",
-            lineWidth: 2,
-          },
-        },
-      },
-    };
-
-    const lineChartData = {
-      labels: ["Data"],
-      datasets: [
-        {
-          label: "Data",
-          data: [quantidadeDeUsuarioCriado],
-          fill: false,
-          tension: 0.1,
-        },
-      ],
-    };
-
-    this.setState(() => ({
-      lineChartData: lineChartData,
-      option: option,
-    }));
-  }
-
   render() {
     const breadcrumbList = [{ name: "Navegação" }, { name: "Dashboard" }];
     const session = Session();
@@ -190,12 +119,6 @@ class Dashboard extends React.Component<any, any> {
           <div className={styles.container}>
             {this.state.chartData && (
               <Bar data={this.state.chartData} options={this.state.options} />
-            )}
-            {this.state.lineChartData && (
-              <Line
-                data={this.state.lineChartData}
-                options={this.state.option}
-              />
             )}
           </div>
         </div>

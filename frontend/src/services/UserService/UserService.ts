@@ -240,16 +240,12 @@ export default class UserService {
     }
   }
 
-
-
 //For chart and dashboard
   public static async getUserByCreatedForChart() {
-  const requestBody = {};
 
   try {
-    const response = await DataServiceAPI.post(
+    const response = await DataServiceAPI.get(
       "http://localhost:3000/user/findByCreatedAt",
-      requestBody
     );
 
     const responseJson = await response.json();
@@ -260,6 +256,7 @@ export default class UserService {
       ok: responseJson.Ok,
     };
 
+    //console.log(userResponse)
     return userResponse;
   } catch (error) {
     const response: UserResponse = {
