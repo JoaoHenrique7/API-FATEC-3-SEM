@@ -86,6 +86,22 @@ export default class UserService {
     }
   }
 
+  public static async createAdmin(user: User): Promise<boolean> {
+    try {
+      const response = await DataServiceAPI.post('http://localhost:3000/user/createAdmin', user);
+
+      if (response.ok) {
+        return true;
+      } else {
+        return false;
+      }
+
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
+
   public static async editUser(user: User): Promise<boolean> {
     try {
       const response = await DataServiceAPI.post('http://localhost:3000/user/editUser', user);
