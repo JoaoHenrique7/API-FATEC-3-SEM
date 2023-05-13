@@ -1,39 +1,37 @@
-import { profile } from "console";
+import { Op } from "sequelize";
 import Profile from "../../model/Profile";
 import User from "../../model/User";
 import IUserRepository from "../IUserRepository";
 
 export default class UserRepository implements IUserRepository {
-    // create user
-    saveUser(user: User): Promise<User> {
+  // create user
+  saveUser(user: User): Promise<User> {
         return User.create({
-            userName: user.userName,
-            fullName: user.fullName,
-            cpf: user.cpf,
-            email: user.email,
-            password: user.password,
-            active: user.active,
-            profile: {
+        userName: user.userName,
+        fullName: user.fullName,
+        cpf: user.cpf,
+        email: user.email,
+        password: user.password,
+        active: user.active,
+        profile: {
                 name: 'Usuário',
                 type: 0
-            }
-        }, {
-            include: {
-                model: Profile
-            }
-        });
-    }
+      }
+        }, { include: {
+            model: Profile
+        } });
+  }
 
-    // create admin
-    saveAdmin(user: User): Promise<User> {
+  // create admin
+  saveAdmin(user: User): Promise<User> {
         return User.create({
-            userName: user.userName,
-            fullName: user.fullName,
-            cpf: user.cpf,
-            email: user.email,
-            password: user.password,
-            active: user.active,
-            profile: {
+        userName: user.userName,
+        fullName: user.fullName,
+        cpf: user.cpf,
+        email: user.email,
+        password: user.password,
+        active: user.active,
+        profile: {
                 name: 'Administrador',
                 type: 1
             }
@@ -44,47 +42,71 @@ export default class UserRepository implements IUserRepository {
         });
     }
 
-    // find by Id
-    findById(id: number): Promise<User | null> {
-        return User.findOne({ where: { id: id } });
-    }
 
-    // find by Email
-    findByEmail(email: string): Promise<User | null> {
+
+  // find by Id
+  findById(id: number): Promise<User | null> {
+    return User.findOne({ where: { id: id } });
+  }
+
+  // find by Email
+  findByEmail(email: string): Promise<User | null> {
         return User.findOne({ where: { email: email }, include: { model: Profile } });
-    }
+  }
 
-    // find by Cpf and Cnpj
-    findByCpf(cpf: string): Promise<User | null> {
-        return User.findOne({ where: { cpf: cpf } });
-    }
+  // find by Cpf and Cnpj
+  findByCpf(cpf: string): Promise<User | null> {
+    return User.findOne({ where: { cpf: cpf } });
+  }
 
-    // find by userName
-    findByUserName(userName: string): Promise<User | null> {
-        return User.findOne({ where: { userName: userName } });
-    }
+  // find by userName
+  findByUserName(userName: string): Promise<User | null> {
+    return User.findOne({ where: { userName: userName } });
+  }
 
-    // find by fullName
-    findByFullName(fullName: string): Promise<User | null> {
-        return User.findOne({ where: { fullName: fullName } });
-    }
+  // find by fullName
+  findByFullName(fullName: string): Promise<User | null> {
+    return User.findOne({ where: { fullName: fullName } });
+  }
 
-    // find all
-    findAll(): Promise<User[]> {
-        return User.findAll({ include: { model: Profile } });
-    }
+  // find all
+  findAll(): Promise<User[]> {
+    return User.findAll({ include: { model: Profile } });
+  }
 
-    // delete
+  // delete
     async removeByEmail(email: string): Promise<number> {
         const result = await User.update({ active: false }, { where: { email: email } });
         return result[0];
     }
-
-    // password update
+  
+  // password update
     async updatePasswordByEmail(email: string, newPassword: string): Promise<number> {
         const result = await User.update({ password: newPassword }, { where: { email } });
         return result[0];
     }
+
+  // count by active
+  async countUsersByActive(active: boolean): Promise<number> {
+    const result = await User.count({
+      where: {
+        active: active,
+      },
+    });
+    return result;
+  }
+
+  // find by created at
+ findByCreatedAt(startDate: Date, endDate: Date): Promise<number> {
+    const result = User.count({
+      where: {
+        createdAt: {
+          [Op.between]: [startDate, endDate],
+        },
+      },
+    });
+    return result;
+  }
 
     // update user
     async editUser(id: number, userName: string, fullName: string, cpf: string, email: string, password: string, active: boolean): Promise<User | null> {
@@ -93,5 +115,5 @@ export default class UserRepository implements IUserRepository {
         return updatedUser;
     }
 
-
 }
+
