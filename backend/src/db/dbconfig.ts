@@ -7,12 +7,12 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const connection = new Sequelize(
-    `API-3SEMESTRE`,
-    `postgres`,
-    `Casilveira020197*`,
+    `${process.env.POSTGRES_DATABASE}`,
+    `${process.env.POSTGRES_USER}`,
+    `${process.env.POSTGRES_PASSWORD}`,
     {
         dialect: "postgres",
-        host: `127.0.0.1`,
+        host: `${process.env.POSTGRES_HOST}`,
         port: 5432,
         models: [ User, Profile ]
     }
