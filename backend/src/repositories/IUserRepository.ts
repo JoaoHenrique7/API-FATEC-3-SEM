@@ -9,8 +9,9 @@ export default interface IUserRepository {
     findByUserName(userName: string) : Promise<User | null>
     findByFullName(fullName: string) : Promise<User | null>
     findAll() : Promise<User[]>
-    removeByEmail(email: string): Promise<User | null>
-    updatePasswordByEmail(email: string, newPassword: string): Promise<number>    
+    removeByEmail(email: string): Promise<number>
+    updatePasswordByEmail(email: string, newPassword: string): Promise<number> 
+    editUser(id: String) : Promise<number>
     countUsersByActive(active: boolean): Promise<number>
     findByCreatedAt(startDate: Date, endDate: Date) : Promise<number>
 }

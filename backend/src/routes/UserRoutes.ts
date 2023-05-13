@@ -10,7 +10,7 @@ import { findUserByFullName } from "../useCases/user/FindUserByFullName/FindUser
 import { createAdmin } from "../useCases/user/CreateAdmin/CreateAdmin";
 import { findByActive } from "../useCases/user/FindByActive/FindByActive";
 import { findByCreatedAt } from "../useCases/user/FindByCreatedAt/FindByCreatedAt";
-
+import { editUser } from "../useCases/user/EditUser/EditUser";
 const router = Router();
 
 router.get('/getAll', (request: Request, response: Response) => {
@@ -23,6 +23,10 @@ router.post('/createAdmin', (request: Request, response: Response) => {
 
 router.post('/createUser', (request: Request, response: Response) => {
     return createUser.create(request, response);
+});
+
+router.post('/editUser', (request: Request, response: Response) => {
+    return editUser.edit(request, response);
 });
 
 router.delete('/deleteUser', (request: Request, response: Response) => {

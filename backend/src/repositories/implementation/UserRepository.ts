@@ -71,14 +71,11 @@ export default class UserRepository implements IUserRepository {
   }
 
   // delete
-  async removeByEmail(email: string): Promise<User | null> {
-    const deletedCount = await User.destroy({ where: { email: email } });
-    if (deletedCount > 0) {
-      return null;
-    } else {
-      throw new Error(`User with email ${email} not found.`);
+    async removeByEmail(email: string): Promise<number> {
+       const result = await User.update({active: false}, {where: { email: email } });
+       return result[0];
     }
-  }
+  
 
   // password update
     async updatePasswordByEmail(email: string, newPassword: string): Promise<number> {
@@ -107,4 +104,26 @@ export default class UserRepository implements IUserRepository {
     });
     return result;
   }
+
+  async editUser( id: String): Promise<number> {
+    const user = new User();
+    const profile = new Profile();
+    const result = await User.update({ 
+        userName: user.userName,
+        fullName: user.fullName,
+        cpf: user.cpf,
+        email: user.email,
+        password: user.password,
+        active: user.active,
+        profile: {
+            name: profile.name,
+            type: profile.type,
+        } 
+    }, { where: { id } });
+    return result[0];
+}
+
+
+
+
 }

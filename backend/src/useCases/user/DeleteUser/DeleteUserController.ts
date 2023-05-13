@@ -13,13 +13,13 @@ export class DeleteUserController{
             await this.deleteUserUC.execute({ email });
 
             return res.status(200).json({
-                Ok: true,
+                ok: true,
                 Message: "User deleted.",
                 Data: []
             });
         } catch (err: any) {
             return res.status(400).json({
-                Ok: false,
+                ok: false,
                 Message: err,
                 Data: []
             });
