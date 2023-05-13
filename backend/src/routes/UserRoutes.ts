@@ -57,7 +57,7 @@ router.post('/findByActive', (request: Request, response: Response) => {
     return findByActive.findByActive(request, response);
 });
 
-router.post('/findByCreatedAt', (request: Request, response: Response) => {
+router.get('/findByCreatedAt', (request: Request, response: Response) => {
     return findByCreatedAt.findByCreatedAt(request, response);
 });
 

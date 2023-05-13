@@ -97,13 +97,9 @@ export default class UserRepository implements IUserRepository {
   }
 
   // find by created at
- findByCreatedAt(startDate: Date, endDate: Date): Promise<number> {
-    const result = User.count({
-      where: {
-        createdAt: {
-          [Op.between]: [startDate, endDate],
-        },
-      },
+ async findByCreatedAt(): Promise<any> {
+    const result = await User.findAll({
+      order: [["userName", "Desc"]]
     });
     return result;
   }
