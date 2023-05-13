@@ -9,12 +9,13 @@ export class EditUserController {
 
     async edit(req: Request, res: Response): Promise<Response> {
 
-        const { userName, fullName, cpf, email, password, active } = req.body;
+        const { id, userName, fullName, cpf, email, password, active, profile } = req.body;
+
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(password, salt);
 
         try {
-            await this.editUserUC.execute({ userName, fullName, cpf, email, password: hashPassword, active });
+            await this.editUserUC.execute({id ,userName, fullName, cpf, email, password:hashPassword, active});
 
             return res.status(200).json({
                 Ok: true,
