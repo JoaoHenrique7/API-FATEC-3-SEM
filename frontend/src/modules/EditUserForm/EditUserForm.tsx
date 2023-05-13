@@ -4,8 +4,9 @@ import InputText from '../../components/InputText/InputText';
 import { Session } from '../../model/utils/Session';
 import userEvent from '@testing-library/user-event';
 import User from "../../model/classes/User";
+import { error } from 'console';
 
-interface UserFormFormState {
+interface EditUserFormState {
   id: number;
   nomeCompleto: string;
   cpf: string;
@@ -16,7 +17,7 @@ interface UserFormFormState {
   active: boolean;
 }
 
-interface UserFormFormProps {
+interface EditUserFormProps {
   onSubmit: (id: number,
     nomeCompleto: string,
     cpf: string,
@@ -24,12 +25,16 @@ interface UserFormFormProps {
     email: string,
     senha: string,
     confirmarSenha: string,
-    active: boolean
+    active: boolean,
   ) => void;
 }
+
+
+
+
 const session = Session();
-class EditUserForm extends Component<UserFormFormProps, UserFormFormState> {
-  constructor(props: UserFormFormProps) {
+class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
+  constructor(props: EditUserFormProps) {
     super(props);
     this.state = {
       id: session.id,
@@ -70,13 +75,22 @@ class EditUserForm extends Component<UserFormFormProps, UserFormFormState> {
     this.setState({ confirmarSenha: event.target.value });
   };
   
-  editUserAdm (user:User){;
+
+  editUserAdm (){
+    const storageUser = localStorage.getItem('user');
+if (storageUser===null){
+
+}else{
+    const user: User = JSON.parse(storageUser);
     this.setState({ nomeCompleto: user.fullName })
     this.setState({ cpf: user.cpf })
     this.setState({ active: user.active })
     this.setState({ email: user.email })
     this.setState({ id: user.id })
+    this.setState({ nomeDoUsuario: user.userName})
+    localStorage.removeItem('user');
   }
+}
 
   
   handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -90,10 +104,15 @@ class EditUserForm extends Component<UserFormFormProps, UserFormFormState> {
       confirmarSenha,
       active
     } = this.state;
-
+    if(senha !== confirmarSenha) {
+      alert("Senhas Não estão iguais");
+    } else {
     this.props.onSubmit(id, nomeCompleto, cpf, nomeDoUsuario, email, senha, confirmarSenha, active);
+    }
   };
 
+
+  
   render() {
     const { id,
       nomeCompleto,
@@ -177,9 +196,8 @@ class EditUserForm extends Component<UserFormFormProps, UserFormFormState> {
         </form>
       );
     }else{
-      // this.editUserAdm()
+         this.editUserAdm()
       return (
-        
         <form onSubmit={this.handleSubmit}>
           <div className={Styles.container}>
             <div className={Styles.nomeCompleto}>

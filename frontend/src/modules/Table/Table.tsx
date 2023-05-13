@@ -8,6 +8,7 @@ import trash from "../../assets/trash.svg";
 import User from "../../model/classes/User";
 import Search from "../Search/Search";
 
+
 interface TableProps {}
 
 interface TableState extends UserResponse {}
@@ -45,17 +46,16 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   onEditUser(selectedUser: User) {
-    console.log(selectedUser);
-    let usuario: User = new User(selectedUser.userName,selectedUser.fullName,selectedUser.cpf,selectedUser.email,selectedUser.password,selectedUser.active,selectedUser.id);
-    localStorage.setItem('myData', JSON.stringify({ data: 'Hello from the other page!' }));
+    localStorage.setItem('user', JSON.stringify(selectedUser));
     this.redirectPage(selectedUser);
   }
 
   redirectPage(selectedUser: User) {
-    // eslint-disable-next-line no-restricted-globals
-    location.href = "/editUser";
+  // eslint-disable-next-line no-restricted-globals
+  location.href = "/editUser";
   }
 
+  
   render() {
     return (
       <table className={styles.table}>
