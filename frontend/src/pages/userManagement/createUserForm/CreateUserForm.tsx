@@ -20,16 +20,30 @@ class CreateUserForm extends Component<CreateUserPageProp, CreateUserPageState> 
         senha: string,
         confirmarSenha: string) => {
 
+        const ADMIN = '0';
+        const USUARIO = '1';
+
         let usuario: User = new User(nomeDoUsuario, nomeCompleto, cpf, email, senha, true);
 
-        let validacao = await UserService.createUser(usuario);
+        let validacao = false;
 
-        if (validacao) {
-            alert("Usuário Adicionado com Sucesso!")
+        console.log(tipoDoUsuario)
+        console.log(typeof(tipoDoUsuario))
+        
+        if(tipoDoUsuario === ADMIN) {
+            validacao = await UserService.createAdmin(usuario);
+        } else if (tipoDoUsuario === USUARIO) {
+            validacao = await UserService.createUser(usuario);
         } else {
-            alert("Erro ao adicionar o usuário.")
+            alert("Tipo de usuário desconhecido!");
+            return;
         }
 
+        if (validacao) {
+            alert("Usuário Adicionado com Sucesso!");
+        } else {
+            alert("Erro ao adicionar o usuário.");
+        }
     };
 
     render() {

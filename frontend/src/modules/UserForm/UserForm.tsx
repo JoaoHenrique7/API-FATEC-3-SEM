@@ -29,7 +29,7 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
       nomeCompleto: '',
       cpf: '',
       nomeDoUsuario: '',
-      tipoDoUsuario: '',
+      tipoDoUsuario: '0',
       email: '',
       senha: '',
       confirmarSenha: ''
@@ -50,7 +50,7 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
     this.setState({ nomeDoUsuario: event.target.value });
   };
 
-  handleTipoDoUsuarioChange = (event: ChangeEvent<HTMLInputElement>) => {
+  handleTipoDoUsuarioChange = (event: ChangeEvent<HTMLSelectElement>) => {
     this.setState({ tipoDoUsuario: event.target.value });
   };
 
@@ -160,10 +160,12 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
           <div className={Styles.tipoDoUsuario}>
             <label >Tipo de usuário</label>
             <br></br>
-            <select className={Styles.comboBox} name="userType" required id="userType">
+
+            <select className={Styles.comboBox} name="userType" required id="userType" value={tipoDoUsuario} onChange={this.handleTipoDoUsuarioChange} >
               <option value="0">Administrador</option>
               <option value="1">Usuário</option>
             </select>
+            
           </div>
           <div className={Styles.botao}>
             <button className={Styles.button}>Salvar</button>
