@@ -1,6 +1,7 @@
 import React, { Component, FormEvent, ChangeEvent } from 'react';
 import Styles from '../UserForm/UserForm.module.css';
 import InputText from '../../components/InputText/InputText';
+import SaltyAlert from '../../model/utils/SaltyAlert';
 
 interface UserFormFormState {
     nomeCompleto: string;
@@ -74,7 +75,13 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
         } = this.state;
 
         if(senha !== confirmarSenha) {
-            alert("Senhas Não estão iguais");
+            new SaltyAlert().modal({
+                icon: 'Error',
+                title: 'Erro',
+                text: 'Senhas não são iguais!',
+                closeOnClickOutside: true,
+                timerInMiliseconds: 5000
+            });
         } else {
             this.props.onSubmit(nomeCompleto, cpf, nomeDoUsuario, tipoDoUsuario, email, senha, confirmarSenha);
         }
@@ -90,7 +97,7 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
         return (
             <form onSubmit={ this.handleSubmit }>
                 <div className={ Styles.container }>
-                    <div className={ Styles.nomeCompleto }>
+                    <div className={ Styles.line }>
                         <InputText
                             maxLength={ 255 }
                             value={ nomeCompleto }
@@ -99,8 +106,6 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
                             mytype="text"
                             label="Nome completo"
                         />
-                    </div>
-                    <div className={ Styles.cpf }>
                         <InputText
                             maxLength={ 14 }
                             value={ cpf }
@@ -111,7 +116,7 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
                             isCpf={ true }
                         />
                     </div>
-                    <div className={ Styles.nomeDoUsuario }>
+                    <div className={ Styles.line }>
                         <InputText
                             maxLength={ 100 }
                             value={ nomeDoUsuario }
@@ -120,8 +125,6 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
                             mytype="text"
                             label="Nome de usuário"
                         />
-                    </div>
-                    <div className={ Styles.email }>
                         <InputText
                             maxLength={ 255 }
                             value={ email }
@@ -131,7 +134,7 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
                             label="Email"
                         />
                     </div>
-                    <div className={ Styles.senha }>
+                    <div className={ Styles.line }>
                         <InputText
                             maxLength={ 25 }
                             value={ senha }
@@ -140,8 +143,6 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
                             mytype="password"
                             label="Senha"
                         />
-                    </div>
-                    <div className={ Styles.confirmarSenha }>
                         <InputText
                             maxLength={ 25 }
                             value={ confirmarSenha }
@@ -151,15 +152,14 @@ class UserForm extends Component<UserFormFormProps, UserFormFormState> {
                             label="Confirmar a senha"
                         />
                     </div>
-                    <div className={ Styles.tipoDoUsuario }>
-                        <label >Tipo de usuário</label>
-                        <br></br>
-                        <select className={ Styles.comboBox } name="userType" required id="userType" value={ tipoDoUsuario } onChange={ this.handleTipoDoUsuarioChange }>
-                            <option value="0">Administrador</option>
-                            <option value="1">Usuário</option>
-                        </select>
-                    </div>
-                    <div className={ Styles.botao }>
+                    <div className={ Styles.line }>
+                        <div className={ Styles.tipoDoUsuario }>
+                            <label>Tipo de usuário</label>
+                            <select className={ Styles.comboBox } name="userType" required id="userType" value={ tipoDoUsuario } onChange={ this.handleTipoDoUsuarioChange }>
+                                <option value="0">Administrador</option>
+                                <option value="1">Usuário</option>
+                            </select>
+                        </div>
                         <button className={ Styles.button }>Salvar</button>
                     </div>
                 </div>

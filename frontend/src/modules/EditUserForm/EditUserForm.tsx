@@ -3,6 +3,7 @@ import Styles from '../UserForm/UserForm.module.css';
 import InputText from '../../components/InputText/InputText';
 import { Session } from '../../model/utils/Session';
 import User from "../../model/classes/User";
+import SaltyAlert from '../../model/utils/SaltyAlert';
 
 interface EditUserFormState {
     id: number;
@@ -102,7 +103,13 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
         } = this.state;
 
         if(senha !== confirmarSenha) {
-            alert("Senhas Não estão iguais");
+            new SaltyAlert().modal({
+                icon: 'Error',
+                title: 'Erro',
+                text: 'Senhas não são iguais!',
+                closeOnClickOutside: true,
+                timerInMiliseconds: 5000
+            });
         } else {
             this.props.onSubmit(id, nomeCompleto, cpf, nomeDoUsuario, email, senha, tipoDoUsuario, confirmarSenha, active);
         }
@@ -120,9 +127,9 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
         
         if (session.profile.type === 0) {
             return (
-                <form onSubmit={this.handleSubmit}>
-                    <div className={Styles.container}>
-                        <div className={ Styles.nomeCompleto }>
+                <form onSubmit={ this.handleSubmit }>
+                    <div className={ Styles.container }>
+                        <div className={ Styles.line }>
                             <InputText
                                 maxLength={ 255 }
                                 value={ nomeCompleto }
@@ -131,8 +138,6 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 mytype="text"
                                 label="Nome completo"
                             />
-                        </div>
-                        <div className={ Styles.cpf }>
                             <InputText
                                 maxLength={ 14 }
                                 value={ cpf }
@@ -143,7 +148,7 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 isCpf={ true }
                             />
                         </div>
-                        <div className={ Styles.nomeDoUsuario }>
+                        <div className={ Styles.line }>
                             <InputText
                                 maxLength={ 100 }
                                 value={ nomeDoUsuario }
@@ -152,8 +157,6 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 mytype="text"
                                 label="Nome de usuário"
                             />
-                        </div>
-                        <div className={ Styles.email }>
                             <InputText
                                 maxLength={ 255 }
                                 value={ email }
@@ -163,7 +166,7 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 label="Email"
                             />
                         </div>
-                        <div className={ Styles.senha }>
+                        <div className={ Styles.line }>
                             <InputText
                                 maxLength={ 25 }
                                 value={ senha }
@@ -172,8 +175,6 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 mytype="password"
                                 label="Senha"
                             />
-                        </div>
-                        <div className={ Styles.confirmarSenha }>
                             <InputText
                                 maxLength={ 25 }
                                 value={ confirmarSenha }
@@ -183,8 +184,8 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 label="Confirmar a senha"
                             />
                         </div>
-                        <div className={Styles.botao}>
-                            <button className={Styles.button}>Salvar</button>
+                        <div className={ Styles.line }>
+                            <button className={ Styles.button }>Salvar</button>
                         </div>
                     </div>
                 </form>
@@ -194,7 +195,7 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
             return (
                 <form onSubmit={ this.handleSubmit }>
                     <div className={ Styles.container }>
-                        <div className={ Styles.nomeCompleto }>
+                        <div className={ Styles.line }>
                             <InputText
                                 maxLength={ 255 }
                                 value={ nomeCompleto }
@@ -203,8 +204,6 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 mytype="text"
                                 label="Nome completo"
                             />
-                        </div>
-                        <div className={ Styles.cpf }>
                             <InputText
                                 maxLength={ 14 }
                                 value={ cpf }
@@ -215,7 +214,7 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 isCpf={ true }
                             />
                         </div>
-                        <div className={ Styles.nomeDoUsuario }>
+                        <div className={ Styles.line }>
                             <InputText
                                 maxLength={ 100 }
                                 value={ nomeDoUsuario }
@@ -224,8 +223,6 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 mytype="text"
                                 label="Nome de usuário"
                             />
-                        </div>
-                        <div className={ Styles.email }>
                             <InputText
                                 maxLength={ 255 }
                                 value={ email }
@@ -235,7 +232,7 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 label="Email"
                             />
                         </div>
-                        <div className={ Styles.senha }>
+                        <div className={ Styles.line }>
                             <InputText
                                 maxLength={ 25 }
                                 value={ senha }
@@ -244,8 +241,6 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 mytype="password"
                                 label="Senha"
                             />
-                        </div>
-                        <div className={ Styles.confirmarSenha }>
                             <InputText
                                 maxLength={ 25 }
                                 value={ confirmarSenha }
@@ -255,15 +250,14 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
                                 label="Confirmar a senha"
                             />
                         </div>
-                        <div className={ Styles.tipoDoUsuario }>
-                            <label >Tipo de usuário</label>
-                            <br></br>
-                            <select className={ Styles.comboBox } name="userType" required id="userType" value={ tipoDoUsuario } onChange={ this.handleTipoDoUsuarioChange }>
-                                <option value="0">Administrador</option>
-                                <option value="1">Usuário</option>
-                            </select>
-                        </div>
-                        <div className={ Styles.botao }>
+                        <div className={ Styles.line }>
+                            <div className={ Styles.tipoDoUsuario }>
+                                <label>Tipo de usuário</label>
+                                <select className={ Styles.comboBox } name="userType" required id="userType" value={ tipoDoUsuario } onChange={ this.handleTipoDoUsuarioChange }>
+                                    <option value="0">Administrador</option>
+                                    <option value="1">Usuário</option>
+                                </select>
+                            </div>
                             <button className={ Styles.button }>Salvar</button>
                         </div>
                     </div>

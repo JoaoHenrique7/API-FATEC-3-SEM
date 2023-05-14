@@ -10,7 +10,7 @@ import UserService from "../../services/UserService/UserService";
 import MainHeader from "../../components/MainHeader/MainHeader";
 
 Chart.register(CategoryScale);
-Chart.defaults.font.size = 20;
+Chart.defaults.font.size = 16;
 
 class Dashboard extends React.Component<any, any, any> {
     constructor(props: any) {
@@ -42,7 +42,7 @@ class Dashboard extends React.Component<any, any, any> {
                 },
                 legend: {
                     display: false,
-                    labels: { font: { size: 15 } },
+                    labels: { font: { size: 12 } },
                 },
             },
             scales: {
@@ -65,7 +65,7 @@ class Dashboard extends React.Component<any, any, any> {
                 {
                     label: "Usuários",
                     data: [ quantidadeDeUsuarioAtivos, quantidadeDeUsuarioInativos ],
-                    backgroundColor: [ "#DC143C", "#8A2BE2" ],
+                    backgroundColor: [ "#060047", "#F36E29" ],
                     borderColor: "white",
                     borderWidth: 2,
                 },
@@ -82,16 +82,16 @@ class Dashboard extends React.Component<any, any, any> {
         const session = Session();
 
         if (session.profile.type === 1) {
-        return (
-            <div className={styles.content}>
-                <MainHeader title="Dashboard" area="Navegação" pages={[ "Dashboard" ]} />
-                <div className={styles.container}>
-                    { this.state.chartData && (
-                        <Bar data={this.state.chartData} options={this.state.options} />
-                    )}
+            return (
+                <div className={ styles.content }>
+                    <MainHeader title="Dashboard" area="Navegação" pages={[ "Dashboard" ]} />
+                    <div className={ styles.container }>
+                        { this.state.chartData && (
+                            <Bar className={ styles.chart } data={ this.state.chartData } options={ this.state.options } />
+                        )}
+                    </div>
                 </div>
-            </div>
-        );
+            );
         } else {
             return <Navigate to="/initialuser" />;
         }
