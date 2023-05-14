@@ -1,61 +1,70 @@
 import { Component } from 'react';
 import styles from "./CreateUserForm.module.css";
-import Navbar from "../../../modules/Navbar/Navbar";
 import UserForm from "../../../modules/UserForm/UserForm";
 import User from '../../../model/classes/User';
 import UserService from '../../../services/UserService/UserService';
 import { Navigate } from "react-router-dom";
 import { Session } from "../../../model/utils/Session";
+import MainHeader from '../../../components/MainHeader/MainHeader';
+import SaltyAlert from '../../../model/utils/SaltyAlert';
 
 interface CreateUserPageProp { }
 
 interface CreateUserPageState { }
 
 class CreateUserForm extends Component<CreateUserPageProp, CreateUserPageState> {
-    handleCreateUser = async (nomeCompleto: string,
-        cpf: string,
-        nomeDoUsuario: string,
-        tipoDoUsuario: string,
-        email: string,
-        senha: string,
-        confirmarSenha: string) => {
+    handleCreateUser = async (
+            nomeCompleto: string, cpf: string,
+            nomeDoUsuario: string, tipoDoUsuario: string,
+            email: string, senha: string,
+            confirmarSenha: string
+        ) => {
 
         const ADMIN = '0';
         const USUARIO = '1';
-
         let usuario: User = new User(nomeDoUsuario, nomeCompleto, cpf, email, senha, true);
-
         let validacao = false;
-
-        console.log(tipoDoUsuario)
-        console.log(typeof(tipoDoUsuario))
         
         if(tipoDoUsuario === ADMIN) {
             validacao = await UserService.createAdmin(usuario);
         } else if (tipoDoUsuario === USUARIO) {
             validacao = await UserService.createUser(usuario);
         } else {
-            alert("Tipo de usuário desconhecido!");
+            new SaltyAlert().modal({
+                icon: 'Error',
+                title: 'Erro',
+                text: 'Tipo de usuário desconhecido!',
+                closeOnClickOutside: true,
+                timerInMiliseconds: 7000
+            });
             return;
         }
 
         if (validacao) {
-            alert("Usuário Adicionado com Sucesso!");
+            new SaltyAlert().modal({
+                icon: 'Success',
+                title: 'Sucesso',
+                text: 'Usuário adicionado com sucesso!',
+                closeOnClickOutside: true,
+                timerInMiliseconds: 10000
+            });
         } else {
-            alert("Erro ao adicionar o usuário.");
+            new SaltyAlert().modal({
+                icon: 'Error',
+                title: 'Erro',
+                text: 'Erro ao adicionar usuário!',
+                closeOnClickOutside: true,
+                timerInMiliseconds: 10000
+            });
         }
     };
 
     render() {
-        const breadcrumbList = [{ name: "Home" }, { name: "Gerenciamento de usuário" }, { name: "Adicionar Usuários" }];
         const session = Session();
         if (session.profile.type === 1) {
             return (
                 <div className={styles.content}>
-                    <div className={styles.titleContainer}>
-                        <Navbar pathList={breadcrumbList} />
-                        <h1>Criação de Usuários</h1>
-                    </div>
+                    <MainHeader title="Criação de Usuários" area="Navegação" pages={[ "Usuários" ]} />
                     <div className={styles.container}>
                         <UserForm onSubmit={this.handleCreateUser} />
                     </div>

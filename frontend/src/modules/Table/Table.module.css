@@ -1,36 +1,37 @@
-td , th{
-    padding: 10px 5px;
-    text-align: center;
-}
-
-table{
-    border-collapse: collapse;
-    border-spacing: 0;
-    box-shadow: 0 2px 15px rgba(64,64,64,.7);
-    border-radius: 12px 12px 0 0;
+table {
     width: 100%;
-    overflow: hidden;
+    background-color: rgba(var(--base-ntrl-min), 1);
+    border-radius: var(--br-default);
 }
 
-th{
-    background-color: #E3E3E3;
-    color: #000000;
-    font-weight: bold;   
+thead {
+    background-color: rgba(var(--base-clr-ltr), 1);
+    text-align: left;
 }
 
-tr{
-    width: 100%;
-    background-color: #ffffff;
+td, th {
+    padding: 8px 15px;
 }
 
-tr:nth-child(even){
-    background-color: #f7f7f7;
+tr:nth-child(even) {
+    background-color: rgba(var(--base-clr-ltr), 1);
 }
 
-.pencil{
-    padding: 5px
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-.trash{
-    padding: 5px
+.actions > * {
+    width: 24px; height: 24px;
+    padding: 5px;
+    border-radius: var(--br-full);
+    overflow: visible;
+    cursor: pointer;
+    transition: background-color .1s linear;
+}
+
+.actions > *:hover {
+    background-color: rgba(var(--base-ntrl-max), .3);
 }

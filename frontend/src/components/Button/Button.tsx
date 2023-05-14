@@ -1,30 +1,35 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Styles from './Button.module.css';
+import { IconType } from 'react-icons';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 interface ButtonProps {
-  onClick?: () => void;
-  type: "button" | "submit" | "reset";
-  className: string;
-  placeholder?: string;
-  imageSrc?: string;
+    onClick?: () => void;
+    type: "button" | "submit" | "reset";
+    className: string;
+    placeholder?: string;
+    icon?: string;
 }
 
 class Button extends Component<ButtonProps> {
-  render() {
-    const { onClick, type, className, placeholder, imageSrc } = this.props;
-    return (
-      <button className={`${Styles[className]}`} onClick={onClick} type={type} >
-        {imageSrc ? (
-          <div>
-            <img className={Styles.icon} src={imageSrc} alt="icon" />
-            <span className={Styles.placeholder}>{ placeholder }</span>
-          </div>
-        ) : (
-          <div>{ placeholder }</div>
-        )}
-      </button>
-    );
-  }
+    static mapIcons () : { [ key: string ]: IconType } {
+        return {
+            logout: FaSignOutAlt,
+        }
+    };
+
+    render() {
+        const { onClick, type, className, placeholder, icon } = this.props;
+
+        const Icon: IconType | null = icon !== undefined ? Button.mapIcons()[icon] : null;
+
+        return (
+            <button className={`${Styles[className]}`} onClick={onClick} type={type}>
+                { Icon && <Icon /> }
+                <div>{ placeholder }</div>
+            </button>
+        );
+    }
 }
 
 export default Button;

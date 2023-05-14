@@ -5,6 +5,7 @@ import RecoveryLink from '../../components/BasicLink/BasicLink';
 import Button from '../../components/Button/Button';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 import UserService from '../../services/UserService/UserService';
+import SaltyAlert from '../../model/utils/SaltyAlert';
 
 interface RecoveryPassFormState {
   firstCode: string;
@@ -63,7 +64,13 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
       this.showForm(1);
       this.sendEmail();
     } else {
-      alert('Invalid credentials');
+      new SaltyAlert().modal({
+        icon: 'Error',
+        title: 'Erro',
+        text: 'Credenciais incorretas!',
+        closeOnClickOutside: true,
+        timerInMiliseconds: 10000
+    });
     }
   };
 
@@ -99,7 +106,13 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
     if (firstCode === String(checkCode)) {
       this.showForm(2);
     } else {
-      alert("Codigo Errado")
+      new SaltyAlert().modal({
+        icon: 'Error',
+        title: 'Erro',
+        text: 'Código incorreto!',
+        closeOnClickOutside: true,
+        timerInMiliseconds: 10000
+    });
     }
   }
 
@@ -109,14 +122,32 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
     const { secondCode } = this.state
 
     if (firstCode !== secondCode) {
-      alert('As senhas são diferentes.')
+      new SaltyAlert().modal({
+        icon: 'Error',
+        title: 'Erro',
+        text: 'As senhas estão diferentes!',
+        closeOnClickOutside: true,
+        timerInMiliseconds: 10000
+      });
     } else {
       let changeResult = await UserService.updatePassword(email, secondCode);
       if (changeResult) {
-        alert('Senha alterada Com sucesso!')
+        new SaltyAlert().modal({
+          icon: 'Success',
+          title: 'Sucesso',
+          text: 'Senha alterada com sucesso!',
+          closeOnClickOutside: true,
+          timerInMiliseconds: 10000
+        });
         window.open('/auth/login', '_self')
       } else {
-        alert('Falha na alteração de senha')
+        new SaltyAlert().modal({
+          icon: 'Error',
+          title: 'Erro',
+          text: 'Falha na alteração de senha!',
+          closeOnClickOutside: true,
+          timerInMiliseconds: 10000
+        });
         window.location.reload();
       }
 
@@ -130,13 +161,13 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
       case 1:
         return (
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
-            <h2 className={Styles.h2Titles}>Confira seu email, e insira o código!</h2>
             <InputText
               maxLength={255}
               value={firstCode}
               onChange={this.handlefirstCodeChange}
               placeholder="Insira seu código"
               mytype="text"
+              label="Confira seu email, e insira o código!"
             />
             <Button
               type='button'
@@ -155,21 +186,21 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
         return (
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
             <h2 className={Styles.h2Titles}>Coloque sua nova senha!</h2>
-            <p className={Styles.recoveryTitles}>Nova senha</p>
             <InputText
               maxLength={255}
               value={firstCode}
               onChange={this.handlefirstCodeChange}
               placeholder="Nova Senha"
-              mytype="text"
+              mytype="password"
+              label="Nova senha"
             />
-            <p className={Styles.recoveryTitles}>Confirme sua senha</p>
             <InputText
               maxLength={255}
               value={secondCode}
               onChange={this.handlesecondCodeChange}
               placeholder="Confirme sua senha"
-              mytype="text"
+              mytype="password"
+              label="Confirme sua senha"
             />
             <Button
               type='button'
@@ -188,14 +219,14 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
         return (
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
             <h2>Seja bem-vindo!</h2>
-            <p className={Styles.recoverySubTitles}>Por favor, insira suas credenciais</p>
-            <p className={Styles.recoveryTitles}>Email</p>
+            <p className={Styles.recoverySubTitles}>Por favor, insira seu email.</p>
             <InputText
               maxLength={255}
               value={email}
               onChange={this.handleEmailChange}
               placeholder="Insira seu email"
               mytype="text"
+              label="Email"
             />
             <Button
               type='button'

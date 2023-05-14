@@ -2,108 +2,94 @@ import React from "react";
 import styles from "./Table.module.css";
 import UserResponse from "../../model/interfaces/UserResponse";
 import UserService from "../../services/UserService/UserService";
-
-import pencil from "../../assets/pencil.svg";
-import trash from "../../assets/trash.svg";
 import User from "../../model/classes/User";
-import Search from "../Search/Search";
-
+import { FaPen, FaTrash } from "react-icons/fa";
+import Tag from "../../components/Tag/Tag";
+import SaltyAlert from "../../model/utils/SaltyAlert";
 
 interface TableProps {}
 
 interface TableState extends UserResponse {}
 
 class Table extends React.Component<TableProps, TableState> {
-  constructor(props: TableProps) {
-    super(props);
+    constructor(props: TableProps) {
+        super(props);
 
-    this.state = {
-      ok: false,
-      message: "",
-      data: [],
-    };
-  }
+        this.state = {
+            ok: false,
+            message: "",
+            data: [],
+        };
+    }
 
-  componentDidMount(): void {
-    this.getAllUsers();
-  }
+    componentDidMount(): void {
+        this.getAllUsers();
+    }
 
-  private getAllUsers(): void {
-    const data: Promise<UserResponse> = UserService.getAllUsers();
-    data.then((response: UserResponse) => {
-      this.setState(() => ({
-        ok: response.ok,
-        message: response.message,
-        data: response.data,
-      }));
-    });
-  }
+    private getAllUsers(): void {
+        const data: Promise<UserResponse> = UserService.getAllUsers();
+        data.then((response: UserResponse) => {
+            this.setState(() => ({
+                ok: response.ok,
+                message: response.message,
+                data: response.data,
+            }));
+        });
+    }
 
-  async onRemoveUser(selectedUser: User) {
-    let response = await UserService.deleteUser(selectedUser.id);
-    console.log(response);
-    alert("teste");
-  }
+    async onRemoveUser(selectedUser : User) {
+        await UserService.deleteUser(selectedUser.id);
+        new SaltyAlert().modal({
+            icon: 'Error',
+            title: 'Erro',
+            text: 'Credenciais incorretas!',
+            closeOnClickOutside: true,
+            timerInMiliseconds: 10000
+        });
+    }
 
   onEditUser(selectedUser: User) {
-    localStorage.setItem('user', JSON.stringify(selectedUser));
-    this.redirectPage(selectedUser);
+        localStorage.setItem('user', JSON.stringify(selectedUser));
+        this.redirectPage(selectedUser);
   }
 
-  redirectPage(selectedUser: User) {
-  // eslint-disable-next-line no-restricted-globals
-  location.href = "/editUser";
-  }
+    redirectPage(selectedUser: User) {
+        window.location.href = "/editUser";
+    }
 
-  
-  render() {
-    return (
-      <table className={styles.table}>
-        <thead>
-          {/* <Search /> */}
-        </thead>
-        <thead>
-          <tr>
-            {/* <th>Username</th> */}
-            <th>Nome</th>
-            <th>Email</th>
-            <th>CPF</th>
-            <th>Status</th>
-            {/* <th>Tipo de usuário</th> */}
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.data.map((user) => {
-            return (
-              <tr>
-                {/* <td>{ user.userName }</td> */}
-                <td>{user.fullName}</td>
-                <td>{user.email}</td>
-                <td>{user.cpf}</td>
-                <td>{String(user.active) ? "Ativo" : "Inativo"}</td>
-                {/* <td>{ }</td> */}
-                <td>
-                  <img
-                    onClick={() => this.onEditUser(user)}
-                    className={styles.pencil}
-                    src={pencil}
-                    alt="pencil"
-                  />
-                  <img
-                    onClick={() => this.onRemoveUser(user)}
-                    className={styles.trash}
-                    src={trash}
-                    alt="trash"
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    );
-  }
+    render() {
+        return(
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>CPF</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        this.state.data.map((user) => {
+                            return (
+                                <tr key={ user.id }>
+                                    <td>{ user.fullName }</td>
+                                    <td>{ user.email }</td>
+                                    <td>{ user.cpf }</td>
+                                    <td>{ String(user.active) ? <Tag label="Ativo" type="success" /> : <Tag label="Inativo" type="error" /> }</td>
+                                    <td className={ styles.actions } >
+                                        <FaPen onClick={ () => this.onEditUser(user) } />
+                                        <FaTrash onClick={ () => this.onRemoveUser(user) } />
+                                    </td>
+                                </tr>
+                            );
+                        })
+                    }
+                </tbody>
+            </table>
+        )
+    }
 }
 
 export default Table;
