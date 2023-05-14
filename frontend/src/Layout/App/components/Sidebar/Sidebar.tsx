@@ -16,7 +16,6 @@ class Sidebar extends React.Component {
 
     render() {
         const session = Session();
-        console.log(typeof session.profile.type)
 
         return (
             <aside className={ styles.sidebarWrapper }>

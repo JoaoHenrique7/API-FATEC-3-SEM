@@ -18,6 +18,7 @@ class EditUserPage extends Component<EditUserPageProp, EditUserPageState> {
         email : string,
         senha : string,
         confirmarSenha : string,
+        tipoDoUsuario: string,
         active : boolean
     ) => {
 
@@ -38,7 +39,7 @@ class EditUserPage extends Component<EditUserPageProp, EditUserPageState> {
             <div className={styles.content}>
                 <MainHeader title="Edição de Usuário" area="Gerenciamento" pages={[ "Usuário" ]} />
                 <div className={styles.container}>
-                    <UserForm onSubmit={this.handleEditUser} />
+                    <UserForm onSubmit={ this.handleEditUser } />
                 </div>
             </div>
         );
