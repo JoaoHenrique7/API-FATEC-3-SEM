@@ -8,8 +8,9 @@ import { findUserByEmail } from "../useCases/user/FindUserByEmail/FindUserByEmai
 import { findUserByUserName } from "../useCases/user/FindUserByUserName/FindUserByUserName";
 import { findUserByFullName } from "../useCases/user/FindUserByFullName/FindUserByFullName";
 import { createAdmin } from "../useCases/user/CreateAdmin/CreateAdmin";
+import { findByActive } from "../useCases/user/FindByActive/FindByActive";
+import { findByCreatedAt } from "../useCases/user/FindByCreatedAt/FindByCreatedAt";
 import { editUser } from "../useCases/user/EditUser/EditUser";
-
 const router = Router();
 
 router.get('/getAll', (request: Request, response: Response) => {
@@ -50,6 +51,14 @@ router.get('/findUserByUserName', (request: Request, response: Response) => {
 
 router.get('/findUserByFullName', (request: Request, response: Response) => {
     return findUserByFullName.findUserByFullName(request, response);
+});
+
+router.post('/findByActive', (request: Request, response: Response) => {
+    return findByActive.findByActive(request, response);
+});
+
+router.get('/findByCreatedAt', (request: Request, response: Response) => {
+    return findByCreatedAt.findByCreatedAt(request, response);
 });
 
 export default router;

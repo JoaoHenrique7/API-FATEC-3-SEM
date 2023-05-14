@@ -1,22 +1,32 @@
-import { uuid } from "uuidv4";
 import User from "../../../model/User";
 import IUserRepository from "../../../repositories/IUserRepository";
 import IEditUserDTO from "./IEditUserDTO";
 
-export default class EditUserUC {
+export default class CreateUserUC {
     constructor(
        private userRepository: IUserRepository 
     ) {}
 
     async execute(props: IEditUserDTO) {
 
-        const userExists = await this.userRepository.findByEmail(props.email);
+        const email = props.email;
+        const user = await this.userRepository.findByEmail(email);
+        const id = props.id;
 
-        if (userExists) {
-            throw new Error('User already exists.');
-        }
+        if (user && user.id != id) throw new Error("email already registered")
+        
+        const userName = props.userName;
+        const fullName = props.fullName ;
+        const cpf = props.cpf;
+        const password = props.password;
+        const active = props.active;
+  
 
-        const user = new User({ ...props });
-        await this.userRepository.editUser(user.id.toString());
+        const editUser = await this.userRepository.editUser(id, userName,fullName,cpf,email,password,active);
+
+        if (!editUser) throw new Error('something went wrong')
+        
+        return editUser;
+
     }
 }

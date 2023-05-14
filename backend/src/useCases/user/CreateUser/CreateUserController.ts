@@ -9,10 +9,12 @@ export class CreateUserController {
 
     async create(req: Request, res: Response): Promise<Response> {
 
-        const { userName, fullName, cpf, email, password, active } = req.body;
+        let { userName, fullName, cpf, email, password, active } = req.body;
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(password, salt);
 
+        cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
+        
         try {
             await this.createUserUC.execute({ userName, fullName, cpf, email, password: hashPassword, active });
 

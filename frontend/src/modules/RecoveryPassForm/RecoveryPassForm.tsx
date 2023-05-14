@@ -162,6 +162,7 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
         return (
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
             <InputText
+              maxLength={255}
               value={firstCode}
               onChange={this.handlefirstCodeChange}
               placeholder="Insira seu código"
@@ -186,6 +187,7 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
           <form className={Styles.recoveryform} onSubmit={this.handleSubmit}>
             <h2 className={Styles.h2Titles}>Coloque sua nova senha!</h2>
             <InputText
+              maxLength={255}
               value={firstCode}
               onChange={this.handlefirstCodeChange}
               placeholder="Nova Senha"
@@ -193,6 +195,7 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
               label="Nova senha"
             />
             <InputText
+              maxLength={255}
               value={secondCode}
               onChange={this.handlesecondCodeChange}
               placeholder="Confirme sua senha"
@@ -218,6 +221,7 @@ class RecoveryPassForm extends Component<RecoveryPassFormProps, RecoveryPassForm
             <h2>Seja bem-vindo!</h2>
             <p className={Styles.recoverySubTitles}>Por favor, insira seu email.</p>
             <InputText
+              maxLength={255}
               value={email}
               onChange={this.handleEmailChange}
               placeholder="Insira seu email"

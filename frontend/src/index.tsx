@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from '../../frontend/src/pages/dashboard/Dashboard';
 import CreateUserForm from './pages/userManagement/createUserForm/CreateUserForm';
 import ListUserForm from './pages/userManagement/listUserForm/ListUserForm';
 import App from './Layout/App/App';
@@ -10,7 +9,8 @@ import "./styles/global.css";
 import NotFound from './pages/NotFound/NotFound';
 import RecoveryPassPage from './pages/recoveryPass/RecoveryPassPage';
 import InitialUser from './pages/initialuser/InitialUser'
-import EditUserForm from './pages/userManagement/editUserForm/EditUserForm';
+import EditUserPage from './pages/userManagement/editUserPage/EditUserPage';
+import Dashboard from './pages/dashboard/Dashboard';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,10 +24,10 @@ root.render(
                 <Route path="/initialuser" element={ <InitialUser /> } />
             </Route>
             <Route path='/createUser' element={ <App /> }>
-                <Route index path="/createUser" element={ <EditUserForm /> } />
+                <Route index path="/createUser" element={ <CreateUserForm /> } />
             </Route>
             <Route path='/editUser' element={ <App /> }>
-                <Route index path="/editUser" element={ <EditUserForm /> } />
+                <Route index path="/editUser" element={ <EditUserPage/> } />
             </Route>
             <Route path='/listUser' element={ <App /> }>
                 <Route index path="/listUser" element={ <ListUserForm /> } />

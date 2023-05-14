@@ -13,17 +13,32 @@ interface CreateUserPageProp { }
 interface CreateUserPageState { }
 
 class CreateUserForm extends Component<CreateUserPageProp, CreateUserPageState> {
-    handleCreateUser = async (nomeCompleto: string,
-        cpf: string,
-        nomeDoUsuario: string,
-        tipoDoUsuario: string,
-        email: string,
-        senha: string,
-        confirmarSenha: string) => {
+    handleCreateUser = async (
+            nomeCompleto: string, cpf: string,
+            nomeDoUsuario: string, tipoDoUsuario: string,
+            email: string, senha: string,
+            confirmarSenha: string
+        ) => {
 
+        const ADMIN = '0';
+        const USUARIO = '1';
         let usuario: User = new User(nomeDoUsuario, nomeCompleto, cpf, email, senha, true);
-
-        let validacao = await UserService.createUser(usuario);
+        let validacao = false;
+        
+        if(tipoDoUsuario === ADMIN) {
+            validacao = await UserService.createAdmin(usuario);
+        } else if (tipoDoUsuario === USUARIO) {
+            validacao = await UserService.createUser(usuario);
+        } else {
+            new SaltyAlert().modal({
+                icon: 'Error',
+                title: 'Erro',
+                text: 'Tipo de usuário desconhecido!',
+                closeOnClickOutside: true,
+                timerInMiliseconds: 7000
+            });
+            return;
+        }
 
         if (validacao) {
             new SaltyAlert().modal({
@@ -42,7 +57,6 @@ class CreateUserForm extends Component<CreateUserPageProp, CreateUserPageState> 
                 timerInMiliseconds: 10000
             });
         }
-
     };
 
     render() {

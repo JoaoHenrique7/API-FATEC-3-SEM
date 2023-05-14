@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Table.module.css";    
+import styles from "./Table.module.css";
 import UserResponse from "../../model/interfaces/UserResponse";
 import UserService from "../../services/UserService/UserService";
 import User from "../../model/classes/User";
@@ -12,15 +12,14 @@ interface TableProps {}
 interface TableState extends UserResponse {}
 
 class Table extends React.Component<TableProps, TableState> {
-    
     constructor(props: TableProps) {
-        super(props)
+        super(props);
 
         this.state = {
             ok: false,
-            message: '',
-            data: []
-        }
+            message: "",
+            data: [],
+        };
     }
 
     componentDidMount(): void {
@@ -33,13 +32,13 @@ class Table extends React.Component<TableProps, TableState> {
             this.setState(() => ({
                 ok: response.ok,
                 message: response.message,
-                data: response.data
+                data: response.data,
             }));
         });
     }
 
     async onRemoveUser(selectedUser : User) {
-        let response = await UserService.deleteUser(selectedUser.id);
+        await UserService.deleteUser(selectedUser.id);
         new SaltyAlert().modal({
             icon: 'Error',
             title: 'Erro',
@@ -49,14 +48,13 @@ class Table extends React.Component<TableProps, TableState> {
         });
     }
 
-    onEditUser(selectedUser : User) {
-        console.log(selectedUser)
-        this.redirectPage(selectedUser)
-    }
+  onEditUser(selectedUser: User) {
+        localStorage.setItem('user', JSON.stringify(selectedUser));
+        this.redirectPage(selectedUser);
+  }
 
     redirectPage(selectedUser: User) {
-        // eslint-disable-next-line no-restricted-globals
-        location.href = "/editUser";
+        window.location.href = "/editUser";
     }
 
     render() {
