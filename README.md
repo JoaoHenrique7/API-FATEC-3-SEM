@@ -214,6 +214,8 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
   </p>
   <p align="justify">Apresentação dos processos desenvolvidos na segunda Sprint.</p>
 
+</details>
+
 
 <h2>Sprint 3</h2>
 <details>
