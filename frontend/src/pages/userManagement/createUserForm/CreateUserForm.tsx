@@ -41,20 +41,16 @@ class CreateUserForm extends Component<CreateUserPageProp, CreateUserPageState> 
         }
 
         if (validacao) {
-            new SaltyAlert().modal({
+            new SaltyAlert().toast({
                 icon: 'Success',
-                title: 'Sucesso',
                 text: 'Usuário adicionado com sucesso!',
-                closeOnClickOutside: true,
-                timerInMiliseconds: 10000
+                timerInMiliseconds: 5000
             });
         } else {
-            new SaltyAlert().modal({
+            new SaltyAlert().toast({
                 icon: 'Error',
-                title: 'Erro',
                 text: 'Erro ao adicionar usuário!',
-                closeOnClickOutside: true,
-                timerInMiliseconds: 10000
+                timerInMiliseconds: 5000
             });
         }
     };

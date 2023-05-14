@@ -44,6 +44,7 @@
 }
 
 .saal-toastBar {
+    pointer-events: none;
     position: fixed;
     right: 0; bottom: 0;
     width: auto; height: 100vh;
@@ -56,6 +57,7 @@
 }
 
 .saal.toast {
+    pointer-events: all;
     display: flex;
     justify-content: space-between;
     align-items: center;

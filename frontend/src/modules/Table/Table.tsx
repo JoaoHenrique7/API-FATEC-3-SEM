@@ -38,14 +38,22 @@ class Table extends React.Component<TableProps, TableState> {
     }
 
     async onRemoveUser(selectedUser : User) {
-        await UserService.deleteUser(selectedUser.id);
-        new SaltyAlert().modal({
-            icon: 'Error',
-            title: 'Erro',
-            text: 'Credenciais incorretas!',
-            closeOnClickOutside: true,
-            timerInMiliseconds: 10000
-        });
+        var deletado = await UserService.deleteUser(selectedUser.id);
+
+        if (deletado) {
+            new SaltyAlert().toast({
+                icon: 'Success',
+                text: 'Usuário deletado com sucesso',
+                timerInMiliseconds: 5000
+            });
+        } else {
+            new SaltyAlert().toast({
+                icon: 'Error',
+                text: 'Falha ao deletar usuário',
+                timerInMiliseconds: 5000
+            });
+        }
+
     }
 
   onEditUser(selectedUser: User) {

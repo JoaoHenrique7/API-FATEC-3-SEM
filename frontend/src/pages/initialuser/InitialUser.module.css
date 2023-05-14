@@ -1,70 +1,39 @@
-.content {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.titleContainer {
-  color: white;
-}
-
-.container {
-  border-radius: 10px;
-  margin: 3rem;
-  padding: 4rem;
-  width: 80rem;
-  height: 40rem;
-  background-color: white;
-  position: relative;
-}
-
-.container h1 {
-  margin-bottom: 3rem;
-}
-
-.containerTitle {
-  color: #333;
-  margin-bottom: 30px;
-  font: 600 24px/30px sans-serif;
-
-}
-
-.gridContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 66%;
-  row-gap: 30px;
-}
-
-.inputLabel {
-  color: #888;
-  font: 600 18px/22px sans-serif;
-  margin-bottom: 10px;
-}
-
-.inputValue {
-  color: #333;
-  font: 400 22px/26px sans-serif;
-
+.options {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
 }
 
 .editBtn {
-  color: white;
-  background-color: #060047;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  width: 170px;
-  padding: 8px 8px;
-  font-size: 22px;
-  position: absolute;
-  bottom: 4rem;
-  right: 4rem;
+    padding: var(--p-button);
+    border-radius: var(--br-default);
+    border: 2px solid rgba(var(--base-ntrl-min), 1);
+    background-color: rgba(var(--base-ntrl-min), .3);
+    color: rgba(var(--base-ntrl-min), 1);
+    font-weight: var(--fw-bold);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 
+.container {
+    background: rgba(var(--base-ntrl-min), 1);
+    border-radius: var(--br-default);
+    padding: 2rem;
+}
+
+.gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.gridContainer > div {
+    min-width: 300px;
+}
+
+.gridContainer > div div:first-child {
+    font-weight: var(--fw-bold);
 }

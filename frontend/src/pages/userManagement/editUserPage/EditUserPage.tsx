@@ -4,6 +4,7 @@ import UserForm from "../../../modules/EditUserForm/EditUserForm";
 import User from '../../../model/classes/User';
 import UserService from '../../../services/UserService/UserService';
 import MainHeader from '../../../components/MainHeader/MainHeader';
+import SaltyAlert from '../../../model/utils/SaltyAlert';
 
 interface EditUserPageProp { }
 
@@ -27,9 +28,17 @@ class EditUserPage extends Component<EditUserPageProp, EditUserPageState> {
         let validacao = await UserService.editUser(usuario);
 
         if (validacao) {
-            alert("Usuário Editado com Sucesso!")
+            new SaltyAlert().toast({
+                icon: 'Success',
+                text: 'Usuário editado com sucesso!',
+                timerInMiliseconds: 5000
+            });
         } else {
-            alert("Erro ao editar usuário.")
+            new SaltyAlert().toast({
+                icon: 'Error',
+                text: 'Erro ao editar usuário',
+                timerInMiliseconds: 5000
+            });
         }
 
     };

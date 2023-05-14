@@ -1,27 +1,6 @@
-.content {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+.chart {
+    background: rgba(var(--base-ntrl-min), 1);
+    padding: 3rem;
+    margin-top: 2rem;
+    border-radius: var(--br-default);
 }
-
-.titleContainer {
-  color: white;
-}
-
-.container {
-  width: 100%;
-  height: fit-content;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-}
-
-canvas {
-  width: 70% !important;
-  height: auto !important;
-}
-
-

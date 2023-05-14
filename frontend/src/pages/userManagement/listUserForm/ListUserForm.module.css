@@ -13,4 +13,7 @@
     color: rgba(var(--base-clr), 1);
     border: 2px solid rgba(var(--base-clr), 1);
     background-color: rgba(var(--base-clr), .3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }

@@ -4,6 +4,7 @@ import Table from "../../../modules/Table/Table";
 import { Navigate } from "react-router-dom";
 import { Session } from "../../../model/utils/Session";
 import MainHeader from "../../../components/MainHeader/MainHeader";
+import { FaPlus } from "react-icons/fa";
 
 class ListUserForm extends React.Component {
     redirectPage() {
@@ -19,6 +20,7 @@ class ListUserForm extends React.Component {
                     <div className={ styles.container }>
                         <div className={ styles.options }>
                             <button onClick={() => this.redirectPage()} className={ styles.button } type="button">
+                                <FaPlus />
                                 Adicionar Usuário
                             </button>
                         </div>
