@@ -73,7 +73,7 @@ class Table extends React.Component<TableProps, TableState> {
                     {
                         this.state.data.map((user) => {
                             return (
-                                <tr>
+                                <tr key={ user.id }>
                                     <td>{ user.fullName }</td>
                                     <td>{ user.email }</td>
                                     <td>{ user.cpf }</td>

@@ -16,10 +16,10 @@ class Breadcrumb extends React.Component<BreadCrumbProps> {
                 <span>{ area }</span>
                 {
                     pages.map(page => (
-                        <>
+                        <span key={ page }>
                             <FaAngleRight />
                             { page }
-                        </>
+                        </span>
                     ))
                 }
             </div>
