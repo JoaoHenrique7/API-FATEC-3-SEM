@@ -114,6 +114,11 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 
 ![Equipe bytech](/readme/Burndown2Semestre.png)
 
+<br>
+<h1 align="center"><samp>TERCEIRA SPRINT</samp></h1>
+
+![Equipe bytech](/readme/Burndown3Sprint.png)
+
 
 <br>
 <h1 align="center"><samp>DETALHES DAS SPRINTS</samp></h1>
@@ -208,6 +213,48 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
       <img src="/readme/BPMN2Semestre.png" width="65%" />
   </p>
   <p align="justify">Apresentação dos processos desenvolvidos na segunda Sprint.</p>
+
+</details>
+
+
+<h2>Sprint 3</h2>
+<details>
+  <summary>Detalhes</summary>
+  <h3 align="center">Demonstração de usabilidade</h3>
+   <br>
+  <h4 align="center">Acesso Usuario padrão estilizado<br><a href="https://youtu.be/tOM9HWQ4vQc">Youtube (Qualidade melhor)</a></h4>
+  <p align="center">
+    <img src="/readme/NovaTelaUsuario.gif" width="65%" />
+  </p>
+  <p align="justify">Demonstração da tela para usuarios sem direitos administradores após aplicação de uma nova identidade visual.</p>
+
+  <br>
+  <h4 align="center">Tela dashboard<br><a href="https://youtu.be/XAatl3gQhw4">Youtube (Qualidade melhor)</a></h4>
+  <p align="center">
+    <img src="/readme/NovoDashboard.gif" width="65%" />
+  </p>
+  <p align="justify">Demonstração de uso da aplicação a partir de administrador. Tal Usuário será diretamente direcionado para uma tela de dashboard com a informação da quantidade de usuários ativos e inativos no sistema.</p>
+
+  <br>
+  <h4 align="center">Edição de usuário<br><a href="https://youtu.be/MQD8bvvpJ5k">Youtube (Qualidade melhor)</a></h4>
+  <p align="center">
+    <img src="/readme/EdicaoUsuario.gif" width="65%" />
+  </p>
+  <p align="justify">Demonstração da possibilidade de edição das informações de um usuário a partir da tabela com a listagem geral.</p>
+
+  <br>
+  <h4 align="center">Falha na edição de usuário<br><a href="https://youtu.be/1dg_f0HEHME">Youtube (Qualidade melhor)</a></h4>
+  <p align="center">
+    <img src="/readme/ErroEdicaoUsuario.gif" width="65%" />
+  </p>
+  <p align="justify">Demonstração de uma falha e o comportamento do sistema durante a edição de um usuário.</p>
+
+   <br>
+  <h4 align="center">BPMN<br></h4>
+  <p align="center">
+      <img src="/readme/BPMN3Sprint.png" width="65%" />
+  </p>
+  <p align="justify">Apresentação dos processos desenvolvidos na terceira Sprint.</p>
 
 </details>
 <br>
