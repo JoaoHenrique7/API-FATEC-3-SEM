@@ -85,7 +85,7 @@ class Table extends React.Component<TableProps, TableState> {
                                     <td>{ user.fullName }</td>
                                     <td>{ user.email }</td>
                                     <td>{ user.cpf }</td>
-                                    <td>{ String(user.active) ? <Tag label="Ativo" type="success" /> : <Tag label="Inativo" type="error" /> }</td>
+                                    <td>{ String(user.active) === "true" ? <Tag label="Ativo" type="success" /> : <Tag label="Inativo" type="error" /> }</td>
                                     <td className={ styles.actions } >
                                         <FaPen onClick={ () => this.onEditUser(user) } />
                                         <FaTrash onClick={ () => this.onRemoveUser(user) } />

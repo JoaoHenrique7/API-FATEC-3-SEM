@@ -5,6 +5,11 @@ import MainHeader from "../../components/MainHeader/MainHeader";
 import { FaPen } from "react-icons/fa";
 
 class InitialUser extends React.Component {
+
+    redirectPage() {
+        window.location.href = "/editUser";
+    }
+
     render() {
         const session = Session();
         
@@ -14,7 +19,7 @@ class InitialUser extends React.Component {
                     <MainHeader title="Painel do Usuário" area="Navegação" pages={[ "Painel do Usuário" ]} />
                 </div>
                 <div className={ styles.options }>
-                    <button type="button" className={ styles.editBtn }>
+                    <button type="button" className={ styles.editBtn } onClick={ ()=> this.redirectPage() }>
                         <FaPen />
                         Editar
                     </button>
