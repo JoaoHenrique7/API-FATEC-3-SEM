@@ -38,7 +38,7 @@ class Table extends React.Component<TableProps, TableState> {
     }
 
     async onRemoveUser(selectedUser : User) {
-        var deletado = await UserService.deleteUser(selectedUser.id);
+        var deletado = await UserService.deleteUser(selectedUser.email);
 
         if (deletado) {
             new SaltyAlert().toast({
