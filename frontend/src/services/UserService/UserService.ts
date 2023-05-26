@@ -314,10 +314,10 @@ export default class UserService {
 
  
 
-    public static async deleteUser(userId: number): Promise < boolean > {
+    public static async deleteUser(email: String): Promise < boolean > {
 
   const requestBody = {
-    userId: userId,
+    email: email,
   };
 
   try {
