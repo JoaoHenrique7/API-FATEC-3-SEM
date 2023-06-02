@@ -35,3 +35,15 @@ tr:nth-child(even) {
 .actions > *:hover {
     background-color: rgba(var(--base-ntrl-max), .3);
 }
+
+.warning {
+    display: block;
+    text-align: center;
+}
+
+.warning > span {
+    padding: 12px 8px;
+    background-color: rgba(var(--base-ntrl-min), 1);
+    border-radius: var(--br-default);
+    box-shadow: 0 0 16px rgba(var(--base-ntrl-max), .3);
+}
