@@ -38,7 +38,7 @@ router.get('/findById', (request: Request, response: Response) => {
     return findById.findById(request, response);
 });
 
-router.get('/findUserByEmail', (request: Request, response: Response) => {
+router.post('/findUserByEmail', (request: Request, response: Response) => {
     return findUserByEmail.findUserByEmail(request, response);
 });
 

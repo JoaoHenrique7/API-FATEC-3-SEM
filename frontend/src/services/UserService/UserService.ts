@@ -145,7 +145,7 @@ export default class UserService {
     const requestBody = { email: email };
 
     try {
-      const response = await DataServiceAPI.get('http://localhost:3000/user/findUserByEmail', requestBody);
+      const response = await DataServiceAPI.post('http://localhost:3000/user/findUserByEmail', requestBody);
 
       const responseJson = await response.json();
 

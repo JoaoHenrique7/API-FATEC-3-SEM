@@ -13,13 +13,13 @@ interface EditUserPageState { }
 
 class EditUserPage extends Component<EditUserPageProp, EditUserPageState> {
 
-    public redirectPage()  {
+    public redirectPage() {
 
         const session = Session();
-        
-        if (session.profile.type === 0){
+
+        if (session.profile.type === 0) {
             window.location.href = "/initialUser";
-        }else{
+        } else {
             window.location.href = "/listUser";
         }
     }
@@ -30,26 +30,32 @@ class EditUserPage extends Component<EditUserPageProp, EditUserPageState> {
 
     handleEditUser = async (
         id: number,
-        nomeCompleto : string,
-        cpf : string,
-        nomeDoUsuario : string,
-        email : string,
-        senha : string,
-        confirmarSenha : string,
+        nomeCompleto: string,
+        cpf: string,
+        nomeDoUsuario: string,
+        email: string,
+        senha: string,
+        confirmarSenha: string,
         tipoDoUsuario: string,
-        active : boolean
+        active: boolean
     ) => {
+        const session = Session();
         let usuario: User = new User(nomeDoUsuario, nomeCompleto, cpf, email, senha, active, id);
-        
+
         let validacao = await UserService.editUser(usuario);
-        let acessChange =  await UserService.changeAcess(parseInt(tipoDoUsuario), id)
+        let acessChange = await UserService.changeAcess(parseInt(tipoDoUsuario), id)
 
         if (usuario.email !== '' && usuario.password !== '') {
             this.changePassword(usuario.password, usuario.email)
         }
+        if (session.profile.type === 0) {
+            let matchUser = await UserService.getUserByEmail(email)
+            if (matchUser.ok) {
+                localStorage.removeItem('session_data')
+                localStorage.setItem('session_data', JSON.stringify(matchUser.data))
+            }
+        }
 
-        
-        
         if (validacao && acessChange) {
             new SaltyAlert().modal({
                 icon: 'Success',
@@ -57,7 +63,7 @@ class EditUserPage extends Component<EditUserPageProp, EditUserPageState> {
                 timerInMiliseconds: 5000,
                 showConfirmButton: true,
                 title: '',
-                callback:this.redirectPage
+                callback: this.redirectPage
             });
         } else {
             new SaltyAlert().toast({
@@ -71,9 +77,9 @@ class EditUserPage extends Component<EditUserPageProp, EditUserPageState> {
     render() {
         return (
             <div className={styles.content}>
-                <MainHeader title="Edição de Usuário" area="Gerenciamento" pages={[ "Usuário" ]} />
+                <MainHeader title="Edição de Usuário" area="Gerenciamento" pages={["Usuário"]} />
                 <div className={styles.container}>
-                    <UserForm onSubmit={ this.handleEditUser } />
+                    <UserForm onSubmit={this.handleEditUser} />
                 </div>
             </div>
         );

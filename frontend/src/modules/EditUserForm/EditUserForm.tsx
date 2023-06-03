@@ -109,10 +109,13 @@ class EditUserForm extends Component<EditUserFormProps, EditUserFormState> {
             confirmarSenha, active, changePassword
         } = this.state;
 
-        
         let newPassword = '';
         let confirmNewPassword = '';
         
+        // if (session.profile.type === 0) {
+        //     location.reload();
+        // }
+
         if (changePassword && senha !== confirmarSenha) {         
             new SaltyAlert().modal({
                 icon: 'Error',
