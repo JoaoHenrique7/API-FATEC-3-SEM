@@ -125,11 +125,6 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 ![Equipe bytech](/readme/Burndown4Sprint.png)
 
 <br>
-<h1 align="center"><samp>Manual do Usuário</samp></h1>
-
-[Clique aqui para ter acesso ao manual do usuário!](https://github.com/CamilaRedondo/API-FATEC-3-SEM/blob/devCamilaRedondo/readme/manualUsuario.docx)
-
-<br>
 <h1 align="center"><samp>DETALHES DAS SPRINTS</samp></h1>
 <h2>Sprint 1</h2>
 <details>
@@ -294,6 +289,10 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 
 </details>
 
+<br>
+<h1 align="center"><samp>Manual do Usuário</samp></h1>
+
+[Clique aqui para ter acesso ao manual do usuário!](https://github.com/CamilaRedondo/API-FATEC-3-SEM/blob/devCamilaRedondo/readme/manualUsuario.docx)
 
 <br>
 <h1 align="center"><samp>EQUIPE</samp></h1>
