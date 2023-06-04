@@ -145,7 +145,7 @@ export default class UserService {
     const requestBody = { email: email };
 
     try {
-      const response = await DataServiceAPI.get('http://localhost:3000/user/findUserByEmail', requestBody);
+      const response = await DataServiceAPI.post('http://localhost:3000/user/findUserByEmail', requestBody);
 
       const responseJson = await response.json();
 
@@ -256,102 +256,122 @@ export default class UserService {
     }
   }
 
-//For chart and dashboard
+  //For chart and dashboard
   public static async getUserByCreatedForChart() {
 
-  try {
-    const response = await DataServiceAPI.get(
-      "http://localhost:3000/user/findByCreatedAt",
-    );
+    try {
+      const response = await DataServiceAPI.get(
+        "http://localhost:3000/user/findByCreatedAt",
+      );
 
-    const responseJson = await response.json();
+      const responseJson = await response.json();
 
-    const userResponse = {
-      data: responseJson.Data,
-      message: responseJson.message,
-      ok: responseJson.Ok,
-    };
+      const userResponse = {
+        data: responseJson.Data,
+        message: responseJson.message,
+        ok: responseJson.Ok,
+      };
 
-    //console.log(userResponse)
-    return userResponse;
-  } catch (error) {
-    const response: UserResponse = {
-      data: [],
-      message: `${error}`,
-      ok: false,
-    };
-    return response;
+      //console.log(userResponse)
+      return userResponse;
+    } catch (error) {
+      const response: UserResponse = {
+        data: [],
+        message: `${error}`,
+        ok: false,
+      };
+      return response;
+    }
   }
-}
 
   public static async getUserByCreatedAt(createdAt: number) {
-  const requestBody = { createdAt: createdAt };
+    const requestBody = { createdAt: createdAt };
 
-  try {
-    const response = await DataServiceAPI.get(
-      "http://localhost:3000/user/findUserByCreatedAt",
-      requestBody
-    );
+    try {
+      const response = await DataServiceAPI.get(
+        "http://localhost:3000/user/findUserByCreatedAt",
+        requestBody
+      );
 
-    const responseJson = await response.json();
+      const responseJson = await response.json();
 
-    const userResponse = {
-      data: responseJson.Data,
-      message: responseJson.message,
-      ok: responseJson.Ok,
-    };
+      const userResponse = {
+        data: responseJson.Data,
+        message: responseJson.message,
+        ok: responseJson.Ok,
+      };
 
-    return userResponse;
-  } catch (error) {
-    const response: UserResponse = {
-      data: [],
-      message: `${error}`,
-      ok: false,
-    };
-    return response;
+      return userResponse;
+    } catch (error) {
+      const response: UserResponse = {
+        data: [],
+        message: `${error}`,
+        ok: false,
+      };
+      return response;
+    }
   }
-}
 
- 
 
-    public static async deleteUser(email: String): Promise < boolean > {
 
-  const requestBody = {
-    email: email,
-  };
+  public static async deleteUser(email: String): Promise<boolean> {
 
-  try {
-    const response = await DataServiceAPI.delete('http://localhost:3000/user/deleteUser', requestBody);
+    const requestBody = {
+      email: email,
+    };
 
-    if(response.ok) {
-  return true;
-} else {
-  return false;
-}
-        } catch (error) {
-  console.error(error);
-  return false;
-}
+    try {
+      const response = await DataServiceAPI.delete('http://localhost:3000/user/deleteUser', requestBody);
+
+      if (response.ok) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error(error);
+      return false;
     }
+  }
 
-    public static async updatePassword(email: string, newPassword: string): Promise < boolean > {
+  public static async updatePassword(email: string, newPassword: string): Promise<boolean> {
 
-  const requestBody = {
-    email: email,
-    newPassword: newPassword
-  };
+    const requestBody = {
+      email: email,
+      newPassword: newPassword
+    };
 
-  try {
-    const response = await DataServiceAPI.post('http://localhost:3000/auth/updatePassword', requestBody);
+    try {
+      const response = await DataServiceAPI.post('http://localhost:3000/auth/updatePassword', requestBody);
 
-    if(response.ok) {
-  return true;
-} else {
-  return false;
-}
-        } catch (error) {
-  console.error(error);
-  return false;
-}
+      if (response.ok) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error(error);
+      return false;
     }
+  }
+  public static async changeAcess(acessType: number, id:number): Promise<boolean> {
+    
+    const requestBody = {
+      acessType: acessType,
+      id: id
+    };
+
+    try {
+      const response = await DataServiceAPI.post('http://localhost:3000/user/changeAcess', requestBody);
+
+      if (response.ok) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
 }

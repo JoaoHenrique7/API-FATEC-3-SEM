@@ -105,11 +105,16 @@ export default class UserRepository implements IUserRepository {
   }
 
     // update user
-    async editUser(id: number, userName: string, fullName: string, cpf: string, email: string, password: string, active: boolean): Promise<User | null> {
-        await User.update({ id: id, userName: userName, fullName: fullName, cpf: cpf, email: email, password: password, active: active }, { where: { id: id } });
+    async editUser(id: number, userName: string, fullName: string, cpf: string, email: string, active: boolean): Promise<User | null> {
+        await User.update({ id: id, userName: userName, fullName: fullName, cpf: cpf, email: email, active: active }, { where: { id: id } });
         const updatedUser = await User.findByPk(id);
         return updatedUser;
     }
+
+    async changeAcess(acessType:number, id:number, name:string): Promise<number> {
+      const result = await Profile.update({ type: acessType, name:name }, { where: { userId:id } });
+      return result[0];
+  }
 
 }
 

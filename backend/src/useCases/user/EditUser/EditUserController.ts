@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import EditUserUC from "./EditUserUC";
-import * as bcrypt from "bcryptjs";
 
 export class EditUserController {
     constructor(
@@ -9,13 +8,10 @@ export class EditUserController {
 
     async edit(req: Request, res: Response): Promise<Response> {
 
-        const { id, userName, fullName, cpf, email, password, active, profile } = req.body;
-
-        const salt = await bcrypt.genSalt(10);
-        const hashPassword = await bcrypt.hash(password, salt);
+        const { id, userName, fullName, cpf, email, active, profile } = req.body;
 
         try {
-            await this.editUserUC.execute({id ,userName, fullName, cpf, email, password:hashPassword, active});
+            await this.editUserUC.execute({id ,userName, fullName, cpf, email, active});
 
             return res.status(200).json({
                 Ok: true,
