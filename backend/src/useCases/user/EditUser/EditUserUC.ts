@@ -18,11 +18,10 @@ export default class CreateUserUC {
         const userName = props.userName;
         const fullName = props.fullName ;
         const cpf = props.cpf;
-        const password = props.password;
         const active = props.active;
   
 
-        const editUser = await this.userRepository.editUser(id, userName,fullName,cpf,email,password,active);
+        const editUser = await this.userRepository.editUser(id, userName,fullName,cpf,email,active);
 
         if (!editUser) throw new Error('something went wrong')
         

@@ -7,5 +7,4 @@ export default interface IEditUserDTO {
     cpf: string;
     email: string;
     active:boolean;
-    password: string;
 }

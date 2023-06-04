@@ -11,6 +11,7 @@ import { createAdmin } from "../useCases/user/CreateAdmin/CreateAdmin";
 import { findByActive } from "../useCases/user/FindByActive/FindByActive";
 import { findByCreatedAt } from "../useCases/user/FindByCreatedAt/FindByCreatedAt";
 import { editUser } from "../useCases/user/EditUser/EditUser";
+import { changeAcess } from "../useCases/user/ChangeAcess/ChangeAcess";
 const router = Router();
 
 router.get('/getAll', (request: Request, response: Response) => {
@@ -37,7 +38,7 @@ router.get('/findById', (request: Request, response: Response) => {
     return findById.findById(request, response);
 });
 
-router.get('/findUserByEmail', (request: Request, response: Response) => {
+router.post('/findUserByEmail', (request: Request, response: Response) => {
     return findUserByEmail.findUserByEmail(request, response);
 });
 
@@ -59,6 +60,10 @@ router.post('/findByActive', (request: Request, response: Response) => {
 
 router.get('/findByCreatedAt', (request: Request, response: Response) => {
     return findByCreatedAt.findByCreatedAt(request, response);
+});
+
+router.post('/changeAcess', (request: Request, response: Response) => {
+    return changeAcess.ChangeAcess(request, response);
 });
 
 export default router;
