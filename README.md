@@ -119,6 +119,15 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
 
 ![Equipe bytech](/readme/Burndown3Sprint.png)
 
+<br>
+<h1 align="center"><samp>QUARTA SPRINT</samp></h1>
+
+![Equipe bytech](/readme/Burndown4Sprint.png)
+
+<br>
+<h1 align="center"><samp>Manual do Usuário</samp></h1>
+
+[Clique aqui para ter acesso ao manual do usuário!](https://github.com/CamilaRedondo/API-FATEC-3-SEM/blob/devCamilaRedondo/readme/manualUsuario.docx)
 
 <br>
 <h1 align="center"><samp>DETALHES DAS SPRINTS</samp></h1>
@@ -257,6 +266,35 @@ O presente projeto tem por objetivo desenvolver um sistema de gerenciamento de u
   <p align="justify">Apresentação dos processos desenvolvidos na terceira Sprint.</p>
 
 </details>
+
+<h2>Sprint 4</h2>
+<details>
+  <summary>Detalhes</summary>
+  <h3 align="center">Demonstração de usabilidade</h3>
+   <br>
+  <h4 align="center">Acesso Usuario padrão <br><a href="https://youtu.be/cc1ls2OILM8">Youtube (Qualidade melhor)</a></h4>
+  
+  <p align="justify">Demonstração de acesso para usuarios sem direitos administradores.</p>
+ 
+  <br>
+  <h4 align="center">Acesso Usuario administrador <br><a href="Usabilidade do sistema como usuário administrador">Youtube (Qualidade melhor)</a></h4>
+  
+  <p align="justify">Demonstração de acesso para usuarios com direitos administradores.</p>
+  
+  <br>
+  <h4 align="center">Recuperação de senha<br><a href="https://youtu.be/hmlNzyn_yqE">Youtube (Qualidade melhor)</a></h4>
+
+
+  <br>
+  <h4 align="center">BPMN<br></h4>
+  <p align="center">
+      <img src="/readme/BPMN4Sprint.png" width="65%" />
+  </p>
+  <p align="justify">Apresentação dos processos desenvolvidos na quarta Sprint.</p>
+
+</details>
+
+
 <br>
 <h1 align="center"><samp>EQUIPE</samp></h1>
 
